@@ -1,0 +1,10 @@
+
+
+
+<van-tabs active="{{ active }}" color="#1989fa"  bind:change="onChange">
+  <van-tab  wx:for="{{grade}}" title="{{item.SemesterYear}}">
+<van-cell-group  wx:for="{{item.List}}" title="{{item.STName}}">
+  <van-cell wx:for="{{item.gradeList}}" title="{{item.Name}} " value="{{item.MarkValue}}" />
+</van-cell-group>
+  </van-tab>
+</van-tabs>

@@ -1,0 +1,26 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/login/login",
+        "pages/grade/grade"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#1989FA",
+        "navigationBarTitleText": "CIDPPLUS",
+        "navigationBarTextStyle": "white"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json",
+    "usingComponents": {
+        "van-field": "dist/field/index",
+        "van-button": "dist/button/index",
+        "van-row": "dist/row/index",
+        "van-col": "dist/col/index",
+        "van-grid": "dist/grid/index",
+        "van-grid-item": "dist/grid-item/index",
+        "van-image": "dist/image/index",
+        "van-divider": "dist/divider/index"
+    }
+}
