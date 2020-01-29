@@ -1,4 +1,6 @@
 // pages/login/login.js
+const app = getApp()
+
 Page({
 
     /**
@@ -11,8 +13,8 @@ Page({
         loadText: "登录",
         loading: false,
         value: '',
-        btnType: 'info',
-        btnText: "登录"
+        btnText: "登录",
+        mainColor: app.globalData.theme_main_color
     },
     login: function(res) {
         this.setData({
@@ -40,7 +42,6 @@ Page({
                 } else {
                     this.setData({
                         loading: false,
-                        btnType: "primary",
                         btnText: "成功登录",
                         grade: result.data
                     })
