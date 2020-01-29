@@ -16,5 +16,4 @@ demo/pages/logs/logs.qml
 demo/pages/logs/logs.qss
 demo/utils/util.js
 vui
-dist
 a.json
