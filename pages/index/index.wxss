@@ -1,7 +1,7 @@
 /**index.wxss**/
 
-.log{
-background: green;
+.log {
+    background: green;
 }
 
 .index_body {
@@ -15,11 +15,10 @@ background: green;
     align-items: center;
 }
 
-.index_body_in{
-   display: flex;
+.index_body_in {
+    display: flex;
     flex-direction: column;
     width: 640rpx;
-    background-color: #1989FA;
     box-sizing: border-box;
 }
 
@@ -49,39 +48,42 @@ background: green;
     margin-left: 10rpx;
 }
 
-.card{
-  display: block;
-  width: 100%;
-  background-color: white;
-  height:185rpx;
-  border-radius: 15rpx;
-  /* padding: 20rpx; */
+.card {
+    display: block;
+    width: 100%;
+    background-color: white;
+    height: 185rpx;
+    border-radius: 15rpx;
+    /* padding: 20rpx; */
 }
-.img_box{
-  width: 144rpx;
-  height: 144rpx;
-  /* background-color: gold; */
-  margin: 20rpx 40rpx;
+
+.img_box {
+    width: 144rpx;
+    height: 144rpx;
+    /* background-color: gold; */
+    margin: 20rpx 40rpx;
 }
-.right_title{
-  /* border: 5rpx;
+
+.right_title {
+    /* border: 5rpx;
   border-radius: 10rpx;
   border-color: #1989FA;
   border-style: solid; */
-  padding: 5rpx 40rpx 5rpx 20rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: auto;
-  height: 144rpx;
-  /* background-color: gold; */
-  margin: 20rpx 0rpx;
-   box-sizing: border-box;
+    padding: 5rpx 40rpx 5rpx 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+    height: 144rpx;
+    /* background-color: gold; */
+    margin: 20rpx 0rpx;
+    box-sizing: border-box;
 }
-.circle{
-  margin: 10rpx 10rpx 10rpx 0rpx;
-  width: 24rpx;
-  height: 24rpx;
-  background-color: red;
-  border-radius: 50%;
+
+.circle {
+    margin: 10rpx 10rpx 10rpx 0rpx;
+    width: 24rpx;
+    height: 24rpx;
+    background-color: red;
+    border-radius: 50%;
 }
