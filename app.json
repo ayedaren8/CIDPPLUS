@@ -21,6 +21,9 @@
         "van-grid": "dist/grid/index",
         "van-grid-item": "dist/grid-item/index",
         "van-image": "dist/image/index",
-        "van-divider": "dist/divider/index"
+        "van-divider": "dist/divider/index",
+        "van-notify": "dist/notify/index",
+        "van-toast": "dist/toast/index",
+        "van-dialog": "dist/dialog/index"
     }
 }
