@@ -1,36 +1,69 @@
 // pages/grade/grade.js
+const app = getApp()
+const grep = require("../../utils/grep.js");
+import Notify from '../../dist/notify/notify';
+import Toast from '../../dist/toast/toast';
+import Dialog from '../../dist/dialog/dialog';
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        active: 1
+        active: 1,
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        var that = this
-        wx.getStorage({
-            key: 'student',
-            success(res) {
-                console.log("获得缓存")
-                console.log(res)
-                that.setData({
-                    grade: res.data.grade
-                })
-            }
-        })
+        console.log("sss", app.globalData.LOGIN_FLAG)
+        console.log(app.globalData.LOGIN_FLAG)
+        if (app.globalData.LOGIN_FLAG == false) {
+            Toast({
+                type: 'fail',
+                message: '请先登录',
+                onClose: () => {
+                    wx.reLaunch({
+                        url: '../index/index',
+                    });
+                }
+            });
 
+        } else {
+            var stInfo = wx.getStorageSync("stInfo");
+            var that = this
+                // 检查缓存 如果存在缓存直接读取 注意此缓存下一次登录会被删除
+            wx.getStorage({
+                key: 'grade',
+                success: (result) => {
+                    that.setData({ grade: result.data })
+                },
+                fail: () => {
+                    grep.login(stInfo.stid, stInfo.stpwd, "grade")
+                        // 定义回调函数
+                    grep.infoReady = api => {
+                        wx.getStorage({
+                            key: api,
+                            success: (result) => {
+                                that.setData({ grade: result.data })
+                            },
+                            fail: () => {},
+                            complete: () => {}
+                        });
+                    }
+                },
+                complete: () => {}
+            });
+
+
+        }
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function() {
-        console.log(this.data)
 
     },
 
