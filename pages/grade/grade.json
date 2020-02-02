@@ -5,6 +5,11 @@
         "van-tab": "../dist/tab/index",
         "van-tabs": "../dist/tabs/index",
         "van-cell": "../dist/cell/index",
-        "van-cell-group": "../dist/cell-group/index"
-    }
+        "van-cell-group": "../dist/cell-group/index",
+        "van-dialog": "../dist/dialog/index"
+    },
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "成绩",
+    "navigationBarTextStyle": "black"
 }
