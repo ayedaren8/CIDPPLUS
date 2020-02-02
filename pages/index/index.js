@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+import Dialog from '../../dist/dialog/dialog';
 // pages/grade/grade.js
 Page({
 
@@ -11,14 +11,9 @@ Page({
 
 
     data: {
-        PROCESS: app.globalData.PROCESS,
-        loginStatu: "你目前未登录",
-        USERNAME: app.globalData.USERNAME,
-        PROCESS: app.globalData.PROCESS,
-        mainColor: app.globalData.theme_main_color,
-        secondaryColor: app.globalData.theme_secondary_color,
+        loginStatu: "点击头像登录",
         fontColor: "#2F2F4F",
-        gird: [{ "icon": "/icon/cj.png", "text": "成绩", "type": "navigateTo", "url": "/pages/login/login" },
+        gird: [{ "icon": "/icon/cj.png", "text": "成绩", "type": "navigateTo", "url": "/pages/grade/grade" },
             { "icon": "/icon/keb.png", "text": "课表", "type": "navigateTo", "url": "" },
             { "icon": "/icon/kb.png", "text": "考表", "type": "navigateTo", "url": "" },
             { "icon": "/icon/rl.png", "text": "校历", "type": "navigateTo", "url": "" },
@@ -28,9 +23,19 @@ Page({
             { "icon": "/icon/tz.png", "text": "通知", "type": "navigateTo", "url": "" },
         ]
     },
+
     changeLogin: function() {
-        if (app.isLogin()) {
-            console.log("你已经登录过啦，是否注销？")
+        if (app.globalData.LOGIN_FLAG) {
+            Dialog.confirm({
+                title: '注销',
+                message: '你已经登录过啦，是否注销？'
+            }).then(() => {
+                app.globalData.LOGIN_FLAG = false
+                this.setData({ LOGIN_FLAG: app.globalData.LOGIN_FLAG, })
+            }).catch(() => {
+                // on cancel
+            });
+
         } else {
             wx.navigateTo({
                 url: '/pages/login/login',
@@ -45,29 +50,44 @@ Page({
 
     },
 
-
-
-
+    getPhoto: function(stid, stpwd) {
+        let request = wx.request({
+            url: 'http://127.0.0.1:8000/getPhoto/',
+            method: 'POST',
+            data: {
+                "username": stid,
+                "password": stpwd,
+            },
+            header: {
+                'content-type': 'application/json'
+            },
+            dataType: 'json',
+            responseType: 'image/jpeg',
+            success: (result) => {
+                wx.setStorage({
+                    key: "photo",
+                    data: result
+                })
+            },
+            fail: () => {},
+            complete: () => {}
+        });
+    },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        this.setData({
+            LOGIN_FLAG: app.globalData.LOGIN_FLAG,
+            mainColor: app.globalData.theme_main_color,
+            secondaryColor: app.globalData.theme_secondary_color,
+        })
         wx.setNavigationBarColor({
             frontColor: '#ffffff',
             backgroundColor: this.data.mainColor
         });
-        console.log(app.globalData);
-        var that = this
-        wx.getStorage({
-            key: 'student',
-            success(res) {
-                console.log("获得缓存")
-                that.setData({
-                    grade: res.data.grade
-                })
-            }
-        })
+
 
     },
 
@@ -83,6 +103,15 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
+        let res = wx.getStorageSync("infoList");
+        console.log(res.name)
+        this.setData({
+            LOGIN_FLAG: app.globalData.LOGIN_FLAG,
+            USERNAME: res.name,
+            PROCESS: app.globalData.PROCESS,
+            mainColor: app.globalData.theme_main_color,
+            secondaryColor: app.globalData.theme_secondary_color,
+        })
 
     },
 
