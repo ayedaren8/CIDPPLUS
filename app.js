@@ -34,19 +34,21 @@ App({
         })
     },
     globalData: {
-        userInfo: null,
-        USERNAME: null,
-        LOGIN_FLAG: null,
+        userInfo: "",
+        USERNAME: "",
         PROCESS: "",
-        theme_main_color: "#19896A",
+        theme_main_color: "#111111",
         theme_secondary_color: "#ffffff",
-        LOGIN_FLAG: false
+        LOGIN_FLAG: false,
+        GRADE_FLAG: false,
+        CLASS_FLAG: false,
+        EXAM_FLAG: false,
+        CALENDER_FLAG: false,
+        NETCOST_FLAG: false,
+        CARDMONEY_FLAG: false,
+        READING_FLAG: false,
+        NOTICE_FLAG: false,
     },
-    Login_in: () => {
-        this.globalData.LOGIN_FLAG = true
-    },
-    login_out: () => {
-        this.globalData.LOGIN_FLAG = false
-    },
-    isLogin: () => this.globalData.LOGIN_FLAG
+
+
 })
