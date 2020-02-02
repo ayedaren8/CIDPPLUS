@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<van-dialog id="van-dialog" />
 <view class="index_body" style="background:{{mainColor}}">
   <view class="index_body_in">
     <view id="LOGO-banner" class="index_box">
@@ -12,14 +13,14 @@
             <van-image bind:tap="changeLogin" round width="100%" height="100%" fit="cover" src="https://img.yzcdn.cn/vant/cat.jpeg" />
           </view>
           <view class="right_title">
-            <view wx:if="{{USERNAME==''||USERNAME==null}}" style="display:flex; align-items: center;">
+            <view wx:if="{{LOGIN_FLAG==false}}" style="display:flex; align-items: center;">
               <view id="circle" class="circle" ></view>
               <text id="status" class="logo_" style="color:{{fontColor}};font-size:15pt;">{{loginStatu}}</text>
             </view>
-            <view wx:if="{{USERNAME!=''&&USERNAME!=null}}">
+            <view wx:if="{{LOGIN_FLAG==true}}">
               <text class="logo " style="color:{{fontColor}};font-size:16pt;line-height: 1.5em;">欢迎你，{{USERNAME}}!</text>
             </view>
-            <view id="PROCESS" wx:if="{{PROCESS!=''}}" style="display:block;justify-content：right；">
+            <view id="PROCESS" wx:if="{{LOGIN_FLAG==true}}" style="display:block;justify-content：right；">
               <text class="logo_ " style="color:grey;font-size:8pt;margin:0;">{{PROCESS}}</text>
             </view>
           </view>
