@@ -3,7 +3,8 @@
         "pages/index/index",
         "pages/logs/logs",
         "pages/login/login",
-        "pages/grade/grade"
+        "pages/grade/grade",
+        "pages/course/course"
     ],
     "window": {
         "backgroundTextStyle": "dark",
