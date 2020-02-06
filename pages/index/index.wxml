@@ -10,7 +10,7 @@
       <view class="card">
         <view style="display:flex;">
           <view class="img_box">
-            <van-image bind:tap="changeLogin" round width="100%" height="100%" fit="cover" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+            <van-image bind:tap="changeLogin" round width="100%" height="100%" fit="cover" src="{{header_img}}" />
           </view>
           <view class="right_title">
             <view wx:if="{{LOGIN_FLAG==false}}" style="display:flex; align-items: center;">

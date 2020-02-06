@@ -42,7 +42,7 @@ Page({
                 fail: () => {
                     grep.login(stInfo.stid, stInfo.stpwd, "grade")
                         // 定义回调函数
-                    grep.infoReady = api => {
+                    grep.gradeReady = api => {
                         wx.getStorage({
                             key: api,
                             success: (result) => {
