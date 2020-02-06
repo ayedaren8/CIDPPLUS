@@ -2,26 +2,26 @@
 //获取应用实例
 const app = getApp()
 import Dialog from '../../dist/dialog/dialog';
+const grep = require("../../utils/grep.js");
 // pages/grade/grade.js
 Page({
 
     /**
      * 页面的初始数据
      */
-
-
     data: {
         loginStatu: "点击头像登录",
         fontColor: "#2F2F4F",
         gird: [{ "icon": "/icon/cj.png", "text": "成绩", "type": "navigateTo", "url": "/pages/grade/grade" },
-            { "icon": "/icon/keb.png", "text": "课表", "type": "navigateTo", "url": "" },
+            { "icon": "/icon/keb.png", "text": "课表", "type": "navigateTo", "url": "/pages/course/course" },
             { "icon": "/icon/kb.png", "text": "考表", "type": "navigateTo", "url": "" },
             { "icon": "/icon/rl.png", "text": "校历", "type": "navigateTo", "url": "" },
             { "icon": "/icon/wf.png", "text": "网费", "type": "navigateTo", "url": "" },
             { "icon": "/icon/fk.png", "text": "饭卡", "type": "navigateTo", "url": "" },
             { "icon": "/icon/jy.png", "text": "借阅", "type": "navigateTo", "url": "" },
             { "icon": "/icon/tz.png", "text": "通知", "type": "navigateTo", "url": "" },
-        ]
+        ],
+        header_img: app.globalData.HD_IMG,
     },
 
     changeLogin: function() {
@@ -37,6 +37,19 @@ Page({
             });
 
         } else {
+            var _this = this
+            wx.getStorage({
+                key: "175043115HD",
+                success: (result) => {
+                    _this.setData({ header_img: result })
+                },
+                fail: () => {},
+                complete: () => {}
+            });
+            grep.photoReady = res => {
+                app.globalData.HD_IMG = res
+                _this.setData({ header_img: app.globalData.HD_IMG })
+            }
             wx.navigateTo({
                 url: '/pages/login/login',
                 success: (result) => {
@@ -50,29 +63,6 @@ Page({
 
     },
 
-    getPhoto: function(stid, stpwd) {
-        let request = wx.request({
-            url: 'http://127.0.0.1:8000/getPhoto/',
-            method: 'POST',
-            data: {
-                "username": stid,
-                "password": stpwd,
-            },
-            header: {
-                'content-type': 'application/json'
-            },
-            dataType: 'json',
-            responseType: 'image/jpeg',
-            success: (result) => {
-                wx.setStorage({
-                    key: "photo",
-                    data: result
-                })
-            },
-            fail: () => {},
-            complete: () => {}
-        });
-    },
 
     /**
      * 生命周期函数--监听页面加载
@@ -111,6 +101,7 @@ Page({
             PROCESS: app.globalData.PROCESS,
             mainColor: app.globalData.theme_main_color,
             secondaryColor: app.globalData.theme_secondary_color,
+            header_img: app.globalData.HD_IMG
         })
 
     },

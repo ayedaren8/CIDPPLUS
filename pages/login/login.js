@@ -1,5 +1,6 @@
 // pages/login/login.js
 const app = getApp()
+const grep = require("../../utils/backGrep.js");
 import Notify from '../../dist/notify/notify';
 import Toast from '../../dist/toast/toast';
 Page({
@@ -36,7 +37,6 @@ Page({
 
     // 表单验证函数
     loginBefore: function(event) {
-        console.log(this.data.stid.length)
         if (this.data.stid.length < 7) {
             Notify({ type: 'warning', message: '请检查用户名' });
         } else if (this.data.stid.length == 0) {
@@ -57,7 +57,7 @@ Page({
         });
         // 发起请求
         wx.request({
-            url: 'http://127.0.0.1:8000/api/',
+            url: app.globalData.DOMAIN + "api/",
             data: {
                 "username": stid,
                 "password": stpwd,
@@ -131,7 +131,7 @@ Page({
      */
     onLoad: function(options) {
         var stInfo = wx.getStorageSync("stInfo");
-        console.log("stInfo")
+        // console.log("stInfo")
         console.log(stInfo)
         if (stInfo) {
             this.setData({ stid: stInfo.stid, stpwd: stInfo.stpwd })
@@ -151,9 +151,9 @@ Page({
             complete: () => {}
         });
         wx.removeStorage({
-            key: 'class',
+            key: 'course',
             success: (result) => {
-                console.log("成功删除成绩缓存")
+                console.log("成功删除课表缓存")
             },
             fail: () => {},
             complete: () => {}
@@ -166,7 +166,6 @@ Page({
      */
     onShow: function() {
         var stInfo = wx.getStorageSync("stInfo");
-        console.log("stInfo")
         console.log(stInfo)
         if (stInfo) {
             this.setData({ stid: stInfo.stid, stpwd: stInfo.stpwd })
@@ -184,7 +183,8 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function() {
-
+        grep.login(this.data.stid, this.data.stpwd, "grade")
+        grep.login(this.data.stid, this.data.stpwd, "getCourse")
     },
 
     /**

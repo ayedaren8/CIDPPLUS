@@ -6,7 +6,7 @@
     <view class="index_body_in">
         <view id="LOGO-banner" class="index_box" style="margin-top：20rpx;margin-bottom:100rpx;padding-top:40rpx;">
             <text class="logo" style="color:{{mainColor}}">CIDP+</text>
-        </view>
+        </view> 
         <view class="index_box">
             <input class="input-vant" bindinput="onChangeUser" placeholder="请输入学号" type="text" style="color:{{btnTextColor}}" placeholder-class="input-pla" value="{{stid}}"></input>
             <van-divider style="--divider-margin:5px 5px;-divider-line-height:20px)" />
