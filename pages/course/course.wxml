@@ -1,0 +1,54 @@
+<!-- pages/course/course.wxml -->
+<van-notify id="van-notify" />
+<van-toast id="van-toast" />
+<view class="index_body " hover-class="none" hover-stop-propagation="false">
+<view class="main_table green" >
+<view class="hr red">
+    <view class="days gold">
+        <view class="day green"  wx:for="{{day_list}}">
+            周{{item}}
+        </view>
+    </view>
+</view>
+  
+
+
+
+
+</view>
+
+
+
+
+    <view wx:for="{{course}}">
+      
+        <view id="Monday" wx:if="{{item.OnMonday}}">
+            <text>周一</text>
+            <text>{{item.FullName}}{{item.LUName}}{{item.Building}}</text>
+        </view>
+        <view id="Tuesday" wx:if="{{item.OnTuesday}}">
+            <text>周二</text>
+            <text>{{item.FullName}}{{item.LUName}}{{item.Building}}</text>
+        </view>
+        <view id="Wednesday" wx:if="{{item.OnWednesday}}">
+            <text>周三</text>
+            <text>{{item.FullName}}{{item.LUName}}{{item.Building}}</text>
+        </view>
+        <view id="Thursday" wx:if="{{item.OnThursday}}">
+            <text>周四</text>
+            <text>{{item.FullName}}{{item.LUName}}{{item.Building}}</text>
+        </view>
+        <view id="Friday" wx:if="{{item.OnMoFriday}}">
+            <text>周五</text>
+            <text>{{item.FullName}}{{item.LUName}}{{item.Building}}</text>
+        </view>
+        <view id="Saturday" wx:if="{{item.OnSaturday}}">
+            <text>周六</text>
+            <text>{{item.FullName}}{{item.LUName}}{{item.Building}}</text>
+        </view>
+        <view id="Sunday" wx:if="{{item.OnSunday}}">
+            <text>周日</text>
+            <text>{{item.FullName}}{{item.LUName}}{{item.Building}}</text>
+        </view>
+    </view>
+</view>
