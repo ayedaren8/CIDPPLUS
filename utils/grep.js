@@ -2,6 +2,7 @@
   import Notify from '../dist/notify/notify';
   import Toast from '../dist/toast/toast';
   import Dialog from '../dist/dialog/dialog';
+  const app = getApp();
 
   function login(stid, stpwd, api) {
       // 加载Toast提示
@@ -12,7 +13,7 @@
       });
       // 发起请求
       let result = wx.request({
-          url: 'http://127.0.0.1:8000/api/',
+          url: app.globalData.DOMAIN + "api/",
           data: {
               "username": stid,
               "password": stpwd,
@@ -67,8 +68,13 @@
                       key: api,
                       data: result.data
                   });
-                  if (this.infoReady) {
-                      this.infoReady(api)
+                  //   eval("app.globalData" + api + "_FLAG")
+                  let _name = api + "Ready"
+                  console.log(_name);
+
+                  //   eval(_name)
+                  if (this[_name]) {
+                      this[_name](api)
                   }
 
               }
@@ -88,6 +94,35 @@
 
   }
 
+  function getPhoto(stid, stpwd) {
+      let request = wx.request({
+          url: 'http://127.0.0.1:8000/getPhoto/',
+          method: 'POST',
+          data: {
+              "username": stid,
+              "password": stpwd,
+          },
+          header: {
+              'content-type': 'application/json'
+          },
+          dataType: 'json',
+          responseType: 'image/jpeg',
+          success: (result) => {
+              wx.setStorage({
+                  key: stid + "HD",
+                  data: result
+              })
+              app.globalData.HD_IMG = result
+              if (this.photoReady) {
+                  this.photoReady(result)
+              }
+          },
+          fail: () => {},
+          complete: () => {}
+      });
+  }
+
   module.exports = {
-      login: login
+      login: login,
+      getPhoto: getPhoto
   }
