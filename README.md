@@ -11,7 +11,8 @@ CIDPPLUS是一款微信小程序，又名CIDP+，致力于为防灾科技学院�
 此小程序部分参考WeCQU、MYCIDP等开源项目的思路，并使用Vant-WeApp前端组件对界面进行优化。
 
 ## 联系
-开发者：啊叶大人  
+开发者：啊叶大人   
+公众号：啊叶大人    
 邮箱：ayedaren8@163.com  
 网站：http://ayedaren.cn  
-公众号：啊叶大人  
+ 
