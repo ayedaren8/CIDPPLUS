@@ -32,18 +32,18 @@
 
 .logo {
     display: block;
-    font-size: 54pt;
+    font-size: 195rpx;
     color: white;
     font-weight: bold;
-    line-height: 1em;
+    line-height: 200rpx;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .logo_ {
     display: block;
-    font-size: 10pt;
+    font-size: 36rpx;
     color: white;
-    letter-spacing: 1pt;
+    letter-spacing: 3.6rpx;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-left: 10rpx;
 }
@@ -86,4 +86,12 @@
     height: 24rpx;
     background-color: red;
     border-radius: 50%;
+}
+
+.text-info {
+    font-size: 20rpx;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 5rpx;
+    color: #ffffff;
+    text-align: center;
 }
