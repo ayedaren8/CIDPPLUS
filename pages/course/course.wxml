@@ -2,53 +2,62 @@
 <van-notify id="van-notify" />
 <van-toast id="van-toast" />
 <view class="index_body " hover-class="none" hover-stop-propagation="false">
-<view class="main_table green" >
-<view class="hr red">
-    <view class="days gold">
-        <view class="day green"  wx:for="{{day_list}}">
-            周{{item}}
+<view class="main_header" hover-class="none" hover-stop-propagation="false">
+    <view class="weekBTN" hover-class="none" hover-stop-propagation="false">
+    <view class="BTN " style="width:60rpx; " hover-class="none" hover-stop-propagation="false">
+    <image class="BTN_img" src="/icon/sub.png" mode="widthFix" lazy-load="false" binderror="" bindtap="subWeek">
+        
+    </image>
+    </view>
+    <view class="BTN" hover-class="none" hover-stop-propagation="false">
+        <text class="header-text" selectable="false" space="false" decode="false">{{NOW_WEEK}} 周</text>    
+    </view>
+    <view class="BTN" style="width:60rpx; " hover-class="none" hover-stop-propagation="false">
+        <image class="BTN_img" src="/icon/add.png" mode="widthFix" lazy-load="false" binderror="" bindtap="addWeek">
+            
+        </image>
+    </view>
+
+    </view>
+
+
+</view>
+
+<!--课表开始-->
+<view class="main_table" >
+<view class="hr ">
+    <view class="days ">
+        <view class="day "  wx:for="{{day_list}}">
+           <text class="day-text">{{index}}</text> 
+           <view wx:if="{{item==TODAY}}" class="day-flag" >
+           <view class="today-blk">         
+           </view>
+           </view>
         </view>
     </view>
 </view>
-  
-
-
-
-
-</view>
-
-
-
-
-    <view wx:for="{{course}}">
-      
-        <view id="Monday" wx:if="{{item.OnMonday}}">
-            <text>周一</text>
-            <text>{{item.FullName}}{{item.LUName}}{{item.Building}}</text>
+<view class="tab-body" >
+    <view class="tab-right" hover-class="none" hover-stop-propagation="false">
+            <view class="tab-right-li" wx:for="{{[1, 3, 5, 7, 9]}}"hover-class="none" hover-stop-propagation="false">        
+            <text >
+                {{item}}
+            </text>
+            <text>
+                {{item+1}}
+            </text>
+            </view>         
+    </view>
+<view class="tab-left" wx:for="{{day_list}}" wx:for-index="day" wx:for-item="day_item" >
+    <view class="tab-left-day" wx:for="{{day_item}}"wx:for-item="class" >
+        <view  wx:if="{{class.end>=NOW_WEEK&class.begin<=NOW_WEEK&&NOW_WEEK%class.interval==0}}" class="tab-left-day-li" style="background:{{colorList[class.colorid]}};box-shadow: 0rpx 6rpx 6rpx {{colorList[class.colorid]}};" >
+        <text  class="text-mirco">\n{{class.cname}}\n\n</text>       
+        <text class="text-mirco text-light" selectable="false" space="false" decode="false">{{class.location}}\n{{class.building}}\n{{class.classroom}}\n{{class.teacher}}</text>
         </view>
-        <view id="Tuesday" wx:if="{{item.OnTuesday}}">
-            <text>周二</text>
-            <text>{{item.FullName}}{{item.LUName}}{{item.Building}}</text>
-        </view>
-        <view id="Wednesday" wx:if="{{item.OnWednesday}}">
-            <text>周三</text>
-            <text>{{item.FullName}}{{item.LUName}}{{item.Building}}</text>
-        </view>
-        <view id="Thursday" wx:if="{{item.OnThursday}}">
-            <text>周四</text>
-            <text>{{item.FullName}}{{item.LUName}}{{item.Building}}</text>
-        </view>
-        <view id="Friday" wx:if="{{item.OnMoFriday}}">
-            <text>周五</text>
-            <text>{{item.FullName}}{{item.LUName}}{{item.Building}}</text>
-        </view>
-        <view id="Saturday" wx:if="{{item.OnSaturday}}">
-            <text>周六</text>
-            <text>{{item.FullName}}{{item.LUName}}{{item.Building}}</text>
-        </view>
-        <view id="Sunday" wx:if="{{item.OnSunday}}">
-            <text>周日</text>
-            <text>{{item.FullName}}{{item.LUName}}{{item.Building}}</text>
+        <view  wx:else class="tab-left-day-li">
         </view>
     </view>
+</view>
+</view> 
+</view>
+<!--课表结束-->
 </view>
