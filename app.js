@@ -7,7 +7,7 @@ App({
         userInfo: "",
         USERNAME: "",
         PROCESS: "",
-        theme_main_color: "#111111",
+        theme_main_color: "#1989FA",
         theme_secondary_color: "#ffffff",
         HD_IMG: "/icon/cat.jpg",
         LOGIN_FLAG: false,

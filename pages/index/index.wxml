@@ -37,10 +37,20 @@
       </view>
     </view>
 
+
     <view class="index_box">
       <text class="logo_" style="padding-bottom:5rpx;">今日课表</text>
       <view class="card" style="height:300rpx"> </view>
     </view>
 
+
+
+    <view class="index_box">
+     <image style="width:100%" src="../images/Plants1.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+     <text class="text-info" selectable="false" space="false" decode="false">
+     ©2020 ayedaren
+     </text>  
+    </view>
+    
   </view>
 </view>
