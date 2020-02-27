@@ -1,1 +1,8 @@
 /* pages/grade/grade.wxss */
+
+.index_body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+}

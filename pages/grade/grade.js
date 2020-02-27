@@ -17,12 +17,14 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+
         console.log("sss", app.globalData.LOGIN_FLAG)
         console.log(app.globalData.LOGIN_FLAG)
         if (app.globalData.LOGIN_FLAG == false) {
             Toast({
                 type: 'fail',
                 message: '请先登录',
+                duration: 1000,
                 onClose: () => {
                     wx.reLaunch({
                         url: '../index/index',
@@ -71,7 +73,13 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-
+        if (typeof this.getTabBar === 'function' &&
+            this.getTabBar()) {
+            console.log('设置选中项 0')
+            this.getTabBar().setData({
+                selected: 3
+            })
+        }
     },
 
     /**

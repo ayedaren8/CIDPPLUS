@@ -1,0 +1,58 @@
+/**index.wxss**/
+
+.index_body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    align-content: center;
+    align-items: center;
+}
+
+.index_body_in {
+    display: flex;                                                                                                                                                                                                                                                                                                                                                                                                                                               
+    flex-direction: column;
+    width: 640rpx;
+    box-sizing: border-box;
+}
+
+.index_box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 23rpx;
+    padding-bottom: 65rpx;
+}
+
+.card {
+    display: block;
+    width: 100%;
+    background-color: white;
+    height: 185rpx;
+    border-radius: 15rpx;
+}
+
+.img_box {
+    width: 144rpx;
+    height: 144rpx;
+    margin: 20rpx 40rpx;
+}
+
+.right_title {
+    padding: 5rpx 40rpx 5rpx 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+    height: 144rpx;
+    margin: 20rpx 0rpx;
+    box-sizing: border-box;
+}
+
+.circle {
+    margin: 10rpx 10rpx 10rpx 0rpx;
+    width: 24rpx;
+    height: 24rpx;
+    background-color: red;
+    border-radius: 50%;
+}

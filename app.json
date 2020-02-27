@@ -4,13 +4,35 @@
         "pages/logs/logs",
         "pages/login/login",
         "pages/grade/grade",
-        "pages/course/course"
+        "pages/course/course",
+        "pages/exam/index",
+        "pages/set/index"
     ],
+    "tabBar": {
+        "custom": true,
+        "list": [{
+                "pagePath": "pages/exam/index"
+            },
+            {
+                "pagePath": "pages/course/course"
+
+            },
+            {
+                "pagePath": "pages/index/index"
+            },
+            {
+                "pagePath": "pages/grade/grade"
+            },
+            {
+                "pagePath": "pages/set/index"
+            }
+        ]
+    },
     "window": {
         "backgroundTextStyle": "dark",
         "navigationBarBackgroundColor": "#ffffff",
         "navigationBarTitleText": "CIDPPLUS",
-        "navigationBarTextStyle": "white"
+        "navigationBarTextStyle": "black"
     },
     "style": "v2",
     "sitemapLocation": "sitemap.json",
@@ -25,6 +47,7 @@
         "van-divider": "dist/divider/index",
         "van-notify": "dist/notify/index",
         "van-toast": "dist/toast/index",
-        "van-dialog": "dist/dialog/index"
+        "van-dialog": "dist/dialog/index",
+        "van-progress": "dist/progress/index"
     }
 }

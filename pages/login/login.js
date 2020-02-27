@@ -44,7 +44,7 @@ Page({
         } else if (this.data.stpwd.length == 0) {
             Notify({ type: 'warning', message: '密码不能为空' });
         } else {
-            this.login(this.data.stid, this.data.stpwd, "getInfo")
+            this.login(this.data.stid, this.data.stpwd, "info")
         }
     },
     // 登录请求函数
@@ -57,7 +57,7 @@ Page({
         });
         // 发起请求
         wx.request({
-            url: app.globalData.DOMAIN + "api/",
+            url: app.globalData.DOMAIN + "api",
             data: {
                 "username": stid,
                 "password": stpwd,
@@ -71,47 +71,68 @@ Page({
             responseType: 'text',
             // 成功回调
             success: (result) => {
-                // 500为服务器错误 588为自定义错误码 表示用户名或密码出现错误 589表示请求出现了验证码
-                console.log(result.statusCode)
                 if (result.statusCode != 200) {
-                    if (result.statusCode == 588) {
-                        Toast.clear()
-                        Toast.fail("学号或者办事大厅密码不正确！")
-                    } else if (result.statusCode == 589) {
-                        Toast.clear()
-                        Toast.fail({
-                            mask: true,
-                            message: '小程序暂时无法处理验证码，请手动在网页端重新登录后使用！',
-                            duration: 5000
-                        });
-
-                    } else {
-                        Toast.clear()
-                        Toast.fail("服务器无法处理你的请求，请联系开发人员")
-                    }
-                    app.globalData.LOGIN_FLAG = false
-                    Notify({ type: 'warning', message: "错误" + result.statusCode, })
+                    Toast.clear()
+                    Toast.fail("服务器无法处理你的请求，请联系开发人员")
+                    Notify({
+                        type: 'warning',
+                        message: "错误" + result.statusCode,
+                    })
+                    wx.reLaunch({
+                        url: '../index/index',
+                    });
                     return false
                 } else {
-                    Toast.clear()
-                    Toast.success("请求成功")
-                        //请求成功,缓存用户名密码到本地下次免输入
-                    var stInfo = { stid: stid, stpwd: stpwd }
-                    wx.setStorageSync("stInfo", stInfo)
-                        // 更改登陆状态
-                    app.globalData.LOGIN_FLAG = true
-                        //缓存用户信息列表
                     var res = result.data
-                    console.log(res)
-                    wx.setStorage({
-                        key: "infoList",
-                        data: result.data
-                    });
-                    app.globalData.PROCESS = "登陆成功"
-                    wx.navigateBack({
-                        delta: 1
-                    });
+                    if (res["STATUS"] == "OK") {
+                        Toast.clear()
+                        Toast.success("请求成功")
+                        var stInfo = { stid: stid, stpwd: stpwd }
+                        wx.setStorageSync("stInfo", stInfo)
+                        app.globalData.LOGIN_FLAG = true
+                        var res = result.data["message"]
+                        console.log(res)
+                        wx.setStorage({
+                            key: "infoList",
+                            data: result.data["message"]
+                        });
+                        app.globalData.PROCESS = "登陆成功"
+                        wx.navigateBack({
+                            delta: 1
+                        });
+                    } else {
+
+                        switch (result.data["message"]) {
+                            case "pwdError":
+                                Toast.clear()
+                                Toast.fail("学号或者办事大厅密码不正确！")
+                                    // wx.reLaunch({
+                                    //     url: '../index/index',
+                                    // });
+                                break;
+                            case "capError":
+                                Toast.clear()
+                                Toast.fail({
+                                    mask: true,
+                                    message: '小程序暂时无法处理验证码，请手动在网页端重新登录后使用！',
+                                    duration: 5000
+                                });
+                                // wx.reLaunch({
+                                //     url: '../index/index',
+                                // });
+                                break;
+                        }
+
+                    }
+
                 }
+
+                //请求成功,缓存用户名密码到本地下次免输入
+
+                // 更改登陆状态
+
+                //缓存用户信息列表
+
             },
 
             fail: () => {
@@ -184,7 +205,7 @@ Page({
      */
     onUnload: function() {
         grep.login(this.data.stid, this.data.stpwd, "grade")
-        grep.login(this.data.stid, this.data.stpwd, "getCourse")
+        grep.login(this.data.stid, this.data.stpwd, "course")
     },
 
     /**

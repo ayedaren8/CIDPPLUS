@@ -6,7 +6,7 @@
 
   function login(stid, stpwd, api) {
       let result = wx.request({
-          url: app.globalData.DOMAIN + "api/",
+          url: app.globalData.DOMAIN + "api",
           data: {
               "username": stid,
               "password": stpwd,
@@ -26,7 +26,7 @@
                   console.log("后台执行" + api + "成功");
                   wx.setStorage({
                       key: api,
-                      data: result.data
+                      data: result.data['message']
                   });
               }
           },

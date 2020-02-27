@@ -13,17 +13,6 @@
     flex-direction: column;
 }
 
-.red {
-    background: red;
-}
-
-.green {
-    background: green;
-}
-
-.gold {
-    background: gold;
-}
 
 .index_body {
     display: flex;
@@ -50,23 +39,7 @@
     padding-bottom: 65rpx;
 }
 
-.logo {
-    display: block;
-    font-size: 54pt;
-    color: white;
-    font-weight: bold;
-    line-height: 1em;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
-.logo_ {
-    display: block;
-    font-size: 10pt;
-    color: white;
-    letter-spacing: 1pt;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-left: 10rpx;
-}
 
 .card {
     display: block;

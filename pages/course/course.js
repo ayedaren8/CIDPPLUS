@@ -8,7 +8,8 @@ Page({
 
     /**
      * 页面的初始数据
-     */
+     */ ///
+
     data: {
         active: 1,
         NOW_WEEK: 1,
@@ -69,13 +70,17 @@ Page({
     subWeek: function(e) {
         console.log(e.detail);
         if (this.data.NOW_WEEK > 1) {
-            this.setData({ NOW_WEEK: this.data.NOW_WEEK - 1 })
+            this.setData({
+                NOW_WEEK: this.data.NOW_WEEK - 1
+            })
         }
     },
     addWeek: function(e) {
         console.log(e.detail);
         if (this.data.NOW_WEEK < 20) {
-            this.setData({ NOW_WEEK: this.data.NOW_WEEK + 1 })
+            this.setData({
+                NOW_WEEK: this.data.NOW_WEEK + 1
+            })
         }
 
     },
@@ -86,10 +91,11 @@ Page({
     onLoad: function(options) {
         console.log("sss", app.globalData.LOGIN_FLAG)
         console.log(app.globalData.LOGIN_FLAG)
-        if (app.globalData.LOGIN_FLAG == true) {
+        if (app.globalData.LOGIN_FLAG == false) {
             Toast({
                 type: 'fail',
                 message: '请先登录',
+                duration: 1000,
                 onClose: () => {
                     wx.reLaunch({
                         url: '../index/index',
@@ -102,16 +108,16 @@ Page({
             var that = this
                 // 检查缓存 如果存在缓存直接读取 注意此缓存下一次登录会被删除
             wx.getStorage({
-                key: 'getCourse',
+                key: 'course',
                 success: (result) => {
                     that.clearData(result.data["Data"])
                 },
                 fail: () => {
-                    grep.login(stInfo.stid, stInfo.stpwd, "getCourse")
+                    grep.login(stInfo.stid, stInfo.stpwd, "course")
                         // 定义回调函数
-                    grep.getCourseReady = api => {
+                    grep.courseReady = api => {
                         wx.getStorage({
-                            key: 'getCourse',
+                            key: 'course',
                             success: (result) => {
                                 var res = result.data["Data"]
                                 that.clearData(res)
@@ -164,32 +170,63 @@ Page({
             interval: item.WeekInterval + 1,
             colorid: num
         }
-        if (item.TimeSlotStart == 96) {
-            var str = "day_list." + day + ".one";
-            this.setData({
-                [str]: data
-            })
-        } else if (item.TimeSlotStart == 122) {
-            var str = "day_list." + day + ".two"
-            this.setData({
-                [str]: data
-            })
-        } else if (item.TimeSlotStart == 168) {
-            var str = "day_list." + day + ".three"
-            this.setData({
-                [str]: data
-            })
-        } else if (item.TimeSlotStart == 194) {
-            var str = "day_list." + day + ".four"
-            this.setData({
-                [str]: data
-            })
-        } else if (item.TimeSlotStart == 228) {
-            var str = "day_list." + day + ".five"
-            this.setData({
-                [str]: data
-            })
+        if (item.TimeSlotEnd - item.TimeSlotStart == 22) {
+            switch (item.TimeSlotStart) {
+                case 96:
+                    var str = "day_list." + day + ".one";
+                    this.setData({
+                        [str]: data
+                    })
+                    break;
+                case 122:
+                    var str = "day_list." + day + ".two"
+                    this.setData({
+                        [str]: data
+                    })
+                    break;
+                case 168:
+                    var str = "day_list." + day + ".three"
+                    this.setData({
+                        [str]: data
+                    })
+                    break;
+                case 194:
+                    var str = "day_list." + day + ".four"
+                    this.setData({
+                        [str]: data
+                    })
+                    break;
+                case 228:
+                    var str = "day_list." + day + ".five"
+                    this.setData({
+                        [str]: data
+                    })
+                    break;
+                default:
+                    break;
+            }
+        } else if (item.TimeSlotEnd - item.TimeSlotStart == 48) {
+            switch (item.TimeSlotStart) {
+                case 96:
+                    var str = "day_list." + day + ".one";
+                    var str1 = "day_list." + day + ".two";
+                    this.setData({
+                        [str]: data,
+                        [str1]: data
+                    })
+                    break;
+                case 168:
+                    var str = "day_list." + day + ".three"
+                    var str1 = "day_list." + day + ".four";
+                    this.setData({
+                        [str]: data,
+                        [str1]: data
+                    })
+                    break;
+            }
+
         }
+
     },
 
 
@@ -205,7 +242,13 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-
+        if (typeof this.getTabBar === 'function' &&
+            this.getTabBar()) {
+            console.log('设置选中项 0')
+            this.getTabBar().setData({
+                selected: 1
+            })
+        }
     },
 
     /**

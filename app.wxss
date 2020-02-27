@@ -1,5 +1,116 @@
 /**app.wxss**/
 
+.index_body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 42rpx;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 42rpx;
+    box-sizing: border-box;
+}
+
+.new-card {
+    position: relative;
+    display: flex;
+    padding-left: 50rpx;
+    flex-direction: column;
+    border-width: 3rpx;
+    border-style: solid;
+    border-color: #f8f8f9;
+    border-radius: 8rpx;
+    box-sizing: border-box;
+}
+
+.calender {
+    display: flex;
+    width: 648rpx;
+    height: auto;
+    flex-direction: column;
+    border-width: 3rpx;
+    border-style: solid;
+    border-color: #f8f8f9;
+    border-radius: 8rpx;
+    box-sizing: border-box;
+}
+
+
+/* 字体类 */
+
+.headeline-text {
+    font-size: 36rpx;
+    line-height: 36rpx;
+    font-weight: normal;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.sub-text {
+    font-size: 27rpx;
+    line-height: 27rpx;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.body-text {
+    font-size: 21rpx;
+    line-height: 21rpx;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+
+/* 按钮类 */
+
+.btn-s {
+    position: absolute;
+    right: 24rpx;
+    top: -28rpx;
+    width: 144rpx;
+    height: 56rpx;
+    font-size: 24rpx;
+    line-height: 0;
+    background-color: rgba(0, 0, 0, 0.87);
+    border-radius: 28rpx;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* 图片类 */
+
+.head-pic {
+    height: 96rpx;
+    width: 168rpx;
+}
+
+
+/* 容器类 */
+
+.index_body_in {
+    display: flex;
+    flex-direction: column;
+    width: 640rpx;
+    box-sizing: border-box;
+}
+
+.index_box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 23rpx;
+    padding-bottom: 65rpx;
+}
+
 .container {
     height: 100%;
     display: flex;
@@ -8,4 +119,70 @@
     justify-content: space-between;
     padding: 200rpx 0;
     box-sizing: border-box;
+}
+
+.cal-line {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 64rpx;
+    box-sizing: border-box;
+    padding: 0rpx 16rpx;
+}
+
+.cell {
+    display: flex;
+    flex-direction: column;
+    width: 88rpx;
+    height: 64rpx;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+
+/* log类 */
+
+.BOR {
+    border-width: 3rpx;
+    border-style: solid;
+    border-color: red;
+}
+
+.red {
+    background: red;
+}
+
+.green {
+    background: green;
+}
+
+.gold {
+    background: gold;
+}
+
+.logo {
+    display: block;
+    font-size: 160rpx;
+    color: white;
+    font-weight: bold;
+    line-height: 160rpx;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logo_ {
+    display: block;
+    font-size: 36rpx;
+    color: white;
+    letter-spacing: 3.6rpx;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 10rpx;
+}
+
+.text-info {
+    font-size: 20rpx;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 5rpx;
+    color: #ffffff;
+    text-align: center;
 }

@@ -13,7 +13,7 @@
       });
       // 发起请求
       let result = wx.request({
-          url: app.globalData.DOMAIN + "api/",
+          url: app.globalData.DOMAIN + "api",
           data: {
               "username": stid,
               "password": stpwd,
@@ -29,52 +29,51 @@
           success: (result) => {
               // 500为服务器错误 588为自定义错误码 表示用户名或密码出现错误 589表示请求出现了验证码
               console.log(result.statusCode)
+              var res = result.data
+              console.log(res)
               if (result.statusCode != 200) {
-                  if (result.statusCode == 588) {
-                      Toast.clear()
-                      Toast.fail("学号或者办事大厅密码不正确！")
-                  } else if (result.statusCode == 589) {
-                      Toast.clear()
-                      Toast.fail({
-                          mask: true,
-                          message: '小程序暂时无法处理验证码，请手动在网页端重新登录后使用！',
-                          duration: 5000
-                      });
-                      wx.reLaunch({
-                          url: '../index/index',
-                      });
 
-                  } else {
-                      Toast.clear()
-                      Toast.fail("服务器无法处理你的请求，请联系开发人员")
-                      wx.reLaunch({
-                          url: '../index/index',
-                      });
-                  }
+                  Toast.clear()
+                  Toast.fail("服务器无法处理你的请求，请联系开发人员")
                   Notify({
                       type: 'warning',
                       message: "错误" + result.statusCode,
                   })
-                  wx.reLaunch({
-                      url: '../index/index',
-                  });
                   return false
               } else {
-                  Toast.clear()
-                      //   Toast.success("请求成功")
+
                   var res = result.data
                   console.log(res)
-                  wx.setStorage({
-                      key: api,
-                      data: result.data
-                  });
-                  //   eval("app.globalData" + api + "_FLAG")
-                  let _name = api + "Ready"
-                  console.log(_name);
+                  if (res["STATUS"] == "OK") {
+                      Toast.clear()
+                      wx.setStorage({
+                          key: api,
+                          data: result.data["message"]
+                      });
+                      let _name = api + "Ready"
+                      console.log(_name);
+                      if (this[_name]) {
+                          this[_name](api)
+                      } else {
+                          switch (res["STATUS"]) {
+                              case pwdError:
+                                  Toast.clear()
+                                  Toast.fail("学号或者办事大厅密码不正确！")
+                                  break;
+                              case capError:
+                                  Toast.clear()
+                                  Toast.fail({
+                                      mask: true,
+                                      message: '小程序暂时无法处理验证码，请手动在网页端重新登录后使用！',
+                                      duration: 5000
+                                  });
+                                  break;
+                          }
+                          wx.reLaunch({
+                              url: '../index/index',
+                          });
+                      }
 
-                  //   eval(_name)
-                  if (this[_name]) {
-                      this[_name](api)
                   }
 
               }

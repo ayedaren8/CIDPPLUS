@@ -1,0 +1,84 @@
+/* costomTab/index.wxss */
+
+.tab-bar {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    width: 750rpx;
+    height: 96rpx;
+    background: white;
+    padding-left: 25rpx;
+    padding-right: 25rpx;
+    overflow: visible;
+    /* box-sizing: border-box; */
+    display: flex;
+    flex-direction: row;
+    /* padding-bottom: env(safe-area-inset-bottom); */
+}
+
+.tab-bar-border {
+    background-color: #f8f8f9;
+    position: absolute;
+    z-index: 1;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 4rpx;
+    overflow: visible;
+}
+
+.tab-icon {
+    width: 48rpx;
+    height: 48rpx;
+    overflow: visible;
+}
+
+.tab-item {
+    width: 140rpx;
+    height: 96rpx;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    vertical-align: center;
+    align-items: center;
+}
+
+.tab-UP-circle {
+    position: absolute !important;
+    z-index: 5;
+    bottom: 30rpx;
+    width: 100rpx;
+    height: 100rpx;
+    overflow: visible;
+}
+
+
+/* .tab-bar-item {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 26rpx;
+  }
+  
+  .cover-image {
+    width: 56rpx;
+    height: 56rpx;
+  }
+  
+  .tab-bar-item cover-view {
+    font-size: 20rpx;
+  }
+  
+  .centerImage {
+    width: 80rpx;
+    height: 80rpx;
+    position: absolute;
+    top: 5rpx;
+    border-radius: 50%;
+    border: 6rpx solid #fff;
+  }
+   */

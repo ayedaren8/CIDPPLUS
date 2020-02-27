@@ -1,6 +1,7 @@
 <!-- pages/course/course.wxml -->
 <van-notify id="van-notify" />
 <van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
 <view class="index_body " hover-class="none" hover-stop-propagation="false">
 <view class="main_header" hover-class="none" hover-stop-propagation="false">
     <view class="weekBTN" hover-class="none" hover-stop-propagation="false">
@@ -60,4 +61,5 @@
 </view> 
 </view>
 <!--课表结束-->
+
 </view>
