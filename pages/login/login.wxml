@@ -5,15 +5,20 @@
 
     <view class="index_body_in">
         <view id="LOGO-banner" class="index_box" style="margin-top：20rpx;margin-bottom:100rpx;padding-top:40rpx;">
-            <text class="logo" style="color:{{mainColor}}">CIDP+</text>
+            <text class="logo" style="color: rgba(77, 132, 255, 1)">CIDP+</text>
         </view> 
         <view class="index_box">
-            <input class="input-vant" bindinput="onChangeUser" placeholder="请输入学号" type="text" style="color:{{btnTextColor}}" placeholder-class="input-pla" value="{{stid}}"></input>
+            <input class="input-vant" bindinput="onChangeUser" placeholder="请输入学号" type="text" style="color: rgba(0, 0, 0,0.87)" placeholder-class="input-pla" value="{{stid}}"></input>
             <van-divider style="--divider-margin:5px 5px;-divider-line-height:20px)" />
             <input class="input-vant" bindinput="onChangePwd" placeholder="请输入办事大厅密码" type="password" value="{{stpwd}}" placeholder-class="input-pla"></input>
-            <button class="roundBTN" style="background-color:{{mainColor}}" hover-class="roundBTN_hover" data-user="{{stid}}" data-pwd="{{stpwd}}" bindtap="loginBefore">
+            <button class="roundBTN" style="background-color:rgba(77, 132, 255,1)" hover-class="roundBTN_hover" data-user="{{stid}}" data-pwd="{{stpwd}}" bindtap="loginBefore">
                 <text>{{btnText}}</text>
             </button>
         </view>
     </view>
+
+    <view class="body-text policy-note" hover-class="none" hover-stop-propagation="false" bind:tap="policy">
+         <span style="color:#4d84ff">CIDPPLUS隐私权政策</span>
+    </view>
+
 </view>

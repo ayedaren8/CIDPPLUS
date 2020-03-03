@@ -30,10 +30,11 @@
 
 .logo {
     display: block;
-    font-size: 54pt;
+    font-size: 144rpx;
     font-weight: bold;
     line-height: 1em;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
 }
 
 .input-vant {

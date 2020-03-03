@@ -15,7 +15,6 @@ Page({
         loading: false,
         value: '',
         btnText: "登录",
-        mainColor: app.globalData.theme_main_color,
         stid: "",
         stpwd: ""
 
@@ -31,7 +30,6 @@ Page({
         this.setData({
             stpwd: event.detail.value
         })
-        console.log(event.detail)
     },
 
 
@@ -96,6 +94,14 @@ Page({
                             key: "infoList",
                             data: result.data["message"]
                         });
+                        wx.setStorage({
+                            key: "set",
+                            data: {
+                                LOGIN_FLAG: app.globalData.LOGIN_FLAG,
+                                notePWD: app.globalData.notePWD,
+                                exitRE: app.globalData.exitRE
+                            }
+                        });
                         app.globalData.PROCESS = "登陆成功"
                         wx.navigateBack({
                             delta: 1
@@ -144,25 +150,18 @@ Page({
     },
 
 
-
+    policy: function(params) {
+        wx.navigateTo({
+            url: '/pages/page/page?title=隐私政策'
+        })
+    },
 
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        var stInfo = wx.getStorageSync("stInfo");
-        // console.log("stInfo")
-        console.log(stInfo)
-        if (stInfo) {
-            this.setData({ stid: stInfo.stid, stpwd: stInfo.stpwd })
-        }
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function() {
+        console.log(app.globalData.notePWD);
         wx.removeStorage({
             key: 'grade',
             success: (result) => {
@@ -179,6 +178,29 @@ Page({
             fail: () => {},
             complete: () => {}
         });
+        wx.removeStorage({
+            key: 'exam',
+            success: (result) => {
+                console.log("成功删除课表缓存")
+            },
+            fail: () => {},
+            complete: () => {}
+        });
+        if (app.globalData.notePWD == true) {
+            var stInfo = wx.getStorageSync("stInfo");
+            if (stInfo) {
+                this.setData({ stid: stInfo.stid, stpwd: stInfo.stpwd })
+            }
+        } else {
+            this.setData({ stid: "", stpwd: "" })
+        }
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function() {
+
 
     },
 
@@ -186,10 +208,11 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-        var stInfo = wx.getStorageSync("stInfo");
-        console.log(stInfo)
-        if (stInfo) {
-            this.setData({ stid: stInfo.stid, stpwd: stInfo.stpwd })
+        if (app.globalData.notePWD == true) {
+            var stInfo = wx.getStorageSync("stInfo");
+            if (stInfo) {
+                this.setData({ stid: stInfo.stid, stpwd: stInfo.stpwd })
+            }
         }
     },
 
@@ -206,6 +229,7 @@ Page({
     onUnload: function() {
         grep.login(this.data.stid, this.data.stpwd, "grade")
         grep.login(this.data.stid, this.data.stpwd, "course")
+        grep.login(this.data.stid, this.data.stpwd, "exam")
     },
 
     /**
