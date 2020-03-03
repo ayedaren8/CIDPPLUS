@@ -1,1 +1,14 @@
 /* pages/exam/index.wxss */
+
+.index_body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 42rpx;
+}
+
+.term-card {
+    padding: 28rpx 40rpx;
+    box-sizing: border-box;
+}
