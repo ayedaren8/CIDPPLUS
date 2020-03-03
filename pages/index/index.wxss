@@ -1,1 +1,24 @@
 /* pages/indexs/index.wxss */
+
+.circle-process {
+    position: absolute;
+    top: 48rpx;
+    right: 150rpx;
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.index_body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 42rpx;
+}
+
+.short-line {
+    width: 96rpx;
+    height: 12rpx;
+    border-radius: 6rpx;
+    background-color: rgba(77, 132, 255, 0.9);
+}
