@@ -73,13 +73,26 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
+        if (app.globalData.LOGIN_FLAG == false) {
+            Toast({
+                type: 'fail',
+                message: '请先登录',
+                duration: 1000,
+                onClose: () => {
+                    wx.reLaunch({
+                        url: '../index/index',
+                    });
+                }
+            });
+
+        }
         if (typeof this.getTabBar === 'function' &&
             this.getTabBar()) {
-            console.log('设置选中项 0')
             this.getTabBar().setData({
                 selected: 3
             })
         }
+
     },
 
     /**
