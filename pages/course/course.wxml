@@ -3,27 +3,11 @@
 <van-toast id="van-toast" />
 <van-dialog id="van-dialog" />
 <view class="index_body " hover-class="none" hover-stop-propagation="false">
-<view class="main_header" hover-class="none" hover-stop-propagation="false">
-    <view class="weekBTN" hover-class="none" hover-stop-propagation="false">
-    <view class="BTN " style="width:60rpx; " hover-class="none" hover-stop-propagation="false">
-    <image class="BTN_img" src="/icon/sub.png" mode="widthFix" lazy-load="false" binderror="" bindtap="subWeek">
-        
-    </image>
-    </view>
-    <view class="BTN" hover-class="none" hover-stop-propagation="false">
-        <text class="header-text" selectable="false" space="false" decode="false">{{NOW_WEEK}} 周</text>    
-    </view>
-    <view class="BTN" style="width:60rpx; " hover-class="none" hover-stop-propagation="false">
-        <image class="BTN_img" src="/icon/add.png" mode="widthFix" lazy-load="false" binderror="" bindtap="addWeek">
-            
-        </image>
-    </view>
 
-    </view>
-
-
+<view class="header" >
+        <image class="head-pic" style="margin:28rpx 0rpx 0rpx 28rpx"src="/pages/images/course.png" mode="aspectFit"></image>
+        <text class="sub-text" style="margin:0rpx 0rpx 28rpx 32rpx;">珍惜大学里的每一节课</text>
 </view>
-
 <!--课表开始-->
 <view class="main_table" >
 <view class="hr ">
@@ -63,3 +47,21 @@
 <!--课表结束-->
 
 </view>
+  <view class="weekBTN" hover-class="none" hover-stop-propagation="false">
+    <view class="BTN " style="width:60rpx; " hover-class="none" hover-stop-propagation="false">
+    <image class="BTN_img" src="/icon/left.png" mode="widthFix" lazy-load="false" binderror="" bindtap="subWeek">
+    </image>
+    </view>
+    <view class="BTN" hover-class="none" hover-stop-propagation="false">
+        <text class="headline-text" selectable="false" space="false" decode="false">{{NOW_WEEK}} 周</text>    
+    </view>
+    <view class="BTN" style="width:60rpx; " hover-class="none" hover-stop-propagation="false">
+        <image class="BTN_img" src="/icon/right.png" mode="widthFix" lazy-load="false" binderror="" bindtap="addWeek">        
+        </image>
+    </view>
+    </view>
+
+<view class="new-card" style="height:auto;background:#f8f8f9;padding:40rpx;width:652rpx;margin:48rpx;">
+<text class="body-text">注：课表已按周智能显示，每周的课表与学期课表存在差异。</text>
+</view>
+<view class="FORBAR"></view>
