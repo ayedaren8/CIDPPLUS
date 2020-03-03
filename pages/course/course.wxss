@@ -13,7 +13,6 @@
     flex-direction: column;
 }
 
-
 .index_body {
     display: flex;
     flex-direction: column;
@@ -38,8 +37,6 @@
     padding-top: 23rpx;
     padding-bottom: 65rpx;
 }
-
-
 
 .card {
     display: block;
@@ -77,35 +74,26 @@
 }
 
 .weekBTN {
-    width: 500rpx;
-    height: 55rpx;
-    display: flex;
-    padding: 5rpx;
+    position: absolute;
+    top: 80rpx;
+    right: 28rpx;
+    width: 256rpx;
+    height: 66rpx;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    background-color: #f2f2f2;
-    /* border: 5rpx #FF5656 solid; */
-    border-radius: 130rpx;
-}
-
-.BTN {
-    display: flex;
-    width: 300rpx;
-    height: 50rpx;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
 }
 
 .header-text {
-    font-size: 30rpx;
+    font-size: 32rpx;
     font-weight: 200;
-    color: #858585;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     letter-spacing: 5rpx;
 }
 
 .BTN_img {
+    margin: 8rpx;
     width: 50rpx;
 }
 
