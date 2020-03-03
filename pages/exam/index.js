@@ -1,5 +1,9 @@
 // pages/exam/index.js
 const app = getApp();
+const grep = require("../../utils/grep.js");
+import Notify from '../../dist/notify/notify';
+import Toast from '../../dist/toast/toast';
+import Dialog from '../../dist/dialog/dialog';
 
 Page({
 
@@ -7,15 +11,71 @@ Page({
      * 页面的初始数据
      */
     data: {
+        note_1: "你目前没有考试",
+        note_2: "但也不要忘记学习啊",
+        exam: '',
+
 
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
+
     onLoad: function(options) {
+        console.log(app.globalData.LOGIN_FLAG);
+
+        if (app.globalData.LOGIN_FLAG == false) {
+            Toast({
+                type: 'fail',
+                message: '请先登录',
+                duration: 1000,
+                onClose: () => {
+                    wx.reLaunch({
+                        url: '../index/index',
+                    });
+                }
+            });
+        } else {
+            var stInfo = wx.getStorageSync("stInfo");
+            var that = this
+                // 检查缓存 如果存在缓存直接读取 注意此缓存下一次登录会被删除
+            wx.getStorage({
+                key: 'exam',
+                success: (result) => {
+                    that.setData({ exam: result.data['b'] })
+                    if (that.data.exam.length > 0) {
+                        that.setData({ note_1: "你目前有" + that.data.exam.length + "门考试", note_2: "抓紧时间复习呦" })
+                    }
+                },
+                fail: () => {
+                    grep.login(stInfo.stid, stInfo.stpwd, "exam")
+                        // 定义回调函数
+                    grep.examReady = api => {
+                        wx.getStorage({
+                            key: api,
+                            success: (result) => {
+                                that.setData({ exam: result.data['b'] })
+                                console.log(result.data['b']);
+                                if (that.data.exam.length > 0) {
+                                    that.setData({ note_1: "你目前有" + that.data.exam.length + "门考试", note_2: "抓紧时间复习呦" })
+                                }
+                            },
+                            fail: () => {},
+                            complete: () => {}
+                        });
+                    }
+                },
+                complete: () => {}
+            });
+
+
+        }
+
 
     },
+
+
 
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -28,6 +88,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
+
         if (typeof this.getTabBar === 'function' &&
             this.getTabBar()) {
             console.log('设置选中项 0')
@@ -35,6 +96,20 @@ Page({
                 selected: 0
             })
         }
+        if (app.globalData.LOGIN_FLAG == false) {
+            Toast({
+                type: 'fail',
+                message: '请先登录',
+                duration: 1000,
+                onClose: () => {
+                    wx.reLaunch({
+                        url: '../index/index',
+                    });
+                }
+            });
+
+        }
+
     },
 
     /**
