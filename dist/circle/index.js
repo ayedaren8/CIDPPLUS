@@ -1,6 +1,7 @@
 import { VantComponent } from '../common/component';
 import { isObj } from '../common/utils';
 import { BLUE, WHITE } from '../common/color';
+
 function format(rate) {
     return Math.min(Math.max(rate, 0), 100);
 }
@@ -99,9 +100,9 @@ VantComponent({
             const { clockwise, hoverColor } = this.data;
             // 结束角度
             const progress = PERIMETER * (formatValue / 100);
-            const endAngle = clockwise
-                ? BEGIN_ANGLE + progress
-                : 3 * Math.PI - (BEGIN_ANGLE + progress);
+            const endAngle = clockwise ?
+                BEGIN_ANGLE + progress :
+                3 * Math.PI - (BEGIN_ANGLE + progress);
             this.presetCanvas(context, hoverColor, BEGIN_ANGLE, endAngle);
         },
         drawCircle(currentValue) {
@@ -128,13 +129,11 @@ VantComponent({
                 if (this.currentValue !== value) {
                     if (this.currentValue < value) {
                         this.currentValue += STEP;
-                    }
-                    else {
+                    } else {
                         this.currentValue -= STEP;
                     }
                     this.drawCircle(this.currentValue);
-                }
-                else {
+                } else {
                     this.clearInterval();
                 }
             }, 1000 / speed);
