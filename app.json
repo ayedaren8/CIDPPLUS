@@ -1,53 +1,58 @@
 {
-    "pages": [
-        "pages/index/index",
-        "pages/logs/logs",
-        "pages/login/login",
-        "pages/grade/grade",
-        "pages/course/course",
-        "pages/exam/index",
-        "pages/set/index"
-    ],
-    "tabBar": {
-        "custom": true,
-        "list": [{
-                "pagePath": "pages/exam/index"
-            },
-            {
-                "pagePath": "pages/course/course"
-
-            },
-            {
-                "pagePath": "pages/index/index"
-            },
-            {
-                "pagePath": "pages/grade/grade"
-            },
-            {
-                "pagePath": "pages/set/index"
-            }
-        ]
-    },
-    "window": {
-        "backgroundTextStyle": "dark",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTitleText": "CIDPPLUS",
-        "navigationBarTextStyle": "black"
-    },
-    "style": "v2",
-    "sitemapLocation": "sitemap.json",
-    "usingComponents": {
-        "van-field": "dist/field/index",
-        "van-button": "dist/button/index",
-        "van-row": "dist/row/index",
-        "van-col": "dist/col/index",
-        "van-grid": "dist/grid/index",
-        "van-grid-item": "dist/grid-item/index",
-        "van-image": "dist/image/index",
-        "van-divider": "dist/divider/index",
-        "van-notify": "dist/notify/index",
-        "van-toast": "dist/toast/index",
-        "van-dialog": "dist/dialog/index",
-        "van-progress": "dist/progress/index"
-    }
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/login/login",
+    "pages/grade/grade",
+    "pages/course/course",
+    "pages/exam/index",
+    "pages/set/index",
+    "pages/page/page"
+  ],
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/exam/index"
+      },
+      {
+        "pagePath": "pages/course/course"
+      },
+      {
+        "pagePath": "pages/index/index"
+      },
+      {
+        "pagePath": "pages/grade/grade"
+      },
+      {
+        "pagePath": "pages/set/index"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "CIDPPLUS",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-field": "dist/field/index",
+    "van-button": "dist/button/index",
+    "van-row": "dist/row/index",
+    "van-col": "dist/col/index",
+    "van-grid": "dist/grid/index",
+    "van-grid-item": "dist/grid-item/index",
+    "van-image": "dist/image/index",
+    "van-divider": "dist/divider/index",
+    "van-notify": "dist/notify/index",
+    "van-toast": "dist/toast/index",
+    "van-dialog": "dist/dialog/index",
+    "van-progress": "dist/progress/index",
+    "van-circle": "dist/circle/index",
+    "van-cell": "dist/cell/index",
+    "van-cell-group": "dist/cell-group/index",
+    "van-switch": "dist/switch/index"
+  }
 }
