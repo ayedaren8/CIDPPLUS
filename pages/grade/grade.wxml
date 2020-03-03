@@ -1,11 +1,30 @@
-
-<van-tabs active="{{ active }}" color="#1989fa"  bind:change="onChange">
 <van-notify id="van-notify" />
 <van-toast id="van-toast" />
-  <van-tab  wx:for="{{grade}}" title="{{item.SemesterYear}}">
-<van-cell-group  wx:for="{{item.List}}" title="{{item.STName}}">
-  <van-cell wx:for="{{item.gradeList}}" title="{{item.Name}} " value="{{item.MarkValue}}" />
-</van-cell-group>
-  </van-tab>
+<van-tabs active="{{ grade.length-1 }}" border="{{false}}" color="#FF6600" animated bind:change="onChange">
+    <van-tab wx:for="{{grade}}" title="{{item.SemesterYear}}">
+    
+        <view style="margin:28rpx 0rpx 0rpx 0rpx">
+            <view class="col" wx:for="{{item.List}}" style="align-items:center; ">
+                <text class="sub-text" style="color:#FF6600;margin:40rpx 0rpx 0rpx 0rpx">{{item.STName}}</text>
+                <view wx:for="{{item.gradeList}}" class="">
+                    <view class="term-card row">
+                        <view class="col"style="width:420rpx;justify-content: space-between;" >
+                        <text class="headline-text" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis" id="xueqi-name">{{item.Name}}</text>
+                        <view class="row"style="justify-content: space-between;">
+                            <text class="body-text" id="JiDian">绩点:{{item.CP}}</text>
+                            <text class="body-text" id="paiming">排名:{{item.index}}/{{item.Capacity}}</text>
+                            <text class="body-text" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis" id="paiming">最高/最低:{{item.maxmark}}/{{item.minmark}}</text>
+                        </view>
+                        </view>
+                        <view class="row" style="margin-left:10rpx">
+                            <text class="body-text" style="color:#FF6600;margin-right:8rpx">评分</text>
+                            <view wx:if="{{item.MarkValue<60}}" class="sub-text mark-cell"  style="background:rgba(235,0,0,0.9)">{{item.MarkValue}}</view>
+                            <view wx:else class="sub-text mark-cell">{{item.MarkValue}}</view>
+                        </view>     
+                    </view>
+                </view>
+            </view>
+        </view>
+    </van-tab>
 </van-tabs>
-<customTab></customTab>
+<view class="FORBAR"></view>

@@ -6,3 +6,28 @@
     width: 100%;
     box-sizing: border-box;
 }
+
+.mark-cell {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 18rpx;
+    background-color: #4D84FF;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.term-card {
+    position: relative;
+    width: 648rpx;
+    height: 144rpx;
+    border-width: 4rpx;
+    border-style: solid;
+    border-color: #f8f8f9;
+    border-radius: 18rpx;
+    padding: 28rpx 40rpx;
+    margin: 14rpx;
+    box-sizing: border-box;
+}
