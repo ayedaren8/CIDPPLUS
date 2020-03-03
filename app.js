@@ -2,6 +2,33 @@
 App({
     onLaunch: function() {
         var that = this;
+        var set = wx.getStorageSync("set");
+        if (set) {
+            that.globalData.LOGIN_FLAG = set['LOGIN_FLAG']
+            that.globalData.notePWD = set['notePWD']
+            that.globalData.exitRE = set['exitRE']
+        }
+        if (this.globalData.exitRE == true) {
+            wx.removeStorage({
+                key: 'grade',
+                success: (result) => {},
+                fail: () => {},
+                complete: () => {}
+            });
+            wx.removeStorage({
+                key: 'course',
+                success: (result) => {},
+                fail: () => {},
+                complete: () => {}
+            });
+            wx.removeStorage({
+                key: 'exam',
+                success: (result) => {},
+                fail: () => {},
+                complete: () => {}
+            });
+
+        }
         wx.getSystemInfo({
             success: function(e) {
                 var a = e.model;
@@ -12,12 +39,15 @@ App({
                 }
             }
         })
-
+        var RPX = 1 / 750 * wx.getSystemInfoSync().windowWidth;
+        that.globalData.RPX = RPX
     },
+
     globalData: {
         userInfo: "",
         USERNAME: "",
         PROCESS: "",
+        isLOGIN: "",
         theme_main_color: "#f8f8f9",
         theme_secondary_color: "#ffffff",
         HD_IMG: "/icon/cat.jpg",
@@ -31,7 +61,15 @@ App({
         READING_FLAG: false,
         NOTICE_FLAG: false,
         isIphoneX: false,
-        DOMAIN: "https://ayedaren.cn/"
+        DOMAIN: "https://ayedaren.cn/",
+        WeekDIF: '',
+        TermStartMonth: 2,
+        TermStartDay: 24,
+        NowWeeK: '',
+        termWeek: '',
+        RPX: '',
+        exitRE: false,
+        notePWD: true,
     },
 
 
