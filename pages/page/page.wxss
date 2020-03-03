@@ -1,0 +1,11 @@
+/* pages/page/page.wxss */
+
+.text {
+    text-align: justify;
+}
+
+.text::after {
+    width: 100%;
+    display: inline-block;
+    content: '';
+}
