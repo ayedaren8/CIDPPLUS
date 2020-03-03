@@ -27,7 +27,6 @@
           responseType: 'text',
           // 成功回调
           success: (result) => {
-              // 500为服务器错误 588为自定义错误码 表示用户名或密码出现错误 589表示请求出现了验证码
               console.log(result.statusCode)
               var res = result.data
               console.log(res)
@@ -122,6 +121,5 @@
   }
 
   module.exports = {
-      login: login,
-      getPhoto: getPhoto
+      login: login
   }

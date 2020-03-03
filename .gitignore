@@ -17,3 +17,4 @@ demo/pages/logs/logs.qss
 demo/utils/util.js
 vui
 a.json
+.vscode/settings.json
