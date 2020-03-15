@@ -97,6 +97,32 @@ Page({
             // on cancel
         });
     },
+    delREC: function(e) {
+        let rec = e.currentTarget.dataset.title
+        Dialog.confirm({
+            title: '清除缓存',
+            message: '清除缓存后会更新此项数据'
+        }).then(() => {
+            wx.removeStorage({
+                key: rec,
+                success: (result) => {
+                    console.log("成功删除" + rec + "缓存")
+                },
+                fail: () => {},
+                complete: () => {}
+            });
+            wx.redirectTo({
+                url: '/pages/set/index',
+                success: (result) => {
+
+                },
+                fail: () => {},
+                complete: () => {}
+            });
+        }).catch(() => {
+            // on cancel
+        });
+    },
 
     onLoad: function(options) {
         this.setData({ notePWD: app.globalData.notePWD })
@@ -109,6 +135,7 @@ Page({
         wx.navigateTo({
             url: '/pages/page/page?title=' + title
         })
+
     },
 
     /**

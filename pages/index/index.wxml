@@ -70,4 +70,5 @@
     </view>
 </view>
 <van-dialog id="van-dialog" />
+
 <view class="FORBAR"></view>
