@@ -195,8 +195,8 @@
 .tab-left {
     width: 644rpx;
     height: 868rpx;
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    border-radius: 10rpx;
 }
 
 .tab-left-day {
@@ -205,13 +205,12 @@
 }
 
 .tab-left-day-li {
+    position: absolute;
+    width: 84rpx;
+    background-color: #f2f2f2;
+    border-radius: 10rpx;
     display: flex;
     flex-direction: column;
-    background-color: #f2f2f2;
-    width: 84rpx;
-    height: 166rpx;
-    border-radius: 10rpx;
-    margin-bottom: 8rpx;
 }
 
 .text-light {
