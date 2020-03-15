@@ -15,56 +15,15 @@ Page({
         NOW_WEEK: 1,
         colorList: ['#F39D43', '#803FEA', '#FF6C69', '#487BFF', '#FF5656', '#487B9B', '#187F8D', '#2966FF', '#CC4848', '#EB548F'],
         day_list: {
-            MON: {
-                one: "",
-                two: "",
-                three: "",
-                four: "",
-                five: "",
-            },
-            TUES: {
-                one: "",
-                two: "",
-                three: "",
-                four: "",
-                five: "",
-            },
-            WED: {
-                one: "",
-                two: "",
-                three: "",
-                four: "",
-                five: "",
-            },
-            THUR: {
-                one: "",
-                two: "",
-                three: "",
-                four: "",
-                five: "",
-            },
-            FRI: {
-                one: "",
-                two: "",
-                three: "",
-                four: "",
-                five: "",
-            },
-            SAT: {
-                one: "",
-                two: "",
-                three: "",
-                four: "",
-                five: "",
-            },
-            SUN: {
-                one: "",
-                two: "",
-                three: "",
-                four: "",
-                five: "",
-            }
-        }
+            MON: [],
+            TUES: [],
+            WED: [],
+            THUR: [],
+            FRI: [],
+            SAT: [],
+            SUN: []
+        },
+        slotStart: { 96: 0, 106: 83, 122: 174, 134: 257, 168: 348, 180: 431, 194: 522, 206: 605, 228: 696, 240: 779 }
 
     },
     subWeek: function(e) {
@@ -84,6 +43,69 @@ Page({
         }
 
     },
+    clearData: function(res) {
+        for (const item of res) {
+            if (item.OnMonday) {
+                this.pushList("MON", item)
+            } else if (item.OnTuesday) {
+                this.pushList("TUES", item)
+            } else if (item.OnWednesday) {
+                this.pushList("WED", item)
+            } else if (item.OnThursday) {
+                this.pushList("THUR", item)
+            } else if (item.OnFriday) {
+                this.pushList("FRI", item)
+            } else if (item.OnSaturday) {
+                this.pushList("SAT", item)
+            } else if (item.OnSunday) {
+                this.pushList("SUN", item)
+            }
+
+        }
+        console.log(this.data);
+
+    },
+    pushList: function(day, item) {
+
+        let solt = item.TimeSlotEnd - item.TimeSlotStart
+        let length
+        switch (solt) {
+            case 10:
+                length = 1
+                break;
+            case 22:
+                length = 2
+                break;
+            case 36:
+                length = 3
+                break;
+            case 48:
+                length = 4
+                break;
+            default:
+                break;
+        }
+        console.log();
+        var datas = {
+            cname: item.LUName,
+            location: item.Campus,
+            building: item.Building,
+            classroom: item.Classroom,
+            teacher: item.FullName,
+            begin: item.WeekStart,
+            end: item.WeekEnd,
+            info: item.Remark,
+            interval: item.WeekInterval + 1,
+            colorid: item.LUCode % 7,
+            Y: this.data.slotStart[item.TimeSlotStart],
+            len: length
+        }
+        this.data.day_list[day].push(datas)
+        var list = this.data.day_list
+        this.setData({ day_list: list })
+    },
+
+
 
     /**
      * 生命周期函数--监听页面加载
@@ -133,101 +155,7 @@ Page({
 
         }
     },
-    clearData: function(res) {
-        console.log("清洗！");
-        for (const item of res) {
-            if (item.OnMonday) {
-                this.pushList("MON", item)
-            } else if (item.OnTuesday) {
-                this.pushList("TUES", item)
-            } else if (item.OnWednesday) {
-                this.pushList("WED", item)
-            } else if (item.OnThursday) {
-                this.pushList("THUR", item)
-            } else if (item.OnFriday) {
-                this.pushList("FRI", item)
-            } else if (item.OnSaturday) {
-                this.pushList("SAT", item)
-            } else if (item.OnSunday) {
-                this.pushList("SUN", item)
-            }
 
-        }
-        console.log(this.data);
-
-    },
-    pushList: function(day, item) {
-        var num = Math.floor(Math.random() * 9)
-        var data = {
-            cname: item.LUName,
-            location: item.Campus,
-            building: item.Building,
-            classroom: item.Classroom,
-            teacher: item.FullName,
-            begin: item.WeekStart,
-            end: item.WeekEnd,
-            info: item.Remark,
-            interval: item.WeekInterval + 1,
-            colorid: num
-        }
-        if (item.TimeSlotEnd - item.TimeSlotStart == 22) {
-            switch (item.TimeSlotStart) {
-                case 96:
-                    var str = "day_list." + day + ".one";
-                    this.setData({
-                        [str]: data
-                    })
-                    break;
-                case 122:
-                    var str = "day_list." + day + ".two"
-                    this.setData({
-                        [str]: data
-                    })
-                    break;
-                case 168:
-                    var str = "day_list." + day + ".three"
-                    this.setData({
-                        [str]: data
-                    })
-                    break;
-                case 194:
-                    var str = "day_list." + day + ".four"
-                    this.setData({
-                        [str]: data
-                    })
-                    break;
-                case 228:
-                    var str = "day_list." + day + ".five"
-                    this.setData({
-                        [str]: data
-                    })
-                    break;
-                default:
-                    break;
-            }
-        } else if (item.TimeSlotEnd - item.TimeSlotStart == 48) {
-            switch (item.TimeSlotStart) {
-                case 96:
-                    var str = "day_list." + day + ".one";
-                    var str1 = "day_list." + day + ".two";
-                    this.setData({
-                        [str]: data,
-                        [str1]: data
-                    })
-                    break;
-                case 168:
-                    var str = "day_list." + day + ".three"
-                    var str1 = "day_list." + day + ".four";
-                    this.setData({
-                        [str]: data,
-                        [str1]: data
-                    })
-                    break;
-            }
-
-        }
-
-    },
 
 
 
@@ -235,6 +163,12 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function() {
+        let num = []
+        for (let i = 0; i < 10; i++) {
+            num.push(i * 83)
+        }
+        console.log(num);
+
 
     },
 
