@@ -5,6 +5,17 @@
     height: 160rpx;
 }
 
+.copyright {
+    display: flex;
+    flex-direction: column;
+    width: 750rpx;
+    margin-top: 48rpx;
+    margin-bottom: -38rpx;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 4rpx;
+}
+
 .nor_bor {
     border-width: 3rpx;
     border-style: solid;
