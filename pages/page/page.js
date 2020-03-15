@@ -84,8 +84,8 @@ Page({
                     body: "第一次公测",
                     note: ""
                 }, {
-                    title: "",
-                    body: "",
+                    title: "2020/3/15 CIDPPLUS beat1.1",
+                    body: "bug修复，修复了部分同学课表显示不全的问题",
                     note: ""
                 }, {
                     title: "",
