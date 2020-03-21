@@ -25,11 +25,11 @@
         </view>
     <view class="calender">
         <view class="calender-bar">
-            <view class="icon-btn" bindtap="preMonth">
+            <view class="icon-btn" hover-class="hover-day" bindtap="preMonth">
                 <image class="icon" src="/icon/left.png" mode="" bindload=""></image>
             </view>
-            <view class="">{{currentYear}}年{{currentMonth}}月</view>
-            <view class="icon-btn" bindtap="nextMonth">
+            <view class=""  hover-class="hover-day" >{{currentYear}}年{{currentMonth}}月</view>
+            <view class="icon-btn" hover-class="hover-day" bindtap="nextMonth">
                 <image class="icon" src="/icon/right.png" mode="" bindload=""></image>
             </view>
         </view>
@@ -40,7 +40,7 @@
             </view>
         </view>
         <view class="cal-line" wx:for="{{dayList}}">
-            <view class="cell" wx:for="{{item}}" wx:for-item="sitem">
+            <view class="cell" wx:for="{{item}}" wx:for-item="sitem" hover-class="hover-day">
                 <view wx:if="{{sitem.month===thisMonth&&sitem.day===today&&sitem.year==thisYear}}">
                     <view class="cell today-cell">{{sitem.day}}</view>
                 </view>

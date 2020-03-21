@@ -81,6 +81,7 @@
 
 /* 字体类 */
 
+
 .headeline-text {
     font-size: 36rpx;
     line-height: 36rpx;
@@ -135,6 +136,10 @@
     border-radius: 8rpx;
 }
 
+.hover-day{
+    background-color: #f8F8F9;
+    opacity: 0.8;
+}
 
 /* 图片类 */
 

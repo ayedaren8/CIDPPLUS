@@ -34,11 +34,10 @@
     </view>
 <view class="tab-left " wx:for="{{day_list}}" wx:for-item="day" >
 <view  wx:for="{{day}}" wx:for-item="CLA">
-    <view  wx:if="{{CLA.end>=NOW_WEEK&CLA.begin<=NOW_WEEK&&NOW_WEEK%CLA.interval==0}}"  class="tab-left-day-li" style="z-index:2;top:{{CLA.Y}}rpx;height:{{CLA.len*83}}rpx;background:{{colorList[CLA.colorid]}};box-shadow: 0rpx 6rpx 6rpx {{colorList[CLA.colorid]}};" >
+    <view  hover-class="hover-day" wx:if="{{CLA.end>=NOW_WEEK&CLA.begin<=NOW_WEEK&&NOW_WEEK%CLA.interval==0}}" data-set="{{CLA}}" class="tab-left-day-li" style="z-index:2;top:{{CLA.Y}}rpx;height:{{CLA.len*83}}rpx;background:{{colorList[CLA.colorid]}};box-shadow: 0rpx 6rpx 6rpx {{colorList[CLA.colorid]}};" bind:tap="showDetail" >
     <text  class="text-mirco">\n{{CLA.cname}}\n\n</text>       
-    <text class="text-mirco text-light" >{{CLA.location}}\n{{CLA.building}}\n{{CLA.classroom}}\n{{CLA.teacher}}</text>
+    <text class="text-mirco text-light" >{{CLA.location}}\n{{CLA.building}}\n{{CLA.classroom}}</text>
     </view>
-   
 </view>
 
     
@@ -50,14 +49,14 @@
 </view>
   <view class="weekBTN" >
     <view class="BTN " style="width:60rpx; " >
-    <image class="BTN_img" src="/icon/left.png" mode="widthFix" lazy-load="false" binderror="" bindtap="subWeek">
+    <image class="BTN_img" src="/icon/left.png" mode="widthFix" lazy-load="false"  hover-class="hover-day" binderror="" bindtap="subWeek">
     </image>
     </view>
     <view class="BTN" >
         <text class="headline-text" selectable="false" space="false" decode="false">{{NOW_WEEK}} 周</text>    
     </view>
     <view class="BTN" style="width:60rpx; " >
-        <image class="BTN_img" src="/icon/right.png" mode="widthFix" lazy-load="false" binderror="" bindtap="addWeek">        
+        <image class="BTN_img" src="/icon/right.png" mode="widthFix" lazy-load="false" hover-class="hover-day" binderror="" bindtap="addWeek">        
         </image>
     </view>
     </view>
@@ -65,6 +64,32 @@
 <view class="new-card" style="height:auto;background:#f8f8f9;padding:40rpx;width:652rpx;margin:48rpx;">
 <text class="body-text">注：课表已按周智能显示，每周的课表与学期课表存在差异。</text>
 </view>
+<van-popup
+  show="{{ show }}"
+  closeable
+  round
+  position="bottom"
+  custom-style="width:750rpx;height:430rpx;padding:50rpx;"
+  bind:close="onClose"
+>
+<view >
+    <text class="headline-text" >{{showPopinfo.cname}}\n</text>
+     <text class="headline-text"style="font-size:30rpx;color:rgba(255,125,0,0.8)">本课程还有{{showPopinfo.end-TERM_WEEK}}周结课\n</text>
+      <text class="body-text">详情：{{showPopinfo.info}}\n</text>
+     <view class="row" hover-class="none" hover-stop-propagation="false">
+     <view style="width：50%;height:auto;">
+    <text class="sub-text"style="color:rgba(0,0,0,0.8);">教师：{{showPopinfo.teacher}}\n</text>
+    <text class="sub-text"style="color:rgba(0,0,0,0.8);">校区:{{showPopinfo.location}}\n</text>
+     </view>
+   <view  style="width：50%;height:auto;">
+       <text class="sub-text"style="color:rgba(0,0,0,0.8);margin-left:80rpx">教学楼：{{showPopinfo.building}}\n</text>
+    <text class="sub-text"style="color:rgba(0,0,0,0.8);margin-left:80rpx">教室：{{showPopinfo.classroom}}</text>
+   </view>
+    
+</view>
+   
+</view>
+</van-popup>
    <view class=" copyright" >
          <span  class="body-text" style="color:#f8f8f">啊叶大人（ayedaren）独自开发</span>
     </view>

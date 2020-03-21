@@ -13,6 +13,7 @@ Page({
     data: {
         active: 1,
         NOW_WEEK: 1,
+        TERM_WEEK:'',
         colorList: ['#F39D43', '#803FEA', '#FF6C69', '#487BFF', '#FF5656', '#487B9B', '#187F8D', '#2966FF', '#CC4848', '#EB548F'],
         day_list: {
             MON: [],
@@ -23,10 +24,35 @@ Page({
             SAT: [],
             SUN: []
         },
-        slotStart: { 96: 0, 106: 83, 122: 174, 134: 257, 168: 348, 180: 431, 194: 522, 206: 605, 228: 696, 240: 779 }
-
+        slotStart: {
+            96: 0,
+            106: 83,
+            122: 174,
+            134: 257,
+            168: 348,
+            180: 431,
+            194: 522,
+            206: 605,
+            228: 696,
+            240: 779
+        },
+        show: false,
+        showPopinfo:""
     },
-    subWeek: function(e) {
+
+
+    showPopup() {
+        this.setData({
+            show: true
+        });
+    },
+
+    onClose() {
+        this.setData({
+            show: false
+        });
+    },
+    subWeek: function (e) {
         console.log(e.detail);
         if (this.data.NOW_WEEK > 1) {
             this.setData({
@@ -34,7 +60,7 @@ Page({
             })
         }
     },
-    addWeek: function(e) {
+    addWeek: function (e) {
         console.log(e.detail);
         if (this.data.NOW_WEEK < 20) {
             this.setData({
@@ -43,7 +69,7 @@ Page({
         }
 
     },
-    clearData: function(res) {
+    clearData: function (res) {
         for (const item of res) {
             if (item.OnMonday) {
                 this.pushList("MON", item)
@@ -65,7 +91,7 @@ Page({
         console.log(this.data);
 
     },
-    pushList: function(day, item) {
+    pushList: function (day, item) {
 
         let solt = item.TimeSlotEnd - item.TimeSlotStart
         let length
@@ -102,17 +128,31 @@ Page({
         }
         this.data.day_list[day].push(datas)
         var list = this.data.day_list
-        this.setData({ day_list: list })
+        this.setData({
+            day_list: list
+        })
     },
 
+    showDetail: function (e) {
+       
+        var datas=e.currentTarget.dataset.set
+        console.log(datas);
+        this.setData({showPopinfo:datas})
+        this.showPopup();
 
+    },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
 
-        this.setData({ NOW_WEEK: app.globalData.termWeek })
+        this.setData({
+            NOW_WEEK: app.globalData.termWeek
+        })
+        this.setData({
+            TERM_WEEK: app.globalData.termWeek
+        })
         if (app.globalData.LOGIN_FLAG == false) {
             Toast({
                 type: 'fail',
@@ -128,7 +168,7 @@ Page({
         } else {
             var stInfo = wx.getStorageSync("stInfo");
             var that = this
-                // 检查缓存 如果存在缓存直接读取 注意此缓存下一次登录会被删除
+            // 检查缓存 如果存在缓存直接读取 注意此缓存下一次登录会被删除
             wx.getStorage({
                 key: 'course',
                 success: (result) => {
@@ -136,7 +176,7 @@ Page({
                 },
                 fail: () => {
                     grep.login(stInfo.stid, stInfo.stpwd, "course")
-                        // 定义回调函数
+                    // 定义回调函数
                     grep.courseReady = api => {
                         wx.getStorage({
                             key: 'course',
@@ -162,7 +202,7 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+    onReady: function () {
         let num = []
         for (let i = 0; i < 10; i++) {
             num.push(i * 83)
@@ -175,7 +215,7 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function () {
         if (typeof this.getTabBar === 'function' &&
             this.getTabBar()) {
             this.getTabBar().setData({
@@ -183,7 +223,9 @@ Page({
             })
         }
 
-        this.setData({ NOW_WEEK: app.globalData.termWeek })
+        this.setData({
+            NOW_WEEK: app.globalData.termWeek
+        })
         if (app.globalData.LOGIN_FLAG == false) {
             Toast({
                 type: 'fail',
@@ -202,21 +244,21 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
+    onHide: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
+    onUnload: function () {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
         Dialog.confirm({
             title: '重置课表',
             message: '你是否要重置课表？'
@@ -230,14 +272,14 @@ Page({
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
+    onReachBottom: function () {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     }
 })

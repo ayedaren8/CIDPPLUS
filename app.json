@@ -8,6 +8,7 @@
     "pages/exam/index",
     "pages/set/index",
     "pages/page/page"
+
   ],
   "tabBar": {
     "custom": true,
@@ -53,6 +54,7 @@
     "van-circle": "dist/circle/index",
     "van-cell": "dist/cell/index",
     "van-cell-group": "dist/cell-group/index",
-    "van-switch": "dist/switch/index"
+    "van-switch": "dist/switch/index",
+    "van-popup": "dist/popup/index"
   }
 }
