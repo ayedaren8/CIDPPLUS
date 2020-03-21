@@ -88,8 +88,8 @@ Page({
                     body: "bug修复，修复了部分同学课表显示不全的问题",
                     note: ""
                 }, {
-                    title: "",
-                    body: "",
+                    title: "2020/3/15 CIDPPLUS beat1.2",
+                    body: "课表优化，加入课表详情弹出",
                     note: ""
                 }, {
                     title: "",

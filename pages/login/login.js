@@ -50,7 +50,7 @@ Page({
         // 加载Toast提示
         Toast.loading({
             mask: true,
-            message: '加载中，请耐心等候...',
+            message: '正在执行教务爬虫，请耐心等候...',
             duration: 0
         });
         // 发起请求
