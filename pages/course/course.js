@@ -121,7 +121,7 @@ Page({
             begin: item.WeekStart,
             end: item.WeekEnd,
             info: item.Remark,
-            interval: item.WeekInterval + 1,
+          interval: item.WeekInterval == 0 ? item.WeekInterval + 1 :item.WeekInterval + 1 - (item.WeekStart%2),
             colorid: item.LUCode % 7,
             Y: this.data.slotStart[item.TimeSlotStart],
             len: length
