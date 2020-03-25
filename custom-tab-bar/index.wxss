@@ -48,7 +48,7 @@
 .tab-UP-circle {
     position: absolute !important;
     z-index: 5;
-    bottom: 30rpx;
+    top: -30rpx;
     width: 100rpx;
     height: 100rpx;
     overflow: visible;

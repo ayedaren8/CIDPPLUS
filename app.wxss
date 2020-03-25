@@ -2,7 +2,7 @@
 
 .FORBAR {
     width: 750rpx;
-    height: 160rpx;
+    height: 220rpx;
 }
 
 .copyright {

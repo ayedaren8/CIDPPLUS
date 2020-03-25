@@ -32,7 +32,8 @@ App({
         wx.getSystemInfo({
             success: function(e) {
                 var a = e.model;
-                if (a.indexOf("iPhone") != -1 && a.indexOf("X") != -1) { //是不是包含iphoneX
+                console.log(a)
+              if (a.indexOf("iPhone") != -1 && a.indexOf("X") != -1 || a.indexOf("iPhone") != -1 && a.indexOf("11") != -1) { //是不是包含iphoneX
                     that.globalData.isIphoneX = true
                 } else {
                     that.globalData.isIphoneX = false
@@ -63,8 +64,8 @@ App({
         isIphoneX: false,
         DOMAIN: "https://ayedaren.cn/",
         WeekDIF: '',
-        TermStartMonth: 2,
-        TermStartDay: 24,
+        TermStartMonth: 3,
+        TermStartDay: 2,
         NowWeeK: '',
         termWeek: '',
         RPX: '',

@@ -40,8 +40,6 @@ Component({
             const path = dataset.path
             const index = dataset.index
             wx.switchTab({ url: path })
-
-
         }
     }
 })
