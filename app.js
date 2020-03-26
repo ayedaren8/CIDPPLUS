@@ -71,6 +71,7 @@ App({
         RPX: '',
         exitRE: false,
         notePWD: true,
+        needrelanch:false
     },
 
 

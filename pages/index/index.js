@@ -262,7 +262,6 @@ Page({
         wx.navigateTo({
             url: '/pages/login/login',
             success: (result) => {
-
             },
             fail: () => {},
             complete: () => {}
@@ -299,6 +298,7 @@ Page({
                 fail: () => {},
                 complete: () => {}
             });
+            app.globalData.needRelanch=true
         }).catch(() => {
             // on cancel
         });
@@ -338,8 +338,6 @@ Page({
             USERNAME: res.name,
             studentID: res.srNum
         })
-
-
     },
 
     /**

@@ -40,7 +40,6 @@
                   })
                   return false
               } else {
-
                   var res = result.data
                   console.log(res)
                   if (res["STATUS"] == "OK") {
@@ -50,6 +49,7 @@
                           data: result.data["message"]
                       });
                       let _name = api + "Ready"
+                      let _ERROR = api + "Error"
                       console.log(_name);
                       if (this[_name]) {
                           this[_name](api)

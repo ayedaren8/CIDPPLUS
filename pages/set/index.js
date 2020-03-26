@@ -14,6 +14,7 @@ Page({
         USERNAME: "",
         studentID: "",
         NowWeek: "",
+        noREF:"",
     },
 
     /**
@@ -60,6 +61,7 @@ Page({
                 fail: () => {},
                 complete: () => {}
             });
+            app.globalData.needRelanch=true
         }).catch(() => {
             // on cancel
         });
@@ -73,14 +75,30 @@ Page({
             data: {
                 LOGIN_FLAG: app.globalData.LOGIN_FLAG,
                 notePWD: app.globalData.notePWD,
-                exitRE: app.globalData.exitRE
+                exitRE: app.globalData.exitRE,
+                noREF:app.globalData.noREF
+            }
+        });
+    },
+    onChange_noREF: function() {
+        app.globalData.noREF= this.data.noREF == true ? false : true
+        console.log(app.globalData.noREF);
+        this.setData({ noREF: app.globalData.noREF })
+        wx.setStorage({
+            key: "set",
+            data: {
+                LOGIN_FLAG: app.globalData.LOGIN_FLAG,
+                notePWD: app.globalData.notePWD,
+                exitRE: app.globalData.exitRE,
+                noREF:app.globalData.noREF
             }
         });
     },
     onChange_exitRE: function() {
+
         Dialog.confirm({
-            title: '确定吗？',
-            message: '打开此选项会导致程序加载时间延长，但数据更新会更及时。'
+            title:  this.data.exitRE == false ?'不推荐的选项':'很高兴你这么做',
+            message: this.data.exitRE == true ?'关闭选项将极大提高程序运行速度，强烈建议,下面也有专门更新数据的选项！':'打开此选项会导致程序加载时间延长，但数据更新会更及时。'
         }).then(() => {
             app.globalData.exitRE = this.data.exitRE == true ? false : true
             this.setData({ exitRE: app.globalData.exitRE })
@@ -89,7 +107,8 @@ Page({
                 data: {
                     LOGIN_FLAG: app.globalData.LOGIN_FLAG,
                     notePWD: app.globalData.notePWD,
-                    exitRE: app.globalData.exitRE
+                    exitRE: app.globalData.exitRE,
+                    noREF:app.globalData.noREF
                 }
             });
 
@@ -106,15 +125,7 @@ Page({
             wx.removeStorage({
                 key: rec,
                 success: (result) => {
-                    console.log("成功删除" + rec + "缓存")
-                },
-                fail: () => {},
-                complete: () => {}
-            });
-            wx.redirectTo({
-                url: '/pages/set/index',
-                success: (result) => {
-
+                    app.globalData.needRelanch=true
                 },
                 fail: () => {},
                 complete: () => {}
@@ -127,6 +138,7 @@ Page({
     onLoad: function(options) {
         this.setData({ notePWD: app.globalData.notePWD })
         this.setData({ exitRE: app.globalData.exitRE })
+        this.setData({ noREF: app.globalData.noREF })
         this.setData({ btnSize: 48 * app.globalData.RPX })
     },
     toPage: function(data) {
