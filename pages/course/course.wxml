@@ -94,3 +94,4 @@
          <span  class="body-text" style="color:#f8f8f">啊叶大人（ayedaren）独自开发</span>
     </view>
 <view class="FORBAR"></view>
+<van-dialog id="van-dialog" />

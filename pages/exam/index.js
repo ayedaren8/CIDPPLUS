@@ -22,7 +22,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
 
-    onLoad: function(options) {
+    onLoad: function (options) {
         console.log(app.globalData.LOGIN_FLAG);
 
         if (app.globalData.LOGIN_FLAG == false) {
@@ -39,29 +39,41 @@ Page({
         } else {
             var stInfo = wx.getStorageSync("stInfo");
             var that = this
-                // 检查缓存 如果存在缓存直接读取 注意此缓存下一次登录会被删除
+            // 检查缓存 如果存在缓存直接读取 注意此缓存下一次登录会被删除
             wx.getStorage({
                 key: 'exam',
                 success: (result) => {
-                    that.setData({ exam: result.data['b'] })
+                    that.setData({
+                        exam: result.data['b']
+                    })
                     if (that.data.exam.length > 0) {
-                        that.setData({ note_1: "你目前有" + that.data.exam.length + "门考试", note_2: "抓紧时间复习呦" })
+                        that.setData({
+                            note_1: "你目前有" + that.data.exam.length + "门考试",
+                            note_2: "抓紧时间复习呦"
+                        })
                     }
                 },
                 fail: () => {
                     grep.login(stInfo.stid, stInfo.stpwd, "exam")
-                        // 定义回调函数
+                    // 定义回调函数
                     grep.examReady = api => {
                         wx.getStorage({
                             key: api,
                             success: (result) => {
-                                that.setData({ exam: result.data['b'] })
+                                that.setData({
+                                    exam: result.data['b']
+                                })
                                 console.log(result.data['b']);
                                 if (that.data.exam.length > 0) {
-                                    that.setData({ note_1: "你目前有" + that.data.exam.length + "门考试", note_2: "抓紧时间复习呦" })
+                                    that.setData({
+                                        note_1: "你目前有" + that.data.exam.length + "门考试",
+                                        note_2: "抓紧时间复习呦"
+                                    })
                                 }
                             },
-                            fail: () => {},
+                            fail: () => {
+
+                            },
                             complete: () => {}
                         });
                     }
@@ -80,14 +92,18 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+    onReady: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function () {
+        if (app.globalData.needRelanch) {
+            this.onLoad()
+            app.globalData.needRelanch = false
+        }
 
         if (typeof this.getTabBar === 'function' &&
             this.getTabBar()) {
@@ -115,35 +131,50 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
+    onHide: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
+    onUnload: function () {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
-
+    onPullDownRefresh: function () {
+        Dialog.confirm({
+            title:  '更新数据？',
+            message: '你确实要更新数据吗?'
+        }).then(() => {
+            wx.removeStorage({
+                key: 'exam',
+                success: (result) => {
+                    this.onLoad()
+                },
+                fail: () => {console.log("失败了");
+                },
+                complete: () => {}
+            });
+        }).catch(() => {
+            // on cancel
+        });
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
-
+    onReachBottom: function () {
+        
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     }
 })

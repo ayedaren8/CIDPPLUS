@@ -36,6 +36,7 @@ Page({
             228: 696,
             240: 779
         },
+        noData:false,
         show: false,
         showPopinfo:""
     },
@@ -71,28 +72,17 @@ Page({
     },
     clearData: function (res) {
         for (const item of res) {
-            if (item.OnMonday) {
-                this.pushList("MON", item)
-            } else if (item.OnTuesday) {
-                this.pushList("TUES", item)
-            } else if (item.OnWednesday) {
-                this.pushList("WED", item)
-            } else if (item.OnThursday) {
-                this.pushList("THUR", item)
-            } else if (item.OnFriday) {
-                this.pushList("FRI", item)
-            } else if (item.OnSaturday) {
-                this.pushList("SAT", item)
-            } else if (item.OnSunday) {
-                this.pushList("SUN", item)
-            }
-
+            item.OnMonday?this.pushList("MON", item):null
+            item.OnTuesday? this.pushList("TUES", item):null
+            item.OnWednesday?this.pushList("WED", item):null
+            item.OnThursday? this.pushList("THUR", item):null
+            item.OnFriday?this.pushList("FRI", item):null
+            item.OnSaturday?this.pushList("SAT", item):null
+            item.OnSunday?this.pushList("SUN", item):null
         }
         console.log(this.data);
-
     },
     pushList: function (day, item) {
-
         let solt = item.TimeSlotEnd - item.TimeSlotStart
         let length
         switch (solt) {
@@ -121,7 +111,7 @@ Page({
             begin: item.WeekStart,
             end: item.WeekEnd,
             info: item.Remark,
-          interval: item.WeekInterval == 0 ? item.WeekInterval + 1 :item.WeekInterval + 1 - (item.WeekStart%2),
+            interval: item.WeekInterval == 0 ? item.WeekInterval + 1 :item.WeekInterval + 1 - (item.WeekStart%2),
             colorid: item.LUCode % 7,
             Y: this.data.slotStart[item.TimeSlotStart],
             len: length
@@ -134,7 +124,6 @@ Page({
     },
 
     showDetail: function (e) {
-       
         var datas=e.currentTarget.dataset.set
         console.log(datas);
         this.setData({showPopinfo:datas})
@@ -146,7 +135,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+      
         this.setData({
             NOW_WEEK: app.globalData.termWeek
         })
@@ -203,12 +192,8 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-        let num = []
-        for (let i = 0; i < 10; i++) {
-            num.push(i * 83)
-        }
-        console.log(num);
 
+    
 
     },
 
@@ -216,13 +201,16 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        if(app.globalData.needRelanch){
+            this.onLoad()
+            app.globalData.needRelanch=false
+        }
         if (typeof this.getTabBar === 'function' &&
             this.getTabBar()) {
             this.getTabBar().setData({
                 selected: 1
             })
         }
-
         this.setData({
             NOW_WEEK: app.globalData.termWeek
         })
@@ -259,11 +247,19 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
+        
         Dialog.confirm({
-            title: '重置课表',
-            message: '你是否要重置课表？'
+            title:  '更新数据？',
+            message: '你确实要更新数据吗?'
         }).then(() => {
-
+            wx.removeStorage({
+                key: 'course',
+                success: (result) => {
+                    this.onLoad()
+                },
+                fail: () => {},
+                complete: () => {}
+            });
         }).catch(() => {
             // on cancel
         });

@@ -28,3 +28,4 @@
     </van-tab>
 </van-tabs>
 <view class="FORBAR"></view>
+<van-dialog id="van-dialog" />

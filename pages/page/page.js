@@ -95,7 +95,11 @@ Page({
                     title: "2020/3/25 CIDPPLUS beat2.0",
                     body: "1.适配IPhoneX、XS、11等机型\n2.开学日期由2月24日更改为3月2日\n3.更新间隔周计算\n",
                     note: ""
-                }, ]
+                }, {
+                    title: "2020/3/26 CIDPPLUS beat2.1",
+                    body: "1.加入下拉刷新\n2.优化了网络请求\n3.修复因网络繁忙造成的数据丢失现象\n",
+                    note: ""
+                },]
                 break;
             case "关于作者":
                 textBody = [{
@@ -135,65 +139,88 @@ Page({
                     note: ""
                 }, ]
                 break;
+            case "BUG反馈":
+                textBody = [{
+                    title: "如果你遇到了困难，请联系我，我很乐意听见你的意见！",
+                    body: "",
+                    note: ""
+                }, {
+                    title: "QQ",
+                    body: "1783580635",
+                    note: ""
+                }, {
+                    title: "微信",
+                    body: "heyyeguoqing",
+                    note: ""
+                }, {
+                    title: "",
+                    body: "",
+                    note: ""
+                }, ]
+                break;
             default:
                 break;
         }
-        this.setData({ textBody: textBody })
+        this.setData({
+            textBody: textBody
+        })
     },
 
-    onLoad: function(options) {
+    onLoad: function (options) {
         console.log(options);
 
-        this.setData({ title: options.title })
+        this.setData({
+            title: options.title
+        })
         this.start()
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+    onReady: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
+    onHide: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
+    onUnload: function () {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
+    onReachBottom: function () {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     }
 })

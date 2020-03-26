@@ -17,9 +17,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
-        console.log("sss", app.globalData.LOGIN_FLAG)
-        console.log(app.globalData.LOGIN_FLAG)
         if (app.globalData.LOGIN_FLAG == false) {
             Toast({
                 type: 'fail',
@@ -50,15 +47,15 @@ Page({
                             success: (result) => {
                                 that.setData({ grade: result.data })
                             },
-                            fail: () => {},
+                            fail: () => {
+                               
+                            },
                             complete: () => {}
                         });
                     }
                 },
                 complete: () => {}
             });
-
-
         }
     },
 
@@ -66,13 +63,18 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function() {
-
+        
+   
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
+        if(app.globalData.needRelanch){
+            this.onLoad()
+            app.globalData.needRelanch=false
+        }
         if (app.globalData.LOGIN_FLAG == false) {
             Toast({
                 type: 'fail',
@@ -113,7 +115,21 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function() {
-
+        Dialog.confirm({
+            title:  '更新数据？',
+            message: '你确实要更新数据吗?'
+        }).then(() => {
+            wx.removeStorage({
+                key: 'grade',
+                success: (result) => {
+                    this.onLoad()
+                },
+                fail: () => {},
+                complete: () => {}
+            });
+        }).catch(() => {
+            // on cancel
+        });
     },
 
     /**
