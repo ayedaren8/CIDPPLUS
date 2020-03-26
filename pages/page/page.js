@@ -88,12 +88,12 @@ Page({
                     body: "bug修复，修复了部分同学课表显示不全的问题",
                     note: ""
                 }, {
-                    title: "2020/3/15 CIDPPLUS beat1.2",
+                    title: "2020/3/21 CIDPPLUS beat1.2",
                     body: "课表优化，加入课表详情弹出",
                     note: ""
                 }, {
-                    title: "",
-                    body: "",
+                    title: "2020/3/25 CIDPPLUS beat2.0",
+                    body: "1.适配IPhoneX、XS、11等机型\n2.开学日期由2月24日更改为3月2日\n3.更新间隔周计算\n",
                     note: ""
                 }, ]
                 break;

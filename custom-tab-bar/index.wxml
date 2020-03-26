@@ -1,7 +1,7 @@
 <!--costomTab/index.wxml-->
 
-<view class="tab-bar">
-  <view class="tab-bar-border"></view>
+<view class="tab-bar" style="{{isIphoneX?'height:160rpx':null}}">
+  <view class="tab-bar-border" ></view>
     <view class="tab-item" wx:for="{{list}}" wx:key="index" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap = "switchTab" >
             <image wx:if="{{selected===index}}" class="tab-UP-circle" src="{{item.selectedIconPath}}" ></image>
             <image  wx:else class="tab-icon" src="{{item.iconPath}}" ></image>
