@@ -1,4 +1,5 @@
 <!--pages/page/page.wxml-->
+<view class="OVERFLOW">
 <view class="index_body" style="margin:28rpx 0rpx 28rpx 42rpx" >
     <text class="headline-text">{{title}}</text>
     <view wx:for='{{textBody}}'  style="width:648rpx;height:auto; margin:14rpx 0rpx" >
@@ -7,4 +8,5 @@
     </view>
 </view>
 <view class="FORBAR" >   
+</view>
 </view>

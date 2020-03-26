@@ -1,4 +1,5 @@
 <!-- pages/indexs/index.wxml -->
+<view class="OVERFLOW">
 <view class="index_body">
 
 
@@ -68,6 +69,7 @@
             </view>
         </view>
     </view>
+</view>
 </view>
 <van-dialog id="van-dialog" />
 

@@ -1,4 +1,7 @@
 /* pages/page/page.wxss */
+.OVERFLOW{
+    overflow-x: hidden;
+}
 
 .text {
     text-align: justify;

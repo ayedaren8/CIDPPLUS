@@ -1,3 +1,4 @@
+<view class="OVERFLOW">
 <view class="index_body"  >
     <view class="header" style="margin:28rpx 0rpx">
         <image class="head-pic" src="/pages/images/exam.png" mode="aspectFit"></image>
@@ -25,5 +26,6 @@
     </view>
 </view>
 <view class="FORBAR"></view>
+</view>
 <van-notify id="van-notify" />
 <van-toast id="van-toast" />

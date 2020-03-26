@@ -1,4 +1,7 @@
 /* pages/indexs/index.wxss */
+.OVERFLOW{
+    overflow-x: hidden;
+}
 
 .circle-process {
     position: absolute;

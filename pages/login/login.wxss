@@ -1,4 +1,7 @@
 /* pages/login/login.wxss */
+.OVERFLOW{
+    overflow-x: hidden;
+}
 
 .index_body {
     display: flex;

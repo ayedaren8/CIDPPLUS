@@ -1,6 +1,7 @@
 <!-- pages/login/login.wxml -->
 <van-notify id="van-notify" />
 <van-toast id="van-toast" />
+<view class="OVERFLOW">
 <view class="index_body">
 
     <view class="index_body_in">
@@ -21,4 +22,5 @@
          <span style="color:#4d84ff">CIDPPLUS隐私权政策</span>
     </view>
 
+</view>
 </view>

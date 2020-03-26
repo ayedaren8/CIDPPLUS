@@ -2,6 +2,9 @@
 
 
 /**index.wxss**/
+.OVERFLOW{
+    overflow-x: hidden;
+}
 
 .flex-row {
     display: flex;

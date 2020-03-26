@@ -1,1 +1,4 @@
 /* pages/set/index.wxss */
+.OVERFLOW{
+  overflow-x: hidden;
+}

@@ -2,6 +2,7 @@
 <van-notify id="van-notify" />
 <van-toast id="van-toast" />
 <van-dialog id="van-dialog" />
+<view class="OVERFLOW">
 <view class="index_body " >
 
 <view class="header" >
@@ -94,3 +95,4 @@
          <span  class="body-text" style="color:#f8f8f">啊叶大人（ayedaren）独自开发</span>
     </view>
 <view class="FORBAR"></view>
+</view>
