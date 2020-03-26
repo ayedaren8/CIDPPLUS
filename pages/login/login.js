@@ -34,8 +34,8 @@ Page({
 
 
     // 表单验证函数
-    loginBefore: function(event) {
-        if (this.data.stid.length < 7) {
+    loginBefore: function (event) {
+        if (this.data.stid.length < 7 || isNaN(this.data.stid)) {
             Notify({ type: 'warning', message: '请检查用户名' });
         } else if (this.data.stid.length == 0) {
             Notify({ type: 'warning', message: '用户名不能为空' });
