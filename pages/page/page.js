@@ -99,6 +99,10 @@ Page({
                     title: "2020/3/26 CIDPPLUS beat2.1",
                     body: "1.加入下拉刷新\n2.优化了网络请求\n3.修复因网络繁忙造成的数据丢失现象\n",
                     note: ""
+                },{
+                    title: "2020/3/27 CIDPPLUS beat2.2",
+                    body: "加入意见与反馈模块 修复IOS界面X轴溢出问题",
+                    note: ""
                 },]
                 break;
             case "关于作者":
