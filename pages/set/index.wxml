@@ -29,22 +29,28 @@
                     <van-switch checked="{{exitRE}}" bind:change="onChange_exitRE" size="{{btnSize}}px" />
                 </view>
             </van-cell>
-             <van-cell title="关于作者" is-link data-title="关于作者" bind:tap="toPage" />
-            <van-cell title="使用说明" is-link data-title="使用说明" bind:tap="toPage" />
-            <van-cell title="版本说明" is-link data-title="版本说明" bind:tap="toPage" />
-             <van-cell title="隐私政策"  is-link data-title="隐私政策" bind:tap="toPage" />
-            
             <van-cell title="清除课表缓存" data-title="course" bind:tap="delREC" />
             <van-cell title="清除考表缓存" data-title="exam"   bind:tap="delREC"/>
-            <van-cell title="清除成绩缓存" data-title="grade"  bind:tap="delREC"/>  
+            <van-cell title="清除成绩缓存" data-title="grade"  bind:tap="delREC"/> 
+ </van-cell-group >
+            <van-cell-group style="color:#ff6600" title="联系">
             <van-cell >
                 <view slot="title">
                 <button open-type="feedback" class="item">意见反馈与建议</button>
                 </view>
             </van-cell>
-             
+              <van-cell >
+                <view slot="title">
+                <button open-type="contact" class="item">联系客服</button>
+                </view>
+            </van-cell>
              </van-cell-group >
-            
+             <van-cell-group style="color:#ff6600" title="关于">
+             <van-cell title="关于作者" is-link data-title="关于作者" bind:tap="toPage" />
+            <van-cell title="使用说明" is-link data-title="使用说明" bind:tap="toPage" />
+            <van-cell title="版本说明" is-link data-title="版本说明" bind:tap="toPage" />
+            <van-cell title="隐私政策"  is-link data-title="隐私政策" bind:tap="toPage" />
+            </van-cell-group > 
               </view>
 
 
