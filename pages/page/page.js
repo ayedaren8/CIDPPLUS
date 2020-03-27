@@ -101,7 +101,7 @@ Page({
                     note: ""
                 },{
                     title: "2020/3/27 CIDPPLUS beat2.2",
-                    body: "加入意见与反馈模块 修复IOS界面X轴溢出问题",
+                    body: "1.增加了意见与反馈模块\n2.修复IOS端页面X轴溢出问题\n3.接入客服会话",
                     note: ""
                 },]
                 break;
