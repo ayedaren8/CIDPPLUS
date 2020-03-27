@@ -1,4 +1,7 @@
 <!-- pages/indexs/index.wxml -->
+<view >
+    
+
 <view class="index_body">
 
 
@@ -72,3 +75,4 @@
 <van-dialog id="van-dialog" />
 
 <view class="FORBAR"></view>
+</view>

@@ -1,1 +1,31 @@
 /* pages/set/index.wxss */
+.item{
+  background-color: #ffffff;
+  display:flex;
+  flex-direction:row;
+  width: 500rpx;
+  height: 100%;
+  align-items: left;
+  position: relative;
+  text-align:left;
+  text-decoration:none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 30rpx;
+  font-weight: 300;
+  margin-left: 0;
+  margin-right: 0;
+  line-height: 48rpx;
+}
+.item::after {
+  border: none;
+  border-radius: 0;
+}
+.item:not([size='mini']) {
+  width:auto;
+  margin-left:0;
+  margin-right:0;
+  }
+  

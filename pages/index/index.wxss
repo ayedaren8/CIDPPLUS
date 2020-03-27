@@ -11,7 +11,7 @@
 .index_body {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width:708rpx;
     box-sizing: border-box;
     margin-left: 42rpx;
 }

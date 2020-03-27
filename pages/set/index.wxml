@@ -1,5 +1,5 @@
 <!-- pages/set/index.wxml -->
-<view class="index_body" style="margin:28rpx 0rpx 28rpx 42rpx" hover-class="none" hover-stop-propagation="false">
+<view class="index_body" style="margin:28rpx 0rpx 28rpx 42rpx;width:708rpx" hover-class="none" hover-stop-propagation="false">
    
     <view class="header" hover-class="none" hover-stop-propagation="false">
         <image class="head-pic" src="/pages/images/set.png" mode="aspectFit"></image>
@@ -29,21 +29,27 @@
                     <van-switch checked="{{exitRE}}" bind:change="onChange_exitRE" size="{{btnSize}}px" />
                 </view>
             </van-cell>
-            
              <van-cell title="关于作者" is-link data-title="关于作者" bind:tap="toPage" />
             <van-cell title="使用说明" is-link data-title="使用说明" bind:tap="toPage" />
             <van-cell title="版本说明" is-link data-title="版本说明" bind:tap="toPage" />
              <van-cell title="隐私政策"  is-link data-title="隐私政策" bind:tap="toPage" />
-            <van-cell title="BUG反馈"  is-link data-title="BUG反馈" bind:tap="toPage" />
+            
             <van-cell title="清除课表缓存" data-title="course" bind:tap="delREC" />
             <van-cell title="清除考表缓存" data-title="exam"   bind:tap="delREC"/>
             <van-cell title="清除成绩缓存" data-title="grade"  bind:tap="delREC"/>  
-             </van-cell-group >      
-    </view>
+            <van-cell >
+                <view slot="title">
+                <button open-type="feedback" class="item">意见反馈与建议</button>
+                </view>
+            </van-cell>
+             
+             </van-cell-group >
+            
+              </view>
 
 
     
-<view class="FORBAR" >   
+<view class="FORBAR" style="width:708rpx" >   
 </view>
 </view>
 <van-dialog id="van-dialog" />
