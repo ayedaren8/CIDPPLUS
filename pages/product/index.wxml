@@ -1,0 +1,12 @@
+<view class="index_body" hover-class="none" hover-stop-propagation="false">
+  <view class="index_body_in" style="margin:40rpx auto">
+    <image class="index_box" style="width:100%" src="/img/nav.png"></image>
+    <view class="index_box">
+      <view class="headpic-card">
+        <image class="card-in" src="{{currentImg}}" ></image>
+        <view class="card-in-btn" bind:tap="toMake">开始制作</view>
+      </view>
+      <image class="foot-img" src="/img/foot.png"></image>
+    </view>
+  </view>
+</view>

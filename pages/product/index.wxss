@@ -1,0 +1,47 @@
+/* pages/product/index.wxss */
+.headpic-card{
+margin: 20px auto;
+position: relative;
+width: 500rpx;
+height: 540rpx;
+background: #0f1621;
+border-radius: 16rpx;
+}
+
+.index_box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0rpx;
+}
+.card-in{
+    width: 300rpx;
+    height: 300rpx;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 5rpx;
+    transform: translate(-150rpx,-150rpx);
+}
+
+.card-in-btn{
+    display: block;
+    position: absolute;
+    height: 96rpx;
+    width: 280rpx;
+    border-radius: 48rpx;
+    bottom: -48rpx;
+    left: 122rpx;
+    color: azure;
+    font-size: 32rpx;
+    text-align: center;
+    line-height: 96rpx;
+    background: linear-gradient(45deg, rgba(31, 109, 235, 1) 0%, rgba(74, 164, 255, 1) 100%);
+}
+
+.foot-img{
+    margin:100rpx auto;
+    margin-bottom: 0em;
+    width: 500rpx;
+    height:27.44rpx;
+}
