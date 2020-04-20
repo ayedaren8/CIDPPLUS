@@ -1,0 +1,38 @@
+/* pages/upload/index.wxss */
+
+
+.cropper-buttons{
+    position: absolute;
+    left: 0;
+    bottom: 80rpx;
+    display: flex;
+    flex-direction: row;
+    width: 750rpx;
+    height: 96rpx;
+}
+
+.upload{
+    width: 300rpx;
+    height: 96rpx;
+    margin: 0  auto;
+    color:#ffffff;
+    font-size: 16px;
+    line-height: 96rpx;
+    text-align: center;
+    border-radius: 8rpx;
+    background-color: rgba(77, 132, 255, 0.9);
+    z-index: 123;
+}
+.getCropperImage{
+    width: 300rpx;
+    height: 96rpx;
+    margin: 0  auto;
+    background:#bbbbbb;
+    color:#999999;
+    font-size: 16px;
+    line-height: 96rpx;
+    text-align: center;
+    border-radius: 8rpx;
+    z-index: 123;
+    transition:1.5s linear;
+}
