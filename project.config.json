@@ -24,7 +24,7 @@
 		"enhance": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.3",
+	"libVersion": "2.10.4",
 	"appid": "wx7b0512761db993d8",
 	"projectname": "cidpplus",
 	"debugOptions": {

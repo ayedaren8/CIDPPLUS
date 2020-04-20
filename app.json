@@ -7,8 +7,10 @@
     "pages/course/course",
     "pages/exam/index",
     "pages/set/index",
-    "pages/page/page"
-
+    "pages/page/page",
+    "pages/product/index",
+    "pages/upload/index",
+    "pages/makepic/index"
   ],
   "tabBar": {
     "custom": true,
@@ -35,7 +37,7 @@
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "CIDPPLUS",
     "navigationBarTextStyle": "black",
-    "enablePullDownRefresh":true
+    "enablePullDownRefresh": true
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
