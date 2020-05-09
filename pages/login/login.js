@@ -17,7 +17,6 @@ Page({
         btnText: "登录",
         stid: "",
         stpwd: ""
-
     },
 
     onChangeUser: function(event) {
@@ -25,7 +24,6 @@ Page({
             stid: event.detail.value
         })
     },
-
     onChangePwd: function(event) {
         this.setData({
             stpwd: event.detail.value

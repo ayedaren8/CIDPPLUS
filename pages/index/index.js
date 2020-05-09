@@ -3,11 +3,11 @@
 import Dialog from '../../dist/dialog/dialog';
 const app = getApp()
 Page({
-
     /**
      * 页面的初始数据
      */
     data: {
+        floatBannerShow:true,
         welcome: "别来无恙",
         PX: "",
         LOGIN_FLAG: '',
@@ -304,15 +304,16 @@ Page({
         });
     },
 
-
+    gotoMakepic:function(){
+        wx.navigateTo({url: '/pages/product/index'});
+    },
+    delFloatImg:function(){
+        this.setData({floatBannerShow:false})
+    },
     onLoad: function(options) {
-
         this.Start()
         this.setData({ NowWeek: app.globalData.NowWeek })
-
     },
-
-
 
 
     /**
@@ -358,14 +359,7 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function() {
-        wx.navigateTo({
-            url: '/pages/product/index',
-            success: (result) => {
-            },
-            fail: () => {},
-            complete: () => {}
-        });
-    
+        this.gotoMakepic()
     },
 
     /**
@@ -379,6 +373,5 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function() {
-
     }
 })

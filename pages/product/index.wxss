@@ -1,11 +1,23 @@
 /* pages/product/index.wxss */
 .headpic-card{
-margin: 20px auto;
+margin: 20rpx auto;
+margin-right: 10rpx;
+margin-left: 20rpx;
+margin-bottom: 60rpx;
 position: relative;
+display: inline-block;
 width: 500rpx;
 height: 540rpx;
-background: #0f1621;
+background: rgba(33, 33, 33, 1);
 border-radius: 16rpx;
+box-shadow: 2px 4px 6px 2px darkgray ;
+}
+.scroll_headlist{
+    box-sizing: border-box;
+    white-space: nowrap;
+    padding: 20rpx;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .index_box {

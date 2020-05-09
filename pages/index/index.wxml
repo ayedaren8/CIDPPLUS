@@ -73,6 +73,10 @@
     </view>
 </view>
 <van-dialog id="van-dialog" />
-
 <view class="FORBAR"></view>
+<view class="float_banner" wx:if="{{floatBannerShow}}">
+    <image src="/img/float.png" class="float_img" bind:tap="gotoMakepic"/>    
+    <image src="/icon/close.png" class="close_btn" bind:tap="delFloatImg"/>
+</view>
+  
 </view>

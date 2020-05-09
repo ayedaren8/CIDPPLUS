@@ -18,7 +18,7 @@
     </view>
 
     <view class="body-text policy-note" hover-class="none" hover-stop-propagation="false" bind:tap="policy">
-         <span style="color:#4d84ff">CIDPPLUS隐私权政策</span>
+          <span style="color:#999999">登录即表示同意</span><span style="color:#4d84aa">《CIDPPLUS隐私权政策》</span>
     </view>
 
 </view>

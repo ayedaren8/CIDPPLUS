@@ -3,7 +3,6 @@
   import Toast from '../dist/toast/toast';
   import Dialog from '../dist/dialog/dialog';
   const app = getApp();
-
   function login(stid, stpwd, api) {
       let result = wx.request({
           url: app.globalData.DOMAIN + "api",

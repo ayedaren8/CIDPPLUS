@@ -9,7 +9,6 @@ Page({
         textBody: ""
 
     },
-
     /**
      * 生命周期函数--监听页面加载
      */
@@ -103,7 +102,11 @@ Page({
                     title: "2020/3/27 CIDPPLUS beat2.2",
                     body: "1.增加了意见与反馈模块\n2.修复IOS端页面X轴溢出问题\n3.接入客服会话",
                     note: ""
-                },]
+                  }, {
+                    title: "2020/5/27 CIDPPLUS beat3.0",
+                    body: "1.加入校庆头像页制作\n2.关闭非必要页面的下拉刷新",
+                    note: ""
+                  },]
                 break;
             case "关于作者":
                 textBody = [{
@@ -172,7 +175,6 @@ Page({
 
     onLoad: function (options) {
         console.log(options);
-
         this.setData({
             title: options.title
         })

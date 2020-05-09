@@ -4,7 +4,6 @@ const device = wx.getSystemInfoSync() // 获取设备信息
 const width = device.windowWidth // 示例为一个与屏幕等宽的正方形裁剪框
 const height = device.windowHeight
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -24,8 +23,11 @@ Page({
         height: 300 // 裁剪框高度
       }
     },
-    uploaded:false,
-    img:{bg:'',obj:''}
+    uploaded: false,
+    img: {
+      bg: '',
+      obj: ''
+    }
   },
   touchStart(e) {
     this.cropper.touchStart(e)
@@ -36,17 +38,21 @@ Page({
   touchEnd(e) {
     this.cropper.touchEnd(e)
   },
-  uploadTap:function() {
-    const self = this
+  uploadTap: function () {
+    const that = this
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
+      
       success: (res) => {
         const src = res.tempFilePaths[0]
-        self.cropper.pushOrign(src)
-        self.setData({uploaded:true})
+        that.cropper.pushOrign(src)
+        that.setData({
+          uploaded: true
+        })
       },
+
       fail: (err) => {
         wx.showToast({
           title: err,
@@ -55,45 +61,41 @@ Page({
           duration: 1500,
           mask: false,
         });
-          
       },
-      complete: () => {}
     });
-      
+
 
   },
-  getCropperImage:function () {
+  getCropperImage: function () {
     if (!this.data.uploaded) {
       return
-    } 
-    var that=this
+    }
+    var that = this
     this.wecropper.getCropperImage((tempFilePath) => {
       // tempFilePath 为裁剪后的图片临时路径
       if (tempFilePath) {
-        that.setData({'img.obj':tempFilePath})
+        that.setData({
+          'img.obj': tempFilePath
+        })
         var model = JSON.stringify(that.data.img);
         wx.redirectTo({
-          url: '/pages/makepic/index?model='+model ,
+          url: '/pages/makepic/index?model=' + model,
           success: (result) => {
-            
           },
-          fail: () => {},
-          complete: () => {}
         });
-          
-    
-          
       } else {
         console.log('获取图片地址失败，请稍后重试')
       }
     })
-   },
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log(options.src);
-    this.setData({'img.bg':options.src})
+    this.setData({
+      'img.bg': options.src
+    })
     const {
       cropperOpt
     } = this.data
