@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
     "pages/login/login",
     "pages/grade/grade",
     "pages/course/course",
@@ -37,7 +36,7 @@
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "CIDPPLUS",
     "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": false
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",

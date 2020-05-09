@@ -9,7 +9,6 @@ Page({
     /**
      * 页面的初始数据
      */ ///
-
     data: {
         active: 1,
         NOW_WEEK: 1,
@@ -172,16 +171,11 @@ Page({
                             success: (result) => {
                                 var res = result.data["Data"]
                                 that.clearData(res)
-                            },
-                            fail: () => {},
-                            complete: () => {}
+                            }
                         });
                     }
                 },
-                complete: () => {}
             });
-
-
         }
     },
 
@@ -246,8 +240,7 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
-        
+    onPullDownRefresh: function () {    
         Dialog.confirm({
             title:  '更新数据？',
             message: '你确实要更新数据吗?'
