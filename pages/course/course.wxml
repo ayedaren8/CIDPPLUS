@@ -79,7 +79,7 @@
      <view class="row" hover-class="none" hover-stop-propagation="false">
      <view style="width：50%;height:auto;">
     <text class="sub-text"style="color:rgba(0,0,0,0.8);">教师：{{showPopinfo.teacher}}\n</text>
-    <text class="sub-text"style="color:rgba(0,0,0,0.8);">校区:{{showPopinfo.location}}\n</text>
+    <text class="sub-text"style="color:rgba(0,0,0,0.8);">校区：{{showPopinfo.location}}\n</text>
      </view>
    <view  style="width：50%;height:auto;">
        <text class="sub-text"style="color:rgba(0,0,0,0.8);margin-left:80rpx">教学楼：{{showPopinfo.building}}\n</text>

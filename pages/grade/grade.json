@@ -11,5 +11,6 @@
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "成绩",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
 }
