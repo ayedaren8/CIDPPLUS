@@ -3,7 +3,6 @@
 <van-toast id="van-toast" />
 <van-dialog id="van-dialog" />
 <view class="index_body " >
-
 <view class="header" >
         <image class="head-pic" style="margin:28rpx 0rpx 0rpx 28rpx"src="/pages/images/course.png" mode="aspectFit"></image>
         <text class="sub-text" style="margin:0rpx 0rpx 28rpx 32rpx;">珍惜大学里的每一节课</text>
@@ -12,7 +11,7 @@
 <view class="main_table" >
 <view class="hr ">
     <view class="days ">
-        <view class="day "  wx:for="{{day_list}}">
+        <view class="day "  wx:for="{{day_list}}" wx:key="item">
            <text class="day-text">{{index}}</text> 
            <view wx:if="{{item==TODAY}}" class="day-flag" >
            <view class="today-blk">         
@@ -23,7 +22,7 @@
 </view>
 <view class="tab-body" >
     <view class="tab-right"  >
-            <view class="tab-right-li" wx:for="{{[1, 3, 5, 7, 9]}}">        
+            <view class="tab-right-li" wx:for="{{[1, 3, 5, 7, 9]}}" wx:key="item">        
             <text >
                 {{item}}
             </text>
@@ -32,8 +31,8 @@
             </text>
             </view>         
     </view>
-<view class="tab-left " wx:for="{{day_list}}" wx:for-item="day" >
-<view  wx:for="{{day}}" wx:for-item="CLA">
+<view class="tab-left " wx:for="{{day_list}}" wx:for-item="day" wx:key="item" >
+<view  wx:for="{{day}}" wx:for-item="CLA" wx:key="item">
     <view  hover-class="hover-day" wx:if="{{CLA.end>=NOW_WEEK&CLA.begin<=NOW_WEEK&&NOW_WEEK%CLA.interval==0}}" data-set="{{CLA}}" class="tab-left-day-li" style="z-index:2;top:{{CLA.Y}}rpx;height:{{CLA.len*83}}rpx;background:{{colorList[CLA.colorid]}};box-shadow: 0rpx 6rpx 6rpx {{colorList[CLA.colorid]}};" bind:tap="showDetail" >
     <text  class="text-mirco">\n{{CLA.cname}}\n\n</text>       
     <text class="text-mirco text-light" >{{CLA.location}}\n{{CLA.building}}\n{{CLA.classroom}}</text>
@@ -48,15 +47,15 @@
 
 </view>
   <view class="weekBTN" >
-    <view class="BTN " style="width:60rpx; " >
-    <image class="BTN_img" src="/icon/left.png" mode="widthFix" lazy-load="false"  hover-class="hover-day" binderror="" bindtap="subWeek">
+    <view class="BTN" style="width:60rpx;" >
+    <image class="BTN_img" src="/icon/left.png"   hover-class="hover-day"  bindtap="subWeek">
     </image>
     </view>
     <view class="BTN" >
         <text class="headline-text" selectable="false" space="false" decode="false">{{NOW_WEEK}} 周</text>    
     </view>
-    <view class="BTN" style="width:60rpx; " >
-        <image class="BTN_img" src="/icon/right.png" mode="widthFix" lazy-load="false" hover-class="hover-day" binderror="" bindtap="addWeek">        
+    <view class="BTN" style="width:60rpx;" >
+        <image class="BTN_img" src="/icon/right.png"  hover-class="hover-day" bindtap="addWeek">        
         </image>
     </view>
     </view>
@@ -91,6 +90,9 @@
 </view>
 </van-popup>
    <view class=" copyright" >
+   <view class="adContainer">
+  <ad unit-id="adunit-d981d01be915e8df" ad-intervals="30"></ad>
+</view>
          <span  class="body-text" style="color:#f8f8f">啊叶大人（ayedaren）独自开发</span>
     </view>
 <view class="FORBAR"></view>

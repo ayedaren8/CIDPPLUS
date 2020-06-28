@@ -2,7 +2,10 @@
 
 
 /**index.wxss**/
-
+.adContainer {
+  width: 95%;
+  margin-bottom: 20rpx;
+}
 .flex-row {
     display: flex;
     flex-direction: row;
@@ -94,7 +97,8 @@
 
 .BTN_img {
     margin: 8rpx;
-    width: 50rpx;
+    height: 48rpx;
+    width: 48rpx;
 }
 
 .main_header {
