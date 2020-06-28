@@ -37,13 +37,13 @@
             </view>
         </view>
         <view class="cal-line">
-            <view wx:for="{{weekList}}">
+            <view wx:for="{{weekList}}"  wx:key="item">
                 <view class="cell">{{item}}</view>
                 <view></view>
             </view>
         </view>
-        <view class="cal-line" wx:for="{{dayList}}">
-            <view class="cell" wx:for="{{item}}" wx:for-item="sitem" hover-class="hover-day">
+        <view class="cal-line" wx:for="{{dayList}}" wx:key="item">
+            <view class="cell" wx:for="{{item}}" wx:for-item="sitem" hover-class="hover-day" wx:key="sitem">
                 <view wx:if="{{sitem.month===thisMonth&&sitem.day===today&&sitem.year==thisYear}}">
                     <view class="cell today-cell">{{sitem.day}}</view>
                 </view>
@@ -61,7 +61,7 @@
     </view>
 </view>
     <view class="new-card" style="height:100%;background:#f8f8f9;padding-bottom:40px;width:648rpx;margin-top:28rpx;">
-        <view wx:for="{{monthInfo}}" class="">
+        <view wx:for="{{monthInfo}}" class=""  wx:key="item">
             <view wx:if="{{item.month===currentMonth&&item.year===currentYear}}" class="">
                 <view class="">
                     <text class="sub-text" selectable="false" space="false" decode="false">
@@ -73,10 +73,12 @@
     </view>
 </view>
 <van-dialog id="van-dialog" />
+
+   <!-- <ad unit-id="adunit-d981d01be915e8df"></ad> -->
 <view class="FORBAR"></view>
-<view class="float_banner" wx:if="{{floatBannerShow}}">
+<!-- <view class="float_banner" wx:if="{{floatBannerShow}}">
     <image src="/img/float.png" class="float_img" bind:tap="gotoMakepic"/>    
     <image src="/icon/close.png" class="close_btn" bind:tap="delFloatImg"/>
 </view>
-  
+   -->
 </view>

@@ -25,7 +25,7 @@ Page({
         width: 800,
         height: 800,
         destWidth: 800,
-        destHeight:800 ,
+        destHeight:800,
         canvasId:'mycanvas' ,
         success: (result) => {
           that.setData({tempImgPath:result.tempFilePath,showpic:true})

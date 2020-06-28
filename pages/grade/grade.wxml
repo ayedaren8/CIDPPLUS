@@ -1,12 +1,12 @@
 <van-notify id="van-notify" />
 <van-toast id="van-toast" />
 <van-tabs active="{{ grade.length-1 }}" border="{{false}}" color="#FF6600" animated bind:change="onChange">
-    <van-tab wx:for="{{grade}}" title="{{item.SemesterYear}}">
+    <van-tab wx:for="{{grade}}" title="{{item.SemesterYear}}"  wx:key="item">
     
         <view style="margin:28rpx 0rpx 0rpx 0rpx">
-            <view class="col" wx:for="{{item.List}}" style="align-items:center; ">
+            <view class="col" wx:for="{{item.List}}" style="align-items:center; "  wx:key="item">
                 <text class="sub-text" style="color:#FF6600;margin:40rpx 0rpx 0rpx 0rpx">{{item.STName}}</text>
-                <view wx:for="{{item.gradeList}}" class="">
+                <view wx:for="{{item.gradeList}}" class=""  wx:key="item">
                     <view class="term-card row">
                         <view class="col"style="width:420rpx;justify-content: space-between;" >
                         <text class="headline-text" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis" id="xueqi-name">{{item.Name}}</text>

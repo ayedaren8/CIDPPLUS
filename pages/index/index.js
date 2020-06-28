@@ -7,7 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        floatBannerShow:true,
+        // floatBannerShow:true,
         welcome: "别来无恙",
         PX: "",
         LOGIN_FLAG: '',
@@ -360,6 +360,7 @@ Page({
      */
     onPullDownRefresh: function() {
         this.gotoMakepic()
+        wx.stopPullDownRefresh()
     },
 
     /**
