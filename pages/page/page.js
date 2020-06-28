@@ -103,10 +103,15 @@ Page({
                     body: "1.增加了意见与反馈模块\n2.修复IOS端页面X轴溢出问题\n3.接入客服会话",
                     note: ""
                   }, {
-                    title: "2020/5/27 CIDPPLUS beat3.0",
+                    title: "2020/5/6 CIDPPLUS beat3.0",
                     body: "1.加入校庆头像页制作\n2.关闭非必要页面的下拉刷新",
                     note: ""
-                  },]
+                  },
+                  {
+                    title: "2020/5/29 CIDPPLUS beat3.1",
+                    body: "1.修复了IOS端,下拉刷新时截面卡顿问题",
+                    note: ""
+                  }]
                 break;
             case "关于作者":
                 textBody = [{

@@ -67,6 +67,14 @@
                                       duration: 5000
                                   });
                                   break;
+                              case sysBusy:
+                                  Toast.clear()
+                                  Toast.fail({
+                                    mask: true,
+                                    message: '教务系统繁忙，请稍后再试！',
+                                    duration: 5000
+                                  });
+                                  break;
                           }
                           wx.reLaunch({
                               url: '../index/index',
