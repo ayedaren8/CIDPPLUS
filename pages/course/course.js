@@ -240,7 +240,8 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {    
+    onPullDownRefresh: function () {
+      wx.stopPullDownRefresh()    
         Dialog.confirm({
             title:  '更新数据？',
             message: '你确实要更新数据吗?'
