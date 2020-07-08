@@ -101,11 +101,8 @@ Page({
                 break;
         }
         console.log();
-        item.array.forEach(item => {
-            item.LUNam = item.LUNam.replace('(','').replace('）','')
-        });
         var datas = {
-            cname: item.LUNam,
+            cname: item.LUName,
             location: item.Campus,
             building: item.Building,
             classroom: item.Classroom,
