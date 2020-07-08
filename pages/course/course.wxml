@@ -73,7 +73,9 @@
 >
 <view >
     <text class="headline-text" >{{showPopinfo.cname}}\n</text>
-     <text class="headline-text"style="font-size:30rpx;color:rgba(255,125,0,0.8)">本课程还有{{showPopinfo.end-TERM_WEEK}}周结课\n</text>
+     <text wx:if="{{showPopinfo.end-TERM_WEEK < 0}}" class="headline-text"style="font-size:30rpx;color:rgba(255,125,0,0.8)">本课程已结课\n</text>
+     <text wx:else class="headline-text"style="font-size:30rpx;color:rgba(255,125,0,0.8)">本课程还有{{showPopinfo.end-TERM_WEEK}}周结课\n</text>
+
       <text class="body-text">详情：{{showPopinfo.info}}\n</text>
      <view class="row" hover-class="none" hover-stop-propagation="false">
      <view style="width：50%;height:auto;">
