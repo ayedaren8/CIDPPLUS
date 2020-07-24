@@ -245,7 +245,9 @@ Page({
         app.globalData.NowWeek = week
         let termWeek = week - app.globalData.WeekDIF
         app.globalData.termWeek = termWeek < 21 && termWeek > 0 ? termWeek : week;
-        this.setData({ termWeek: app.globalData.termWeek, percent: Math.round((app.globalData.termWeek / 16) * 100) })
+        this.setData({ termWeek: app.globalData.termWeek })
+        if(Math.round((app.globalData.termWeek / app.globalData.overWeek) * 100) > 100){this.setData({percent: 100})}
+        else {this.setData({percent: Math.round((app.globalData.termWeek / app.globalData.overWeek) * 100) })}
     },
 
 

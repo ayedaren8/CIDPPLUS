@@ -18,7 +18,8 @@
             <view  class="row" style="justify-content: end;align-items: flex-end;">
           
             <van-progress style="width:300rpx;margin:16rpx 10rpx 28rpx 0rpx;" inactive="{{termWeek>0&&termWeek<21?false:true}}" show-pivot="{{false}}" stroke-width="8"color="#4d84fa" percentage="{{percent}}"/>
-            <text class="body-text" style="margin:16rpx 0rpx 28rpx 0rpx;">本学期已到达第{{ termWeek }}周</text>
+            <text wx:if="{{percent==100}}" class="body-text" style="margin:16rpx 0rpx 28rpx 0rpx;">本学期已结束，假期快乐！</text>
+            <text wx:else class="body-text" style="margin:16rpx 0rpx 28rpx 0rpx;">本学期已到达第{{ termWeek }}周</text>
         </view> 
         <view class="btn-s" bind:tap="loginOut">注销</view>
         </view>
