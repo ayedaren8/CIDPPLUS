@@ -1,6 +1,7 @@
 // pages/indexs/index.js
 
 import Dialog from '../../dist/dialog/dialog';
+import schoolCaledar from '../../store/schoolCalendar';
 const app = getApp()
 Page({
     /**
@@ -31,40 +32,7 @@ Page({
         dayArr: "",
         weekArr: "",
         dayList: '',
-        monthInfo: [{
-                year: 2020,
-                month: 1,
-                info: "寒假\n学生：2020年1月11日放寒假\n教职工：1月11日-12日开始上班，1月13日安排轮休",
-            }, {
-                year: 2020,
-                month: 2,
-                info: "开学\n学生：2月22、23日返校报道，24日开始上课\n教职工：2月20日开始上班"
-            },
-            {
-                year: 2020,
-                month: 4,
-                info: "清明节\n4月4日-6日放假调休共三天"
-            },
-            {
-                year: 2020,
-                month: 4,
-                info: "运动会\n4月18日、19日"
-            }, {
-                year: 2020,
-                month: 5,
-                info: "劳动节\n5月1日-5日放假调休，共5天\n4月26日上班，补5月4日(周一)的课\n5月9日上班，补5月5日（周二）的课\n第45个校庆日：5月9日"
-            },
-            {
-                year: 2020,
-                month: 6,
-                info: "端午节\n6月25日—27日放假调休，共3天\n6月28日上班"
-            },
-            {
-                year: 2020,
-                month: 7,
-                info: "夏季学期\n本学期共安排18个教学周\n6月29日-8月30日夏季学期\n7月11日教职员工开始轮休"
-            },
-        ]
+        monthInfo: schoolCaledar
     },
 
     /**

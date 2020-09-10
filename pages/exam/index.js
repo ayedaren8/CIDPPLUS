@@ -1,7 +1,6 @@
 // pages/exam/index.js
 const app = getApp();
 const grep = require("../../utils/grep.js");
-import Notify from '../../dist/notify/notify';
 import Toast from '../../dist/toast/toast';
 import Dialog from '../../dist/dialog/dialog';
 
@@ -14,7 +13,6 @@ Page({
         note_1: "你目前没有考试",
         note_2: "但也不要忘记学习啊",
         exam: '',
-
 
     },
 

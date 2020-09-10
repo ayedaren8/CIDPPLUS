@@ -1,7 +1,6 @@
 // pages/grade/grade.js
 const app = getApp()
 const grep = require("../../utils/grep.js");
-import Notify from '../../dist/notify/notify';
 import Toast from '../../dist/toast/toast';
 import Dialog from '../../dist/dialog/dialog';
 Page({
@@ -134,7 +133,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-      
         this.setData({
             NOW_WEEK: app.globalData.termWeek
         })
