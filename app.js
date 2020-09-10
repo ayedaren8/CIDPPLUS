@@ -40,6 +40,7 @@ App({
         TermStartDay: 2,
         NowWeeK: '',
         termWeek: '',
+        overWeek: '16',
         exitRE: false,
         notePWD: true,
         needrelanch:false
