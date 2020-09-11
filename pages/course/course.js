@@ -133,8 +133,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.setData({
-            NOW_WEEK: app.globalData.termWeek
+        let _NOW_WEEK=app.globalData.termWeek>16?16:app.globalData.termWeek
+        this.setData({ 
+            NOW_WEEK: _NOW_WEEK
         })
         this.setData({
             TERM_WEEK: app.globalData.termWeek
@@ -183,16 +184,16 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
-
-    
-
-    },
+    onReady: function () {},
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        let _NOW_WEEK=app.globalData.termWeek>16?16:app.globalData.termWeek
+        this.setData({ 
+            NOW_WEEK: _NOW_WEEK
+        })
         if(app.globalData.needRelanch){
             this.onLoad()
             app.globalData.needRelanch=false
@@ -203,9 +204,6 @@ Page({
                 selected: 1
             })
         }
-        this.setData({
-            NOW_WEEK: app.globalData.termWeek
-        })
         if (app.globalData.LOGIN_FLAG == false) {
             Toast({
                 type: 'fail',
@@ -224,16 +222,12 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
-
-    },
+    onHide: function () {},
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
-
-    },
+    onUnload: function () {},
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
@@ -260,14 +254,10 @@ Page({
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
-
-    },
+    onReachBottom: function () {},
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
-
-    }
+    onShareAppMessage: function () {}
 })

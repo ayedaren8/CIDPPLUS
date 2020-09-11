@@ -13,7 +13,6 @@ Page({
         note_1: "你目前没有考试",
         note_2: "但也不要忘记学习啊",
         exam: '',
-
     },
 
     /**
@@ -22,7 +21,6 @@ Page({
 
     onLoad: function (options) {
         console.log(app.globalData.LOGIN_FLAG);
-
         if (app.globalData.LOGIN_FLAG == false) {
             Toast({
                 type: 'fail',

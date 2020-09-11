@@ -275,7 +275,7 @@ Page({
     },
 
     gotoMakepic:function(){
-        wx.navigateTo({url: '/pages/product/index'});
+        wx.navigateTo({url: '/pages/generate-avatar/product/index'});
     },
     delFloatImg:function(){
         this.setData({floatBannerShow:false})

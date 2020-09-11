@@ -1,5 +1,5 @@
 // pages/upload/index.js
-import WeCropper from '../../cropper/we-cropper.js'
+import WeCropper from '../../../cropper/we-cropper.js'
 const device = wx.getSystemInfoSync() // 获取设备信息
 const width = device.windowWidth // 示例为一个与屏幕等宽的正方形裁剪框
 const height = device.windowHeight
