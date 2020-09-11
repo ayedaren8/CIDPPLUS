@@ -247,7 +247,7 @@ Page({
             wx.removeStorage({
                 key: 'grade',
                 success: (result) => {
-                    console.log("成功删除成绩缓存")
+                    
                 },
                 fail: () => {},
                 complete: () => {}
@@ -255,7 +255,7 @@ Page({
             wx.removeStorage({
                 key: 'course',
                 success: (result) => {
-                    console.log("成功删除课表缓存")
+                    
                 },
                 fail: () => {},
                 complete: () => {}
@@ -263,7 +263,7 @@ Page({
             wx.removeStorage({
                 key: 'exam',
                 success: (result) => {
-                    console.log("成功删除课表缓存")
+                    
                 },
                 fail: () => {},
                 complete: () => {}
@@ -303,7 +303,7 @@ Page({
             })
         }
         let res = wx.getStorageSync("infoList");
-        console.log(res);
+        
         this.setData({
             LOGIN_FLAG: app.globalData.LOGIN_FLAG,
             USERNAME: res.name,

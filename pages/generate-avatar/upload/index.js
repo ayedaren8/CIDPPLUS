@@ -84,7 +84,7 @@ Page({
           },
         });
       } else {
-        console.log('获取图片地址失败，请稍后重试')
+        
       }
     })
   },
@@ -92,7 +92,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.src);
+    
     this.setData({
       'img.bg': options.src
     })
@@ -101,7 +101,7 @@ Page({
     } = this.data
     this.cropper = new WeCropper(cropperOpt)
       .on('ready', (ctx) => {
-        console.log(`wecropper is ready for work!`)
+        
       })
       .on('beforeImageLoad', (ctx) => {
         wx.showToast({

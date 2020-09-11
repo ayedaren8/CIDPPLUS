@@ -119,7 +119,7 @@ Page({
      */
     onPullDownRefresh: function () {
         wx.stopPullDownRefresh((e) => {
-            console.log(e)
+            
         })
         Dialog.confirm({
             title: '更新数据？',

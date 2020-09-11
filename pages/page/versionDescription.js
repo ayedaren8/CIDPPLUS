@@ -29,7 +29,15 @@ const versionDescription =[{
   },
   {
     title: "2020/5/29 CIDPPLUS beat3.1",
-    body: "1.修复了IOS端,下拉刷新时截面卡顿问题",
+    body: "1.修复了IOS端,下拉刷新时界面卡顿问题",
+    note: ""
+  }, {
+    title: "2020/7/24 CIDPPLUS beat3.2",
+    body: "1.修复了进度条溢出问题（By Buffoonss）",
+    note: ""
+  }, {
+    title: "2020/9/11 CIDPPLUS beat3.3",
+    body: "1.修复一些BUG,数据分离\n2.更改了开学日期\n3.更新校历",
     note: ""
   }]
 

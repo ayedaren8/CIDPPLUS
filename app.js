@@ -16,7 +16,7 @@ App({
         wx.getSystemInfo({
             success: function(e) {
                 var a = e.model;
-                console.log(a)
+                // 
               if (a.indexOf("iPhone") != -1 && a.indexOf("X") != -1 || a.indexOf("iPhone") != -1 && a.indexOf("11") != -1) { //是不是包含iphoneX
                     that.globalData.isIphoneX = true
                 } else {

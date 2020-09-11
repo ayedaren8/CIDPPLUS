@@ -40,7 +40,7 @@ Page({
             wx.removeStorage({
                 key: 'grade',
                 success: (result) => {
-                    console.log("成功删除成绩缓存")
+                    
                 },
                 fail: () => {},
                 complete: () => {}
@@ -48,7 +48,7 @@ Page({
             wx.removeStorage({
                 key: 'course',
                 success: (result) => {
-                    console.log("成功删除课表缓存")
+                    
                 },
                 fail: () => {},
                 complete: () => {}
@@ -56,7 +56,7 @@ Page({
             wx.removeStorage({
                 key: 'exam',
                 success: (result) => {
-                    console.log("成功删除课表缓存")
+                    
                 },
                 fail: () => {},
                 complete: () => {}
@@ -68,7 +68,7 @@ Page({
     },
     onChange_notePWD: function() {
         app.globalData.notePWD = this.data.notePWD == true ? false : true
-        console.log(app.globalData.notePWD);
+        
         this.setData({ notePWD: app.globalData.notePWD })
         wx.setStorage({
             key: "set",
@@ -82,7 +82,7 @@ Page({
     },
     onChange_noREF: function() {
         app.globalData.noREF= this.data.noREF == true ? false : true
-        console.log(app.globalData.noREF);
+        
         this.setData({ noREF: app.globalData.noREF })
         wx.setStorage({
             key: "set",
@@ -143,7 +143,7 @@ Page({
     },
     toPage: function(data) {
         let title = data.currentTarget.dataset.title
-        console.log(data.currentTarget.dataset.title);
+        
         wx.navigateTo({
             url: '/pages/page/page?title=' + title
         })
@@ -163,13 +163,13 @@ Page({
     onShow: function() {
         if (typeof this.getTabBar === 'function' &&
             this.getTabBar()) {
-            console.log('设置选中项 0')
+            
             this.getTabBar().setData({
                 selected: 4
             })
         }
         let res = wx.getStorageSync("infoList");
-        console.log(res);
+        
         this.setData({
             LOGIN_FLAG: app.globalData.LOGIN_FLAG,
             USERNAME: res.name,

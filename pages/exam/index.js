@@ -20,7 +20,7 @@ Page({
      */
 
     onLoad: function (options) {
-        console.log(app.globalData.LOGIN_FLAG);
+        
         if (app.globalData.LOGIN_FLAG == false) {
             Toast({
                 type: 'fail',
@@ -59,7 +59,7 @@ Page({
                                 that.setData({
                                     exam: result.data['b']
                                 })
-                                console.log(result.data['b']);
+                                
                                 if (that.data.exam.length > 0) {
                                     that.setData({
                                         note_1: "你目前有" + that.data.exam.length + "门考试",
@@ -103,7 +103,7 @@ Page({
 
         if (typeof this.getTabBar === 'function' &&
             this.getTabBar()) {
-            console.log('设置选中项 0')
+            
             this.getTabBar().setData({
                 selected: 0
             })
@@ -152,7 +152,7 @@ Page({
                 success: (result) => {
                     this.onLoad()
                 },
-                fail: () => {console.log("失败了");
+                fail: () => {
                 },
                 complete: () => {}
             });

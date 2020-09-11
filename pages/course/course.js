@@ -52,7 +52,7 @@ Page({
         });
     },
     subWeek: function (e) {
-        console.log(e.detail);
+        
         if (this.data.NOW_WEEK > 1) {
             this.setData({
                 NOW_WEEK: this.data.NOW_WEEK - 1
@@ -60,7 +60,7 @@ Page({
         }
     },
     addWeek: function (e) {
-        console.log(e.detail);
+        
         if (this.data.NOW_WEEK < 20) {
             this.setData({
                 NOW_WEEK: this.data.NOW_WEEK + 1
@@ -78,7 +78,7 @@ Page({
             item.OnSaturday?this.pushList("SAT", item):null
             item.OnSunday?this.pushList("SUN", item):null
         }
-        console.log(this.data);
+        
     },
     pushList: function (day, item) {
         let solt = item.TimeSlotEnd - item.TimeSlotStart
@@ -99,7 +99,7 @@ Page({
             default:
                 break;
         }
-        console.log();
+        
         var datas = {
             cname: item.LUName,
             location: item.Campus,
@@ -123,7 +123,7 @@ Page({
 
     showDetail: function (e) {
         var datas=e.currentTarget.dataset.set
-        console.log(datas);
+        
         this.setData({showPopinfo:datas})
         this.showPopup();
 

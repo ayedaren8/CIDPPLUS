@@ -38,12 +38,12 @@ Page({
   save:function(){
     
     var that =this
-    // console.log(that.data.tenmpImgPath);
+    // 
     
     wx.saveImageToPhotosAlbum({
       filePath: that.data.tempImgPath,
       success: (result) => {
-        console.log("success");
+        
         wx.showToast({
           title: '成功',
           icon: 'success',
@@ -51,22 +51,22 @@ Page({
         })
       },
       fail: (err) => {
-        console.log(err);
+        
         if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny") {
-          // console.log("用户一开始拒绝了，我想再次发起授权")
-          // console.log('打开设置窗口')
+          // 
+          // 
           wx.openSetting({
             success(settingdata) {
-              console.log(settingdata)
+              
               if (settingdata.authSetting['scope.writePhotosAlbum']) {
-                // console.log('获取权限成功，给出再次点击图片保存到相册的提示。')
+                // 
                 wx.showToast({
                   title: '请再次保存',
                   icon: 'success',
                   duration: 2000
                 })
               } else {
-                // console.log('获取权限失败，给出不给权限就无法正常使用的提示')
+                // 
                 wx.showToast({
                   title: '获取权限失败，可能导致保存图片无法正常使用',
                   icon: 'none',

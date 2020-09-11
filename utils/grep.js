@@ -27,9 +27,9 @@
       responseType: 'text',
       // 成功回调
       success: (result) => {
-        console.log(result.statusCode)
+        
         var res = result.data
-        console.log(res)
+        
         if (result.statusCode != 200) {
 
           Toast.clear()
@@ -41,7 +41,7 @@
           return false
         } else {
           var res = result.data
-          console.log(res)
+          
           if (res["STATUS"] == "OK") {
             Toast.clear()
             wx.setStorage({
@@ -50,7 +50,7 @@
             });
             let _name = api + "Ready"
             let _ERROR = api + "Error"
-            console.log(_name);
+            
             if (this[_name]) {
               this[_name](api)
             } else {

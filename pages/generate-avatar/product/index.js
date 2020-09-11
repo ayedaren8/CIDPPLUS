@@ -42,7 +42,7 @@ Page({
    */
   
    toMake:function(options){
-     console.log(options.currentTarget.dataset.src);
+     
      let chooseImgSrc=options.currentTarget.dataset.src
     wx.navigateTo({
       url: '/pages/upload/index?src='+chooseImgSrc

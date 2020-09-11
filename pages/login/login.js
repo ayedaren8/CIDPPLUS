@@ -99,7 +99,7 @@ Page({
             wx.setStorageSync("stInfo", stInfo)
             app.globalData.LOGIN_FLAG = true
             var res = result.data["message"]
-            console.log(res)
+            
             wx.setStorage({
               key: "infoList",
               data: result.data["message"]
@@ -166,11 +166,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app.globalData.notePWD);
+    
     wx.removeStorage({
       key: 'grade',
       success: (result) => {
-        console.log("成功删除成绩缓存")
+        
       },
       fail: () => {},
       complete: () => {}
@@ -178,7 +178,7 @@ Page({
     wx.removeStorage({
       key: 'course',
       success: (result) => {
-        console.log("成功删除课表缓存")
+        
       },
       fail: () => {},
       complete: () => {}
@@ -186,7 +186,7 @@ Page({
     wx.removeStorage({
       key: 'exam',
       success: (result) => {
-        console.log("成功删除课表缓存")
+        
       },
       fail: () => {},
       complete: () => {}
