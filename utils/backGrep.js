@@ -14,11 +14,11 @@
           dataType: 'json',
           responseType: 'text',
           success: (result) => {
-              
+              console.log(result.statusCode)
               if (result.statusCode != 200) {
-                  
+                  console.log("后台执行" + api + "失败");
               } else {
-                  
+                  console.log("后台执行" + api + "成功");
                   wx.setStorage({
                       key: api,
                       data: result.data['message']
@@ -26,7 +26,7 @@
               }
           },
           fail: () => {},
-          complete: () => { 
+          complete: () => { }
       });
 
   }

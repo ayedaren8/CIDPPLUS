@@ -1,25 +1,10 @@
-const schoolCaledar = [{
-        year: 2020,
-        month: 8,
-        info: "「夏季短学期」 8月3日-9月20日"
-    }, {
-        year: 2020,
-        month: 9,
-        info: "「夏季短学期」 8月3日-9月20日\n「在校生报到」 9月17日-9月18日\n「英语四六级考试」 9月19日\n「在校生课堂教学」 9月21日开始\n"
-    }, {
-        year: 2020,
-        month: 10,
-        info: "「中秋、国庆节」 \n 10月1日-10月8日放假调休，共8天\n 9月27日 (周日) 上班，补10月5日（周一）的课\n 10月10日(周六）上班，补10月8日(周四）的课。"
-    },
-    {
-        year: 2021,
-        month: 1,
-        info: "「元旦」2021年1月1日-3日放假，共3天\n「学生寒假」 1月25日-3月5日\n「教职工轮休」 1月25日-3月3日"
-    },
-    {
-        year: 2021,
-        month: 3,
-        info: "「在校生报到」 3月6日-7日\n「在校生课堂教学」 3月8日开始\n「教职工上班」 3月4日开始" }
-]
+const db = wx.cloud.database()
+async function getSchoolCalendar() {
+  const data=await db.collection('schoolCalendar').get().then((res) => {
+    return res.data
+  })
+  console.log(data)
+  return data 
+}
 
-export default schoolCaledar
+export default getSchoolCalendar

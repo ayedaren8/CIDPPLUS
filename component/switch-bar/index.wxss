@@ -1,0 +1,33 @@
+/* component/switch-bar/index.wxss */
+.icon-btn {
+    display: flex;
+    flex-direction: column;
+    width: 88rpx;
+    height: 64rpx;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 8rpx;
+}
+.icon {
+    width: 48rpx;
+    height: 48rpx;
+    overflow: visible;
+}
+.text_hover{
+    background-color: #f8F8F9;
+    opacity: 0.8;
+}
+.calender-bar {
+    height: 64rpx;
+    padding: 0rpx 40rpx;
+    margin: 10rpx 0rpx;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.center-text{
+    font-size: 32rpx;
+}

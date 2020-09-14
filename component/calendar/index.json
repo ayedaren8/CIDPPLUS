@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "switch-bar":"/component/switch-bar/index"
+  }
+}
