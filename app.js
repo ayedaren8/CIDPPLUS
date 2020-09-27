@@ -44,7 +44,7 @@ App({
     WeekDIF: '',
     TermStartMonth: 9,
     TermStartDay: 17,
-    NowWeeK: '',
+    NowWeeK: '1',
     termWeek: '',
     overWeek: '16',
     exitRE: false,

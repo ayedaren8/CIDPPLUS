@@ -20,7 +20,6 @@ Page({
      */
 
     onLoad: function (options) {
-        
         if (app.globalData.LOGIN_FLAG == false) {
             Toast({
                 type: 'fail',

@@ -1,0 +1,139 @@
+/* component/calendar.wxss */
+/* pages/indexs/index.wxss */
+.row {
+    display: flex;
+    flex-direction: row;
+}
+.new-card {
+    position: relative;
+    display: flex;
+    padding-left: 50rpx;
+    flex-direction: column;
+    border-width: 3rpx;
+    border-style: solid;
+    border-color: #f8f8f9;
+    border-radius: 8rpx;
+    box-sizing: border-box;
+}
+.headeline-text {
+    font-size: 36rpx;
+    line-height: 36rpx;
+    font-weight: normal;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgba(0, 0, 0, 0.54);
+}
+.sub-text {
+    font-size: 27rpx;
+    line-height: 27rpx;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgba(0, 0, 0, 0.54);
+}
+.body-text {
+    font-size: 21rpx;
+    line-height: 21rpx;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgba(0, 0, 0, 0.54);
+}
+.normal-cell {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 21rpx;
+    line-height: 21rpx;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.other-cell {
+    color: rgba(0, 0, 0, 0.30);
+    font-size: 21rpx;
+    line-height: 21rpx;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.s-block {
+    width: 20rpx;
+    height: 36rpx;
+    margin: 8rpx;
+    background-color: #4d84ff;
+}
+.cal-line {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 64rpx;
+    box-sizing: border-box;
+    padding: 0rpx 16rpx;
+}
+.cell {
+    display: flex;
+    flex-direction: column;
+    width: 88rpx;
+    height: 64rpx;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.today-cell {
+    display: flex;
+    width: 64rpx;
+    height: 64rpx;
+    color: white;
+    border-radius: 12rpx;
+    background-color: rgba(77, 132, 255, 0.9);
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-size: 21rpx;
+    line-height: 21rpx;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.circle-process {
+    position: absolute;
+    top: 48rpx;
+    right: 150rpx;
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.index_body {
+    display: flex;
+    flex-direction: column;
+    width:708rpx;
+    box-sizing: border-box;
+    margin-left: 42rpx;
+}
+
+.short-line {
+    width: 96rpx;
+    height: 12rpx;
+    border-radius: 6rpx;
+    background-color: rgba(77, 132, 255, 0.9);
+}
+
+.float_banner{
+    position: fixed;
+    right: 48rpx;
+    bottom: 300rpx;
+    height: 320rpx;
+    width: 180rpx;
+}
+.float_img{
+    height: 320rpx;
+    width: 180rpx;
+}
+.close_btn{
+    position: absolute;
+    height: 72rpx;
+    width: 72rpx;
+    bottom: -80rpx;
+    left: 54rpx;
+}
+.calender {
+    display: flex;
+    width: 648rpx;
+    height: auto;
+    flex-direction: column;
+    border-width: 3rpx;
+    border-style: solid;
+    border-color: #f8f8f9;
+    border-radius: 8rpx;
+    box-sizing: border-box;
+}

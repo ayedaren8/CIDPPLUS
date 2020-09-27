@@ -1,9 +1,7 @@
   // 登录请求函数
   import Notify from '../dist/notify/notify';
   import Toast from '../dist/toast/toast';
-  import Dialog from '../dist/dialog/dialog';
   const app = getApp();
-
   function login(stid, stpwd, api) {
     // 加载Toast提示
     Toast.loading({
@@ -27,11 +25,8 @@
       responseType: 'text',
       // 成功回调
       success: (result) => {
-        
         var res = result.data
-        
         if (result.statusCode != 200) {
-
           Toast.clear()
           Toast.fail("服务器无法处理你的请求，请联系开发人员")
           Notify({

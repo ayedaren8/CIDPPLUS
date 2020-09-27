@@ -1,7 +1,6 @@
 // pages/indexs/index.js
 
 import Dialog from '../../dist/dialog/dialog';
-import getSchoolCalendar from '../../store/schoolCalendar';
 const app = getApp()
 Page({
     /**
@@ -9,65 +8,61 @@ Page({
      */
     data: {
         // floatBannerShow:true,
-        LOGIN_FLAG: '',
-        USERNAME: "",
+        isLogin:"",
+        username: "",
         studentID: "",
-        NowWeek: "",
-        thisYear: "",
-        thisMonth: "",
-        today: "",
-        percent: 95,   
+        currentSemesterWeek: 2,
+        semesterWeekTotal:16  
     },
-
     /**
      * 生命周期函数--监听页面加载
      */
-    login: function() {
+    login: function () {
         wx.navigateTo({
-            url: '/pages/login/login',
+          url: '/pages/login/login',
+          success: (result) => {},
+          fail: () => {},
+          complete: () => {}
+        });
+      },
+    loginOut: function () {
+        Dialog.confirm({
+          title: '注销',
+          message: '是否注销？'
+        }).then(() => {
+          app.globalData.LOGIN_FLAG = false
+          this.setData({
+            isLogin: app.globalData.LOGIN_FLAG,
+          })
+          wx.removeStorage({
+            key: 'grade',
             success: (result) => {
             },
             fail: () => {},
             complete: () => {}
-        });
-    },
-    loginOut: function() {
-        Dialog.confirm({
-            title: '注销',
-            message: '是否注销？'
-        }).then(() => {
-            app.globalData.LOGIN_FLAG = false
-            this.setData({ LOGIN_FLAG: app.globalData.LOGIN_FLAG, })
-            wx.removeStorage({
-                key: 'grade',
-                success: (result) => {
-                    
-                },
-                fail: () => {},
-                complete: () => {}
-            });
-            wx.removeStorage({
-                key: 'course',
-                success: (result) => {
-                    
-                },
-                fail: () => {},
-                complete: () => {}
-            });
-            wx.removeStorage({
-                key: 'exam',
-                success: (result) => {
-                    
-                },
-                fail: () => {},
-                complete: () => {}
-            });
-            app.globalData.needRelanch=true
+          });
+          wx.removeStorage({
+            key: 'course',
+            success: (result) => {
+  
+            },
+            fail: () => {},
+            complete: () => {}
+          });
+          wx.removeStorage({
+            key: 'exam',
+            success: (result) => {
+  
+            },
+            fail: () => {},
+            complete: () => {}
+          });
+          app.globalData.needRelanch = true
         }).catch(() => {
-            // on cancel
+          // on cancel
         });
-    },
-
+      },  
+    
     gotoMakepic:function(){
         wx.navigateTo({url: '/pages/generate-avatar/product/index'});
     },
@@ -75,7 +70,7 @@ Page({
         this.setData({floatBannerShow:false})
     },
     onLoad: function(options) {
-      this.setData({ NowWeek: app.globalData.NowWeek})
+      this.setData({ isLogin: app.globalData.LOGIN_FLAG})
     },
 
 
@@ -96,10 +91,9 @@ Page({
             })
         }
         let res = wx.getStorageSync("infoList");
-        
         this.setData({
-            LOGIN_FLAG: app.globalData.LOGIN_FLAG,
-            USERNAME: res.name,
+            isLogin: app.globalData.LOGIN_FLAG,
+            username: res.name,
             studentID: res.srNum
         })
     },

@@ -71,7 +71,6 @@ Component({
             let dayList = RectMonthData(this.data.currentYear, this.data.currentMonth)
             let centerText=this.data.currentYear+'年'+this.data.currentMonth+'月'
             this.setData({ dayList,centerText })
-
         } else {
             this.setData({ currentMonth: currentMonth + 1 })
             let dayList = RectMonthData(this.data.currentYear,this.data.currentMonth)

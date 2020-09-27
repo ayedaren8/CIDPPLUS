@@ -1,6 +1,7 @@
 {
   "usingComponents": {   
-    "calendar":"/component/calendar/index"
+    "calendar":"/component/calendar/index",
+    "login-bar":"/component/login-bar/index"
   },
   "enablePullDownRefresh": true
 }

@@ -1,0 +1,2 @@
+@import '../common/index.wxss';
+@import '../../app.wxss'
