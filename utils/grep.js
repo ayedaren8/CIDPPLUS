@@ -1,8 +1,28 @@
   // 登录请求函数
   import Notify from '../dist/notify/notify';
   import Toast from '../dist/toast/toast';
-  const app = getApp();
-  function login(stid, stpwd, api) {
+  let resErrorHandler = function (error) {
+    switch (error.code) {
+      case "user:badPassword":
+        Toast.clear()
+        Toast.fail(result.data["desc"])
+        break;
+      case "user:needCaptcha":
+        Toast.clear()
+        Toast.fail({
+          mask: true,
+          message: result.data["desc"],
+          duration: 5000
+        });
+        break;
+    }
+    wx.reLaunch({
+      url: '../index/index',
+    });
+  }
+
+  function login(studentID, studentPassword, path) {
+    let api = path
     // 加载Toast提示
     Toast.loading({
       mask: true,
@@ -11,11 +31,10 @@
     });
     // 发起请求
     let result = wx.request({
-      url: app.globalData.DOMAIN + "api",
+      url: `http://ayedaren.cn:3000/api/${path}`,
       data: {
-        "username": stid,
-        "password": stpwd,
-        "apiname": api
+        "username": studentID,
+        "password": studentPassword,
       },
       header: {
         'content-type': 'application/json'
@@ -36,48 +55,19 @@
           return false
         } else {
           var res = result.data
-          
-          if (res["STATUS"] == "OK") {
+          if (res["data"]) {
             Toast.clear()
             wx.setStorage({
               key: api,
-              data: result.data["message"]
+              data: res["data"]
             });
             let _name = api + "Ready"
-            let _ERROR = api + "Error"
-            
             if (this[_name]) {
               this[_name](api)
             } else {
-              switch (res["STATUS"]) {
-                case pwdError:
-                  Toast.clear()
-                  Toast.fail("学号或者办事大厅密码不正确！")
-                  break;
-                case capError:
-                  Toast.clear()
-                  Toast.fail({
-                    mask: true,
-                    message: '小程序暂时无法处理验证码，请手动在网页端重新登录后使用！',
-                    duration: 5000
-                  });
-                  break;
-                case sysBusy:
-                  Toast.clear()
-                  Toast.fail({
-                    mask: true,
-                    message: '教务系统繁忙，请稍后再试！',
-                    duration: 5000
-                  });
-                  break;
-              }
-              wx.reLaunch({
-                url: '../index/index',
-              });
+              resErrorHandler(res)
             }
-
           }
-
         }
       },
       fail: () => {
@@ -89,39 +79,12 @@
         wx.reLaunch({
           url: '../index/index',
         });
+
       },
-      complete: () => {}
     });
 
   }
 
-  function getPhoto(stid, stpwd) {
-    let request = wx.request({
-      url: 'http://127.0.0.1:8000/getPhoto/',
-      method: 'POST',
-      data: {
-        "username": stid,
-        "password": stpwd,
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      dataType: 'json',
-      responseType: 'image/jpeg',
-      success: (result) => {
-        wx.setStorage({
-          key: stid + "HD",
-          data: result
-        })
-        app.globalData.HD_IMG = result
-        if (this.photoReady) {
-          this.photoReady(result)
-        }
-      },
-      fail: () => {},
-      complete: () => {}
-    });
-  }
 
   module.exports = {
     login: login

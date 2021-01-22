@@ -20,19 +20,19 @@ Page({
      */
 
     onLoad: function (options) {
-        if (app.globalData.LOGIN_FLAG == false) {
+        if (app.globalData.loginStatus == false) {
             Toast({
                 type: 'fail',
                 message: '请先登录',
                 duration: 1000,
                 onClose: () => {
-                    wx.reLaunch({
-                        url: '../index/index',
-                    });
+                    wx.switchTab({
+                        url: '/pages/index/index',
+                    })
                 }
             });
         } else {
-            var stInfo = wx.getStorageSync("stInfo");
+            var accountInfo = wx.getStorageSync("accountInfo");
             var that = this
             // 检查缓存 如果存在缓存直接读取 注意此缓存下一次登录会被删除
             wx.getStorage({
@@ -49,7 +49,7 @@ Page({
                     }
                 },
                 fail: () => {
-                    grep.login(stInfo.stid, stInfo.stpwd, "exam")
+                    grep.login(accountInfo.studentID, accountInfo.studentPassword, "exam")
                     // 定义回调函数
                     grep.examReady = api => {
                         wx.getStorage({
@@ -58,7 +58,7 @@ Page({
                                 that.setData({
                                     exam: result.data['b']
                                 })
-                                
+
                                 if (that.data.exam.length > 0) {
                                     that.setData({
                                         note_1: "你目前有" + that.data.exam.length + "门考试",
@@ -102,12 +102,12 @@ Page({
 
         if (typeof this.getTabBar === 'function' &&
             this.getTabBar()) {
-            
+
             this.getTabBar().setData({
                 selected: 0
             })
         }
-        if (app.globalData.LOGIN_FLAG == false) {
+        if (app.globalData.loginStatus == false) {
             Toast({
                 type: 'fail',
                 message: '请先登录',
@@ -141,9 +141,9 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-      wx.stopPullDownRefresh() 
+        wx.stopPullDownRefresh()
         Dialog.confirm({
-            title:  '更新数据？',
+            title: '更新数据？',
             message: '你确实要更新数据吗?'
         }).then(() => {
             wx.removeStorage({
@@ -151,8 +151,7 @@ Page({
                 success: (result) => {
                     this.onLoad()
                 },
-                fail: () => {
-                },
+                fail: () => {},
                 complete: () => {}
             });
         }).catch(() => {
@@ -164,7 +163,7 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-        
+
     },
 
     /**

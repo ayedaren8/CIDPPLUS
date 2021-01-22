@@ -1,18 +1,18 @@
 //app.js
 App({
-  onLaunch: function() {
+  onLaunch: function () {
     wx.cloud.init({
       env: 'cidpplus-ke5cs',
       traceUser: true,
     })
     var that = this;
-    var set = wx.getStorageSync("set"); //读取配置文件
-    if (set) {
-      that.globalData.LOGIN_FLAG = set['LOGIN_FLAG']
-      that.globalData.notePWD = set['notePWD']
-      that.globalData.exitRE = set['exitRE']
+    var settings = wx.getStorageSync("settings"); //读取配置文件
+    if (settings) {
+      that.globalData.loginStatus = settings['loginStatus']
+      that.globalData.keepPassword = settings['keepPassword']
+      that.globalData.onExitClearCache = settings['onExitClearCache']
     }
-    if (this.globalData.exitRE == true) {
+    if (this.globalData.onExitClearCache == true) {
       wx.removeStorage({
         key: 'grade'
       });
@@ -24,7 +24,7 @@ App({
       });
     }
     wx.getSystemInfo({
-      success: function(e) {
+      success: function (e) {
         var a = e.model;
         // 
         if (a.indexOf("iPhone") != -1 && a.indexOf("X") != -1 || a.indexOf("iPhone") != -1 && a.indexOf("11") != -1) { //是不是包含iphoneX
@@ -36,19 +36,18 @@ App({
     })
   },
   globalData: {
-    USERNAME: "",
-    PROCESS: "",
-    LOGIN_FLAG: false,
+    studentName: "",
+    loginStatus: false,
     isIphoneX: false,
-    DOMAIN: "https://ayedaren.cn/",
+    DOMAIN: "http://ayedaren.cn:3000",
     WeekDIF: '',
     TermStartMonth: 9,
     TermStartDay: 17,
     NowWeeK: '1',
     termWeek: '',
     overWeek: '16',
-    exitRE: false,
-    notePWD: true,
+    onExitClearCache: false,
+    keepPassword: true,
     needrelanch: false
   },
 

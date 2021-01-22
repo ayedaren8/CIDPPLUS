@@ -1,10 +1,11 @@
   const app = getApp();
-  function login(stid, stpwd, api) {
+
+  function login(studentID, studentPassword, api) {
       let result = wx.request({
           url: app.globalData.DOMAIN + "api",
           data: {
-              "username": stid,
-              "password": stpwd,
+              "username": studentID,
+              "password": studentPassword,
               "apiname": api
           },
           header: {
@@ -26,7 +27,7 @@
               }
           },
           fail: () => {},
-          complete: () => { }
+          complete: () => {}
       });
 
   }

@@ -8,141 +8,130 @@ Page({
    * 页面的初始数据
    */
   data: {
-    stid: "",
-    stpwd: "",
+    studentID: "",
+    studentPassword: "",
     btn_load: false,
     loadText: "登录",
     loading: false,
     value: '',
     btnText: "登录",
-    stid: "",
-    stpwd: ""
+    studentID: "",
+    studentPassword: ""
   },
-
   onChangeUser: function (event) {
     this.setData({
-      stid: event.detail.value
+      studentID: event.detail.value
     })
   },
   onChangePwd: function (event) {
     this.setData({
-      stpwd: event.detail.value
+      studentPassword: event.detail.value
     })
   },
-
-
   // 表单验证函数
-  loginBefore: function (event) {
-    if (this.data.stid.length < 7) {
+  loginBefore: function () {
+    if (this.data.studentID.length < 7) {
       Notify({
         type: 'warning',
         message: '请检查用户名'
       });
-    } else if (this.data.stid.length == 0) {
+    } else if (this.data.studentID.length == 0) {
       Notify({
         type: 'warning',
         message: '用户名不能为空'
       });
-    } else if (this.data.stpwd.length == 0) {
+    } else if (this.data.studentPassword.length == 0) {
       Notify({
         type: 'warning',
         message: '密码不能为空'
       });
+
     } else {
-      this.login(this.data.stid, this.data.stpwd, "info")
+      this.login(this.data.studentID, this.data.studentPassword, "info")
     }
   },
   // 登录请求函数
-  login: function (stid, stpwd, api) {
+  login: function (studentID, studentPassword) {
     // 加载Toast提示
     Toast.loading({
       mask: true,
       message: '正在执行教务爬虫，请耐心等候...',
-      duration: 0
+      duration: 30000
     });
     // 发起请求
     wx.request({
-      url: app.globalData.DOMAIN + "api",
+      url: `http://ayedaren.cn:3000/api/info`,
       data: {
-        "username": stid,
-        "password": stpwd,
-        "apiname": api
+        username: studentID,
+        password: studentPassword,
       },
       header: {
         'content-type': 'application/json'
       },
       method: 'POST',
-      dataType: 'json',
-      responseType: 'text',
-      // 成功回调
       success: (result) => {
+        console.log(result);
         if (result.statusCode != 200) {
-          Toast.clear()
           Toast.fail("服务器无法处理你的请求，请联系开发人员")
           Notify({
             type: 'warning',
             message: "错误" + result.statusCode,
+            onClose: () => {
+              wx.switchTab({
+                url: '/pages/index/index',
+              })
+            }
           })
-          wx.reLaunch({
-            url: '../index/index',
-          });
-          return false
+          return
         } else {
           var res = result.data
-          if (res["STATUS"] == "OK") {
+          if (res["data"]) {
             Toast.clear()
-            Toast.success("请求成功")
-            var stInfo = {
-              stid: stid,
-              stpwd: stpwd
+            Toast.success({
+              message: "请求成功",
+              onClose: () => {
+                wx.switchTab({
+                  url: '/pages/index/index',
+                })
+              }
+            })
+            var accountInfo = {
+              studentID: studentID,
+              studentPassword: studentPassword
             }
-            wx.setStorageSync("stInfo", stInfo)
-            app.globalData.LOGIN_FLAG = true
-            var res = result.data["message"]
-            
+            wx.setStorageSync("accountInfo", accountInfo)
+            app.globalData.loginStatus = true
+            var res = result.data["data"]
             wx.setStorage({
-              key: "infoList",
-              data: result.data["message"]
+              key: "studentInfo",
+              data: result.data["data"]
             });
             wx.setStorage({
-              key: "set",
+              key: "settings",
               data: {
-                LOGIN_FLAG: app.globalData.LOGIN_FLAG,
-                notePWD: app.globalData.notePWD,
-                exitRE: app.globalData.exitRE
+                loginStatus: app.globalData.loginStatus,
+                keepPassword: app.globalData.keepPassword,
+                onExitClearCache: app.globalData.onExitClearCache
               }
             });
-            app.globalData.PROCESS = "登陆成功"
-            wx.navigateBack({
-              delta: 1
-            });
           } else {
-
-            switch (result.data["message"]) {
-              case "pwdError":
+            switch (result.data["code"]) {
+              case "user:badPassword":
                 Toast.clear()
-                Toast.fail("学号或者办事大厅密码不正确！")
-                // wx.reLaunch({
-                //     url: '../index/index',
-                // });
+                Toast.fail(result.data["desc"])
                 break;
-              case "capError":
+              case "user:needCaptcha":
                 Toast.clear()
                 Toast.fail({
                   mask: true,
-                  message: '小程序暂时无法处理验证码，请手动在网页端重新登录后使用！',
+                  message: result.data["desc"],
                   duration: 5000
                 });
-                // wx.reLaunch({
-                //     url: '../index/index',
-                // });
                 break;
             }
           }
         }
-
       },
-
       fail: () => {
         Notify({
           type: 'danger',
@@ -150,12 +139,11 @@ Page({
         })
         Toast.clear()
       },
-      complete: () => {}
     });
   },
 
 
-  policy: function (params) {
+  policy: function () {
     wx.navigateTo({
       url: '/pages/page/page?title=隐私政策'
     })
@@ -166,19 +154,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
     wx.removeStorage({
       key: 'grade',
-      success: (result) => {
-        
-      },
+      success: (result) => {},
       fail: () => {},
       complete: () => {}
     });
     wx.removeStorage({
       key: 'course',
       success: (result) => {
-        
+
       },
       fail: () => {},
       complete: () => {}
@@ -186,23 +172,23 @@ Page({
     wx.removeStorage({
       key: 'exam',
       success: (result) => {
-        
+
       },
       fail: () => {},
       complete: () => {}
     });
-    if (app.globalData.notePWD == true) {
-      var stInfo = wx.getStorageSync("stInfo");
-      if (stInfo) {
+    if (app.globalData.keepPassword == true) {
+      var accountInfo = wx.getStorageSync("accountInfo");
+      if (accountInfo) {
         this.setData({
-          stid: stInfo.stid,
-          stpwd: stInfo.stpwd
+          studentID: accountInfo.studentID,
+          studentPassword: accountInfo.studentPassword
         })
       }
     } else {
       this.setData({
-        stid: "",
-        stpwd: ""
+        studentID: "",
+        studentPassword: ""
       })
     }
   },
@@ -219,12 +205,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (app.globalData.notePWD == true) {
-      var stInfo = wx.getStorageSync("stInfo");
-      if (stInfo) {
+    console.log(getCurrentPages());
+    if (app.globalData.keepPassword == true) {
+      var accountInfo = wx.getStorageSync("accountInfo");
+      if (accountInfo) {
         this.setData({
-          stid: stInfo.stid,
-          stpwd: stInfo.stpwd
+          studentID: accountInfo.studentID,
+          studentPassword: accountInfo.studentPassword
         })
       }
     }
@@ -241,9 +228,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    grep.login(this.data.stid, this.data.stpwd, "grade")
-    grep.login(this.data.stid, this.data.stpwd, "course")
-    grep.login(this.data.stid, this.data.stpwd, "exam")
+    grep.login(this.data.studentID, this.data.studentPassword, "grade")
+    grep.login(this.data.studentID, this.data.studentPassword, "course")
+    grep.login(this.data.studentID, this.data.studentPassword, "exam")
   },
 
   /**

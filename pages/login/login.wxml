@@ -8,10 +8,10 @@
             <text class="logo" style="color: rgba(77, 132, 255, 1)">CIDP+</text>
         </view> 
         <view class="index_box">
-            <input class="input-vant" bindinput="onChangeUser" placeholder="请输入学号" type="text" style="color: rgba(0, 0, 0,0.87)" placeholder-class="input-pla" value="{{stid}}"></input>
+            <input class="input-vant" bindinput="onChangeUser" placeholder="请输入学号" type="text" style="color: rgba(0, 0, 0,0.87)" placeholder-class="input-pla" value="{{studentID}}"></input>
             <van-divider style="--divider-margin:5px 5px;-divider-line-height:20px)" />
-            <input class="input-vant" bindinput="onChangePwd" placeholder="请输入办事大厅密码" type="password" value="{{stpwd}}" placeholder-class="input-pla"></input>
-            <button class="roundBTN" style="background-color:rgba(77, 132, 255,1)" hover-class="roundBTN_hover" data-user="{{stid}}" data-pwd="{{stpwd}}" bindtap="loginBefore">
+            <input class="input-vant" bindinput="onChangePwd" placeholder="请输入办事大厅密码" type="password" value="{{studentPassword}}" placeholder-class="input-pla"></input>
+            <button class="roundBTN" style="background-color:rgba(77, 132, 255,1)" hover-class="roundBTN_hover" data-user="{{studentID}}" data-pwd="{{studentPassword}}" bindtap="loginBefore">
                 <text>{{btnText}}</text>
             </button>
         </view>

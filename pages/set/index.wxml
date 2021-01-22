@@ -6,8 +6,8 @@
         <text class="sub-text" style="margin-left:5rpx;" selectable="false" space="false" decode="false">我希望一切都在你的掌控之中</text>
     </view>
    
-     <view wx:if="{{LOGIN_FLAG===true}}" class="new-card" style="width:648rpx;height:auto;margin:28rpx 0rpx 28rpx 0rpx;">
-                 <text class="sub-text" style="margin:28rpx 0rpx 15rpx 0rpx; color:rgba(0,0,0,0.87)">姓名：{{USERNAME}}  </text>
+     <view wx:if="{{loginStatus===true}}" class="new-card" style="width:648rpx;height:auto;margin:28rpx 0rpx 28rpx 0rpx;">
+                 <text class="sub-text" style="margin:28rpx 0rpx 15rpx 0rpx; color:rgba(0,0,0,0.87)">姓名：{{studentName}}  </text>
                  <text class="sub-text" style=" color:rgba(0,0,0,0.87);margin:0rpx 0rpx 28rpx 0rpx; ">NO.{{studentID}}</text>
            
         <view class="btn-s" bind:tap="loginOut">注销</view>
@@ -21,17 +21,17 @@
         <van-cell-group style="color:#ff6600" title="设置">
             <van-cell title="记住密码">
                 <view slot="">
-                    <van-switch checked="{{notePWD}}" bind:change="onChange_notePWD" size="{{btnSize}}px" />
+                    <van-switch checked="{{keepPassword}}" bind:change="onChange_keepPassword" size="{{btnSize}}px" />
                 </view>
             </van-cell>
             <van-cell title="退出时清除缓存">
                 <view slot="">
-                    <van-switch checked="{{exitRE}}" bind:change="onChange_exitRE" size="{{btnSize}}px" />
+                    <van-switch checked="{{onExitClearCache}}" bind:change="onChange_onExitClearCache" size="{{btnSize}}px" />
                 </view>
             </van-cell>
-            <van-cell title="清除课表缓存" data-title="course" bind:tap="delREC" />
-            <van-cell title="清除考表缓存" data-title="exam"   bind:tap="delREC"/>
-            <van-cell title="清除成绩缓存" data-title="grade"  bind:tap="delREC"/> 
+            <van-cell title="清除课表缓存" data-title="course" bind:tap="clearCaches" />
+            <van-cell title="清除考表缓存" data-title="exam"   bind:tap="clearCaches"/>
+            <van-cell title="清除成绩缓存" data-title="grade"  bind:tap="clearCaches"/> 
  </van-cell-group >
             <van-cell-group style="color:#ff6600" title="联系">
             <van-cell >

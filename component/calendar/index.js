@@ -78,7 +78,5 @@ Component({
             this.setData({ dayList,centerText })
         }
     },
-    
-
 }
 })

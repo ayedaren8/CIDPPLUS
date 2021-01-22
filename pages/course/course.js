@@ -11,7 +11,7 @@ Page({
     data: {
         active: 1,
         NOW_WEEK: 1,
-        TERM_WEEK:'',
+        TERM_WEEK: '',
         colorList: ['#F39D43', '#803FEA', '#FF6C69', '#487BFF', '#FF5656', '#487B9B', '#187F8D', '#2966FF', '#CC4848', '#EB548F'],
         day_list: {
             MON: [],
@@ -34,9 +34,9 @@ Page({
             228: 696,
             240: 779
         },
-        noData:false,
+        noData: false,
         show: false,
-        showPopinfo:""
+        showPopinfo: ""
     },
 
 
@@ -52,7 +52,7 @@ Page({
         });
     },
     subWeek: function (e) {
-        
+
         if (this.data.NOW_WEEK > 1) {
             this.setData({
                 NOW_WEEK: this.data.NOW_WEEK - 1
@@ -60,7 +60,7 @@ Page({
         }
     },
     addWeek: function (e) {
-        
+
         if (this.data.NOW_WEEK < 20) {
             this.setData({
                 NOW_WEEK: this.data.NOW_WEEK + 1
@@ -70,15 +70,15 @@ Page({
     },
     clearData: function (res) {
         for (const item of res) {
-            item.OnMonday?this.pushList("MON", item):null
-            item.OnTuesday? this.pushList("TUES", item):null
-            item.OnWednesday?this.pushList("WED", item):null
-            item.OnThursday? this.pushList("THUR", item):null
-            item.OnFriday?this.pushList("FRI", item):null
-            item.OnSaturday?this.pushList("SAT", item):null
-            item.OnSunday?this.pushList("SUN", item):null
+            item.OnMonday ? this.pushList("MON", item) : null
+            item.OnTuesday ? this.pushList("TUES", item) : null
+            item.OnWednesday ? this.pushList("WED", item) : null
+            item.OnThursday ? this.pushList("THUR", item) : null
+            item.OnFriday ? this.pushList("FRI", item) : null
+            item.OnSaturday ? this.pushList("SAT", item) : null
+            item.OnSunday ? this.pushList("SUN", item) : null
         }
-        
+
     },
     pushList: function (day, item) {
         let solt = item.TimeSlotEnd - item.TimeSlotStart
@@ -99,7 +99,7 @@ Page({
             default:
                 break;
         }
-        
+
         var datas = {
             cname: item.LUName,
             location: item.Campus,
@@ -109,7 +109,7 @@ Page({
             begin: item.WeekStart,
             end: item.WeekEnd,
             info: item.Remark,
-            interval: item.WeekInterval == 0 ? item.WeekInterval + 1 :item.WeekInterval + 1 - (item.WeekStart%2),
+            interval: item.WeekInterval == 0 ? item.WeekInterval + 1 : item.WeekInterval + 1 - (item.WeekStart % 2),
             colorid: item.LUCode % 7,
             Y: this.data.slotStart[item.TimeSlotStart],
             len: length
@@ -122,9 +122,11 @@ Page({
     },
 
     showDetail: function (e) {
-        var datas=e.currentTarget.dataset.set
-        
-        this.setData({showPopinfo:datas})
+        var datas = e.currentTarget.dataset.set
+
+        this.setData({
+            showPopinfo: datas
+        })
         this.showPopup();
 
     },
@@ -133,14 +135,14 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let _NOW_WEEK=app.globalData.termWeek>16?16:app.globalData.termWeek
-        this.setData({ 
+        let _NOW_WEEK = app.globalData.termWeek > 16 ? 16 : app.globalData.termWeek
+        this.setData({
             NOW_WEEK: _NOW_WEEK
         })
         this.setData({
             TERM_WEEK: app.globalData.termWeek
         })
-        if (app.globalData.LOGIN_FLAG == false) {
+        if (app.globalData.loginStatus == false) {
             Toast({
                 type: 'fail',
                 message: '请先登录',
@@ -153,7 +155,7 @@ Page({
             });
 
         } else {
-            var stInfo = wx.getStorageSync("stInfo");
+            var accountInfo = wx.getStorageSync("accountInfo");
             var that = this
             // 检查缓存 如果存在缓存直接读取 注意此缓存下一次登录会被删除
             wx.getStorage({
@@ -162,7 +164,7 @@ Page({
                     that.clearData(result.data["Data"])
                 },
                 fail: () => {
-                    grep.login(stInfo.stid, stInfo.stpwd, "course")
+                    grep.login(accountInfo.studentID, accountInfo.studentPassword, "course")
                     // 定义回调函数
                     grep.courseReady = api => {
                         wx.getStorage({
@@ -190,13 +192,13 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        let _NOW_WEEK=app.globalData.termWeek>16?16:app.globalData.termWeek
-        this.setData({ 
+        let _NOW_WEEK = app.globalData.termWeek > 16 ? 16 : app.globalData.termWeek
+        this.setData({
             NOW_WEEK: _NOW_WEEK
         })
-        if(app.globalData.needRelanch){
+        if (app.globalData.needRelanch) {
             this.onLoad()
-            app.globalData.needRelanch=false
+            app.globalData.needRelanch = false
         }
         if (typeof this.getTabBar === 'function' &&
             this.getTabBar()) {
@@ -204,15 +206,15 @@ Page({
                 selected: 1
             })
         }
-        if (app.globalData.LOGIN_FLAG == false) {
+        if (app.globalData.loginStatus == false) {
             Toast({
                 type: 'fail',
                 message: '请先登录',
                 duration: 1000,
                 onClose: () => {
-                    wx.reLaunch({
-                        url: '../index/index',
-                    });
+                    wx.switchTab({
+                        url: '/pages/index/index',
+                    })
                 }
             });
 
@@ -233,9 +235,9 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-      wx.stopPullDownRefresh()    
+        wx.stopPullDownRefresh()
         Dialog.confirm({
-            title:  '更新数据？',
+            title: '更新数据？',
             message: '你确实要更新数据吗?'
         }).then(() => {
             wx.removeStorage({
