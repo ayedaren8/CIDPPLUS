@@ -9,7 +9,8 @@
     "pages/page/page",
     "pages/generate-avatar/product/index",
     "pages/generate-avatar/upload/index",
-    "pages/generate-avatar/makepic/index"
+    "pages/generate-avatar/makepic/index",
+    "pages/dashboard/index"
   ],
   "tabBar": {
     "custom": true,

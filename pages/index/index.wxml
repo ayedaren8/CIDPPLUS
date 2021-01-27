@@ -11,19 +11,19 @@
 			<text class="sub-text" style="margin-left:5rpx;">CIDPPLUS防灾科技学院移动教务助手</text>
 		</view>
 		<login-bar
-		 isLogin="{{isLogin}}"
+		 loginStatus="{{loginStatus}}"
 		 currentSemesterWeek="{{currentSemesterWeek}}"
 		 semesterWeekTotal="{{semesterWeekTotal}}"
 		 username="{{username}}"
 		 studentID="{{studentID}}"
 		 bind:handleLogin="login"
 		 bind:handleLoginOut="loginOut"
+		 showProgress="{{true}}"
 		></login-bar>
 		<calendar></calendar>
 	</view>
 	<van-dialog id="van-dialog" />
-
-	<!-- <ad unit-id="adunit-d981d01be915e8df"></ad> -->
+	<ad unit-id="adunit-d981d01be915e8df"></ad>
 	<view class="FORBAR"></view>
 </view>
 

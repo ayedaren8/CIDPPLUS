@@ -1,11 +1,15 @@
 <view
- wx:if="{{isLogin}}"
+ wx:if="{{loginStatus}}"
  class="new-card"
  style="width:648rpx;height:auto;margin:28rpx 0rpx 10rpx 0rpx;"
 >
 	<text class="sub-text" style="margin:28rpx 0rpx 15rpx 0rpx; color:rgba(0,0,0,0.87)">姓名：{{username}}  </text>
 	<text class="sub-text" style=" color:rgba(0,0,0,0.87)">NO.{{studentID}}</text>
-	<view class="row" style="justify-content: end;align-items: flex-end;">
+	<view
+	 wx:if="{{showProgress}}"
+	 class="row"
+	 style="justify-content: end;align-items: flex-end;"
+	>
 		<van-progress
 		 style="width:300rpx;margin:16rpx 10rpx 28rpx 0rpx;"
 		 inactive="{{currentSemesterWeek>0&&currentSemesterWeek<21?false:true}}"

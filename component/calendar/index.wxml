@@ -35,10 +35,7 @@
 	</view>
 </view>
 
-<view
- class="row"
- style="justify-content: center;align-items: center; margin:12rpx 0rpx;width:648rpx"
->
+<view class="row" style="justify-content: center;align-items: center; margin:12rpx 0rpx;width:648rpx">
 	<view class="short-line">
 	</view>
 </view>
