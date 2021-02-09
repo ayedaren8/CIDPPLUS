@@ -1,9 +1,10 @@
+// const computedBehavior = require('miniprogram-computed')
 const componentOptions = {
 	// 组件选项
 	options: {
 		multipleSlots: true,
 	},
-	behaviors: [],
+	// behaviors: [computedBehavior],
 	properties: {
 		loginStatus: {
 			type: Boolean,
@@ -21,9 +22,19 @@ const componentOptions = {
 	// 组件数据
 	data: {
 		isPageHidden: false, // 页面是否处于隐藏状态
-		percent: 0,
 	},
-	// 数据监听器
+	computed: {
+		percent: (data) => {
+			if (Math.round((data.currentSemesterWeek / data.semesterWeekTotal) * 100) > 100) {
+				return 100
+			} else {
+				return Math.round((data.currentSemesterWeek / data.semesterWeekTotal) * 100)
+			}
+			// 注意： computed 函数中不能访问 this ，只有 data 对象可供访问
+			// 这个函数的返回值会被设置到 this.data.sum 字段中
+		},
+	},
+	// 数据监听器s
 	observers: {},
 	// 组件方法
 	methods: {
@@ -51,16 +62,13 @@ const componentOptions = {
 		init() {
 			this.calculatePercent()
 		},
-
 	},
 	// 组件生命周期
 	lifetimes: {
 		created() {
-
 		},
 		attached() {
 			this.init()
-
 		},
 		ready() { },
 		moved() { },
@@ -85,7 +93,6 @@ const componentOptions = {
 			this.setData({
 				isPageHidden: true,
 			})
-
 			// 清除定时器等操作
 		},
 		// 页面尺寸变化时

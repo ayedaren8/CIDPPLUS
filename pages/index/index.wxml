@@ -23,7 +23,7 @@
 		<calendar></calendar>
 	</view>
 	<van-dialog id="van-dialog" />
-	<ad unit-id="adunit-d981d01be915e8df"></ad>
+
 	<view class="FORBAR"></view>
 </view>
 

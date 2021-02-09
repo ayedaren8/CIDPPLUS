@@ -40,7 +40,7 @@ App({
 		studentName: "",
 		loginStatus: false,
 		isIphoneX: false,
-		DOMAIN: "http://ayedaren.cn:3000/api/",
+		DOMAIN: "https://ayedaren.cn/api/",
 		TermStartMonth: 9,
 		TermStartDay: 17,
 		NowWeeK: '1',

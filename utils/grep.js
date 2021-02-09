@@ -23,9 +23,7 @@ let resErrorHandler = function (error) {
 }
 
 function login(studentID, studentPassword, path) {
-	let api = path
 	// 加载Toast提示
-
 	// 发起请求
 	wx.request({
 		url: `${app.globalData.DOMAIN}${path}`,

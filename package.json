@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ayedaren8/CIDPPLUS#readme",
   "dependencies": {
+    "miniprogram-computed": "^4.0.1",
     "mobx-miniprogram": "^4.13.2",
     "mobx-miniprogram-bindings": "^2.0.0"
   }

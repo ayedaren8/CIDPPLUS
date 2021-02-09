@@ -3,7 +3,6 @@ const app = getApp();
 const { removeStorageList } = require("../../utils/util");
 import Dialog from '../../dist/dialog/dialog';
 Page({
-
 	/**
 	 * 页面的初始数据
 	 */
@@ -39,23 +38,9 @@ Page({
 					keepPassword: app.globalData.keepPassword,
 					onExitClearCache: app.globalData.onExitClearCache,
 					currentWeekIndex: '',
-					currentWeekIndex: ''
 				}
 			});
-
 			removeStorageList(['grade', 'course', 'exam', 'studentInfo'])
-			wx.removeStorage({
-				key: 'grade'
-			});
-			wx.removeStorage({
-				key: 'studentInfo'
-			});
-			wx.removeStorage({
-				key: 'course'
-			});
-			wx.removeStorage({
-				key: 'exam'
-			});
 			app.globalData.needRelanch = true
 		})
 	},
@@ -139,7 +124,6 @@ Page({
 	onShow: function () {
 		if (typeof this.getTabBar === 'function' &&
 			this.getTabBar()) {
-
 			this.getTabBar().setData({
 				selected: 4
 			})
@@ -150,13 +134,6 @@ Page({
 			studentName: res.name,
 			studentID: res.srNum
 		})
-	},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
 	},
 
 	/**
