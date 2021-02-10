@@ -39,17 +39,15 @@
         border-radius: 48rpx;
         bottom: -48rpx;
         left: 122rpx;
-        color: azure;
+        color: #fff;
         font-size: 32rpx;
         text-align: center;
         line-height: 96rpx;
-        background: linear-gradient(70.34deg, rgba(32, 207, 4, 1) 0%, rgba(105, 219, 29, 1) 100%);
+        background: linear-gradient(70.34deg,rgb(252, 176, 0) 0%, rgb(255, 232, 28) 100%);
     }
     
     .foot-img{
-        margin:100rpx auto;
         margin-bottom: 0em;
-        width: 500rpx;
-        height:27.44rpx;
+        width: 100%;
     }
 

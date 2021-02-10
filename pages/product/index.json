@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+	"usingComponents": {},
+	"backgroundTextStyle": "dark",
+	"navigationBarBackgroundColor": "#ffffff",
+	"navigationBarTitleText": "新春换头像",
+	"navigationBarTextStyle": "black",
+	"enablePullDownRefresh": true
 }

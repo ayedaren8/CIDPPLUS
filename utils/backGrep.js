@@ -28,10 +28,7 @@
           fail: () => {},
           complete: () => { console.log("后台执行" + api + "!"); }
       });
-
   }
-
-
   module.exports = {
       login: login
   }

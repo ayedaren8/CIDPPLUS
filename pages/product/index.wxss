@@ -15,7 +15,6 @@ box-shadow: 2px 4px 6px 2px darkgray ;
 .scroll_headlist{
     box-sizing: border-box;
     white-space: nowrap;
-    padding: 20rpx;
     width: 100%;
     justify-content: space-between;
 }
@@ -48,12 +47,10 @@ box-shadow: 2px 4px 6px 2px darkgray ;
     font-size: 32rpx;
     text-align: center;
     line-height: 96rpx;
-    background: linear-gradient(45deg, rgba(31, 109, 235, 1) 0%, rgba(74, 164, 255, 1) 100%);
+    background: linear-gradient(45deg, rgba(255, 10, 10, 1) 0%, rgba(200, 10, 25, 1) 100%);
 }
 
 .foot-img{
-    margin:100rpx auto;
-    margin-bottom: 0em;
-    width: 500rpx;
-    height:27.44rpx;
+	width: 100%;
+  margin-bottom: 0em;
 }

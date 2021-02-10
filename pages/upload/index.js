@@ -44,7 +44,6 @@ Page({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
-      
       success: (res) => {
         const src = res.tempFilePaths[0]
         that.cropper.pushOrign(src)
@@ -52,7 +51,6 @@ Page({
           uploaded: true
         })
       },
-
       fail: (err) => {
         wx.showToast({
           title: err,
@@ -63,8 +61,6 @@ Page({
         });
       },
     });
-
-
   },
   getCropperImage: function () {
     if (!this.data.uploaded) {
@@ -72,7 +68,6 @@ Page({
     }
     var that = this
     this.wecropper.getCropperImage((tempFilePath) => {
-      // tempFilePath 为裁剪后的图片临时路径
       if (tempFilePath) {
         that.setData({
           'img.obj': tempFilePath
@@ -80,8 +75,6 @@ Page({
         var model = JSON.stringify(that.data.img);
         wx.redirectTo({
           url: '/pages/makepic/index?model=' + model,
-          success: (result) => {
-          },
         });
       } else {
         console.log('获取图片地址失败，请稍后重试')
@@ -119,48 +112,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

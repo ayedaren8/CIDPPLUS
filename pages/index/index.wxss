@@ -25,14 +25,15 @@
 
 .float_banner{
     position: fixed;
-    right: 48rpx;
+    right: 68rpx;
     bottom: 300rpx;
     height: 320rpx;
     width: 180rpx;
 }
 .float_img{
     height: 320rpx;
-    width: 180rpx;
+    width:208rpx;
+		border-radius: 10rpx;
 }
 .close_btn{
     position: absolute;

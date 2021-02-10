@@ -1,15 +1,28 @@
 <!--pages/makepic/index.wxml-->
-<view class="index_body" hover-class="none" hover-stop-propagation="false">
-  <view class="index_body_in" style="margin:40rpx auto">
-    <image class="index_box" style="width:100%" src="/img/nav.png"></image>
-    <view class="index_box">
-      <view class="headpic-card">
-        <image class="card-in" wx:if="{{showpic}}" src="{{tempImgPath}}" ></image>
-        <view class="card-in-btn" bind:tap="save">保存相册</view>
-      </view>
-      <image class="foot-img" src="/img/foot.png"></image>
-    </view>
-  </view>
+<view>
+	<view>
+		<image
+		 class="index_box"
+		 style="width:100%"
+		 src="/img/nav.png"
+		></image>
+		<view class="index_box">
+			<view class="headpic-card">
+				<image
+				 class="card-in"
+				 wx:if="{{showpic}}"
+				 src="{{tempImgPath}}"
+				></image>
+				<view class="card-in-btn" bind:tap="save">保存相册</view>
+			</view>
+			<image class="foot-img" src="/img/foot.png"></image>
+		</view>
+	</view>
 </view>
-<canvas  class="mycanvas" canvas-id="mycanvas"   width="800" height="800"></canvas> 
+<canvas
+ class="mycanvas"
+ canvas-id="mycanvas"
+ width="800"
+ height="800"
+></canvas>
 

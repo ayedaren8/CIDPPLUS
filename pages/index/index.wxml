@@ -1,85 +1,149 @@
 <!-- pages/indexs/index.wxml -->
-<view >
-    
+<view>
+	<van-notice-bar
+	 scrollable
+	 wx:if="{{isShowNotice}}"
+	 text="技术是开发它的人的共同灵魂。"
+	/>
+	<view class="index_body">
+		<view class="header">
+			<image
+			 class="head-pic"
+			 src="/pages/images/index.png"
+			 mode="aspectFit"
+			></image>
+			<text class="sub-text" style="margin-left:5rpx;">CIDPPLUS防灾科技学院移动教务助手</text>
+		</view>
+		<view
+		 wx:if="{{LOGIN_FLAG===true}}"
+		 class="new-card"
+		 style="width:648rpx;height:auto;margin:28rpx 0rpx 10rpx 0rpx;"
+		>
 
-<view class="index_body">
+			<text class="sub-text" style="margin:28rpx 0rpx 15rpx 0rpx; color:rgba(0,0,0,0.87)">姓名：{{USERNAME}}  </text>
+			<text class="sub-text" style=" color:rgba(0,0,0,0.87)">NO.{{studentID}}</text>
 
+			<view class="row" style="justify-content: end;align-items: flex-end;">
 
-    <view class="header">
-        <image class="head-pic" src="/pages/images/index.png" mode="aspectFit"></image>
-        <text class="sub-text" style="margin-left:5rpx;">CIDPPLUS防灾科技学院移动教务助手</text>
-    </view>
-        <view wx:if="{{LOGIN_FLAG===true}}" class="new-card" style="width:648rpx;height:auto;margin:28rpx 0rpx 10rpx 0rpx;">
-           
-        
-                 <text class="sub-text" style="margin:28rpx 0rpx 15rpx 0rpx; color:rgba(0,0,0,0.87)">姓名：{{USERNAME}}  </text>
-                 <text class="sub-text" style=" color:rgba(0,0,0,0.87)">NO.{{studentID}}</text>
-                 
-            <view  class="row" style="justify-content: end;align-items: flex-end;">
-          
-            <van-progress style="width:300rpx;margin:16rpx 10rpx 28rpx 0rpx;" inactive="{{termWeek>0&&termWeek<21?false:true}}" show-pivot="{{false}}" stroke-width="8"color="#4d84fa" percentage="{{percent}}"/>
-            <text wx:if="{{percent==100}}" class="body-text" style="margin:16rpx 0rpx 28rpx 0rpx;">本学期已结束，假期快乐！</text>
-            <text wx:else class="body-text" style="margin:16rpx 0rpx 28rpx 0rpx;">本学期已到达第{{ termWeek }}周</text>
-        </view> 
-        <view class="btn-s" bind:tap="loginOut">注销</view>
-        </view>
-        <view wx:else class="new-card" style="width:648rpx;height:144rpx;padding:28rpx 0rpx;margin:28rpx 0rpx;">
-            <text class="headeline-text" style="margin:20rpx 0rpx;padding:0rpx 50rpx">你目前尚未登录</text>
-            <view class="btn-s"  bind:tap="login">登录</view>
-        </view>
-    <view class="calender">
-        <view class="calender-bar">
-            <view class="icon-btn" hover-class="hover-day" bindtap="preMonth">
-                <image class="icon" src="/icon/left.png" mode="" bindload=""></image>
-            </view>
-            <view class=""  hover-class="hover-day" >{{currentYear}}年{{currentMonth}}月</view>
-            <view class="icon-btn" hover-class="hover-day" bindtap="nextMonth">
-                <image class="icon" src="/icon/right.png" mode="" bindload=""></image>
-            </view>
-        </view>
-        <view class="cal-line">
-            <view wx:for="{{weekList}}"  wx:key="item">
-                <view class="cell">{{item}}</view>
-                <view></view>
-            </view>
-        </view>
-        <view class="cal-line" wx:for="{{dayList}}" wx:key="item">
-            <view class="cell" wx:for="{{item}}" wx:for-item="sitem" hover-class="hover-day" wx:key="sitem">
-                <view wx:if="{{sitem.month===thisMonth&&sitem.day===today&&sitem.year==thisYear}}">
-                    <view class="cell today-cell">{{sitem.day}}</view>
-                </view>
-                <view wx:elif="{{sitem.month===currentMonth}}" class="normal-cell">
-                    {{sitem.day}}
-                </view>
-                <view wx:elif="{{sitem.special===true}}" class="special-cell">{{sitem.day}}</view>
-                <view wx:else class="other-cell">{{sitem.day}}</view>
-            </view>
-        </view>
-    </view>
-    
-<view id="S_LINE" class="row" style="justify-content: center;align-items: center; margin:12rpx 0rpx;width:648rpx">
-    <view class="short-line">
-    </view>
-</view>
-    <view class="new-card" style="height:100%;background:#f8f8f9;padding-bottom:40px;width:648rpx;margin-top:28rpx;">
-        <view wx:for="{{monthInfo}}" class=""  wx:key="item">
-            <view wx:if="{{item.month===currentMonth&&item.year===currentYear}}" class="">
-                <view class="">
-                    <text class="sub-text" selectable="false" space="false" decode="false">
+				<van-progress
+				 style="width:300rpx;margin:16rpx 10rpx 28rpx 0rpx;"
+				 inactive="{{termWeek>0&&termWeek<21?false:true}}"
+				 show-pivot="{{false}}"
+				 stroke-width="8"
+				 color="#4d84fa"
+				 percentage="{{percent}}"
+				/>
+				<text wx:if="{{percent==100}}" class="body-text" style="margin:16rpx 0rpx 28rpx 0rpx;">本学期已结束，假期快乐！</text>
+				<text wx:else class="body-text" style="margin:16rpx 0rpx 28rpx 0rpx;">本学期已到达第{{ termWeek }}周</text>
+			</view>
+			<view class="btn-s" bind:tap="loginOut">注销</view>
+		</view>
+		<view
+		 wx:else
+		 class="new-card"
+		 style="width:648rpx;height:144rpx;padding:28rpx 0rpx;margin:28rpx 0rpx;"
+		>
+			<text class="headeline-text" style="margin:20rpx 0rpx;padding:0rpx 50rpx">你目前尚未登录</text>
+			<view class="btn-s" bind:tap="login">登录</view>
+		</view>
+		<view class="calender">
+			<view class="calender-bar">
+				<view
+				 class="icon-btn"
+				 hover-class="hover-day"
+				 bindtap="preMonth"
+				>
+					<image
+					 class="icon"
+					 src="/icon/left.png"
+					 mode=""
+					 bindload=""
+					></image>
+				</view>
+				<view class="" hover-class="hover-day">{{currentYear}}年{{currentMonth}}月</view>
+				<view
+				 class="icon-btn"
+				 hover-class="hover-day"
+				 bindtap="nextMonth"
+				>
+					<image
+					 class="icon"
+					 src="/icon/right.png"
+					 mode=""
+					 bindload=""
+					></image>
+				</view>
+			</view>
+			<view class="cal-line">
+				<view wx:for="{{weekList}}" wx:key="item">
+					<view class="cell">{{item}}</view>
+					<view></view>
+				</view>
+			</view>
+			<view
+			 class="cal-line"
+			 wx:for="{{dayList}}"
+			 wx:key="item"
+			>
+				<view
+				 class="cell"
+				 wx:for="{{item}}"
+				 wx:for-item="sitem"
+				 hover-class="hover-day"
+				 wx:key="sitem"
+				>
+					<view wx:if="{{sitem.month===thisMonth&&sitem.day===today&&sitem.year==thisYear}}">
+						<view class="cell today-cell">{{sitem.day}}</view>
+					</view>
+					<view wx:elif="{{sitem.month===currentMonth}}" class="normal-cell">
+						{{sitem.day}}
+					</view>
+					<view wx:elif="{{sitem.special===true}}" class="special-cell">{{sitem.day}}</view>
+					<view wx:else class="other-cell">{{sitem.day}}</view>
+				</view>
+			</view>
+		</view>
+
+		<view
+		 id="S_LINE"
+		 class="row"
+		 style="justify-content: center;align-items: center; margin:12rpx 0rpx;width:648rpx"
+		>
+			<view class="short-line">
+			</view>
+		</view>
+		<view class="new-card" style="height:100%;background:#f8f8f9;padding-bottom:40px;width:648rpx;margin-top:28rpx;">
+			<view
+			 wx:for="{{monthInfo}}"
+			 class=""
+			 wx:key="item"
+			>
+				<view wx:if="{{item.month===currentMonth&&item.year===currentYear}}" class="">
+					<view class="">
+						<text class="sub-text" selectable="false" space="false" decode="false">
                         {{item.info}}
                     </text>
-                </view>
-            </view>
-        </view>
-    </view>
-</view>
-<van-dialog id="van-dialog" />
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<van-dialog id="van-dialog" />
 
-   <!-- <ad unit-id="adunit-d981d01be915e8df"></ad> -->
-<view class="FORBAR"></view>
-<!-- <view class="float_banner" wx:if="{{floatBannerShow}}">
-    <image src="/img/float.png" class="float_img" bind:tap="gotoMakepic"/>    
-    <image src="/icon/close.png" class="close_btn" bind:tap="delFloatImg"/>
+	<!-- <ad unit-id="adunit-d981d01be915e8df"></ad> -->
+	<view class="FORBAR"></view>
+	<view class="float_banner" wx:if="{{floatBannerShow}}">
+		<image
+		 src="/img/float.png"
+		 class="float_img"
+		 bind:tap="gotoMakepic"
+		/>
+		<image
+		 src="/icon/close.png"
+		 class="close_btn"
+		 bind:tap="delFloatImg"
+		/>
+	</view>
+
 </view>
-   -->
-</view>
+
