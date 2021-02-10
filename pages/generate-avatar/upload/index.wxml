@@ -1,24 +1,25 @@
-<import src="../../cropper/we-cropper.wxml"/>
+<import src=".././cropper/we-cropper.wxml" />
 <view class="cropper-wrapper">
-  <template is="we-cropper" data="{{...cropperOpt}}"/>  
-  <cover-view class="cropper-buttons">
-        <cover-view
-                class="upload"
-                bindtap="uploadTap">
-            上传图片
-        </cover-view>
-        <cover-view
-                wx:if="{{uploaded}}"
-                class="getCropperImage"
-                bindtap="getCropperImage"   
-                style= "background-color:#04b704;color:#ffffff;">
-            生成图片
-        </cover-view>
-        <cover-view
-                wx:if="{{!uploaded}}"
-                class="getCropperImage"
-                bindtap="getCropperImage">
-            生成图片
-        </cover-view>
-    </cover-view> 
+	<template is="we-cropper" data="{{...cropperOpt}}" />
+	<cover-view class="cropper-buttons">
+		<cover-view class="upload" bindtap="uploadTap">
+			上传图片
+		</cover-view>
+		<cover-view
+		 wx:if="{{uploaded}}"
+		 class="getCropperImage"
+		 bindtap="getCropperImage"
+		 style="background-color:#04b704;color:#ffffff;"
+		>
+			生成图片
+		</cover-view>
+		<cover-view
+		 wx:if="{{!uploaded}}"
+		 class="getCropperImage"
+		 bindtap="getCropperImage"
+		>
+			生成图片
+		</cover-view>
+	</cover-view>
 </view>
+

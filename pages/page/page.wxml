@@ -1,10 +1,11 @@
 <!--pages/page/page.wxml-->
-<view class="index_body" style="margin:28rpx 0rpx 28rpx 42rpx" >
-    <text class="headline-text">{{title}}</text>
-    <view wx:for='{{textBody}}'  style="width:648rpx;height:auto; margin:14rpx 0rpx" >
-        <text wx:if="{{item.title!=''}}" class="sub-text "  style="display:block;color:rgba(0,0,0,0.87)">{{item.title}}</text>
-        <text class="body-text " style=" color:rgba(0,0,0,0.66); text-align: justify;text-indent:5em;">{{item.body}}</text>
-    </view>
+<view class="index_body" style="margin:28rpx 0rpx 28rpx 42rpx">
+	<text class="headline-text">{{title}}</text>
+	<view wx:for='{{textBody}}' style="width:648rpx;height:auto; margin:14rpx 0rpx">
+		<text wx:if="{{item.title!=''}}" class="sub-text "  style="display:block;color:rgba(0,0,0,0.87)">{{item.title}}</text>
+		<text class="body-text " style=" color:rgba(0,0,0,0.66); text-align: justify;text-indent:5em;">{{item.body}}</text>
+	</view>
 </view>
-<view class="FORBAR" >   
+<view class="FORBAR">
 </view>
+

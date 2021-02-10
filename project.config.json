@@ -61,20 +61,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"list": [
-				{
-					"name": "pages/login/login",
-					"pathName": "pages/login/login",
-					"query": "",
-					"scene": null
-				},
-				{
-					"name": "dashboard_test",
-					"pathName": "pages/dashboard/index",
-					"query": "",
-					"scene": null
-				}
-			]
+			"list": []
 		}
 	}
 }

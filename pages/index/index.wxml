@@ -3,7 +3,7 @@
 	<van-notice-bar
 	 scrollable
 	 wx:if="{{isShowNotice}}"
-	 text="技术是开发它的人的共同灵魂。"
+	 text="{{noticeContent}}"
 	/>
 	<view class="index_body">
 		<view class="header">
@@ -27,7 +27,18 @@
 		<calendar></calendar>
 	</view>
 	<van-dialog id="van-dialog" />
-
+	<view class="float_banner" wx:if="{{floatBannerShow}}">
+		<image
+		 src="/img/float.png"
+		 class="float_img"
+		 bind:tap="gotoMakepic"
+		/>
+		<image
+		 src="/icon/close.png"
+		 class="close_btn"
+		 bind:tap="delFloatImg"
+		/>
+	</view>
 	<view class="FORBAR"></view>
 </view>
 

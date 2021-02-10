@@ -8,6 +8,8 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		isShowNotice: false,
+		noticeContent: "",
 		floatBannerShow: true,
 		loginStatus: "",
 		username: "",
@@ -49,7 +51,9 @@ Page({
 			url: '/pages/generate-avatar/product/index'
 		});
 	},
+	// getNotice: function () {
 
+	// },
 	delFloatImg: function () {
 		this.setData({
 			floatBannerShow: false
