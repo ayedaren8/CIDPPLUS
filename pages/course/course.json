@@ -1,8 +1,8 @@
 {
-    "usingComponents": {},
-    "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTitleText": "课表",
-    "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
+	"usingComponents": {},
+	"backgroundTextStyle": "dark",
+	"navigationBarBackgroundColor": "#ffffff",
+	"navigationBarTitleText": "课表",
+	"navigationBarTextStyle": "black",
+	"enablePullDownRefresh": true
 }

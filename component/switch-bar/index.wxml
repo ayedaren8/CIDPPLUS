@@ -1,0 +1,30 @@
+<!--component/switch-bar/index.wxml-->
+
+<view class="calender-bar">
+	<view
+	 class="icon-btn"
+	 hover-class="text_hover"
+	 bindtap="leftClick"
+	>
+	<image
+		 class="icon"
+		 src="/icon/left.png"
+		 mode=""
+		 bindload=""
+		></image>
+	</view>
+	<view class="center-text" hover-class="hover-day">{{centerText}}</view>
+	<view
+	 class="icon-btn"
+	 hover-class="text_hover"
+	 bindtap="rightClick"
+	>
+		<image
+		 class="icon"
+		 src="/icon/right.png"
+		 mode=""
+		 bindload=""
+		></image>
+	</view>
+</view>
+

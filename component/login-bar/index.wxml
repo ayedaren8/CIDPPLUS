@@ -1,0 +1,34 @@
+<view
+ wx:if="{{loginStatus}}"
+ class="new-card"
+ style="width:648rpx;height:auto;margin:28rpx 0rpx 10rpx 0rpx;"
+>
+	<text class="sub-text" style="margin:28rpx 0rpx 15rpx 0rpx; color:rgba(0,0,0,0.87)">姓名：{{username}}  </text>
+	<text class="sub-text" style=" color:rgba(0,0,0,0.87)">NO.{{studentID}}</text>
+	<view
+	 wx:if="{{showProgress}}"
+	 class="row"
+	 style="justify-content: end;align-items: flex-end;"
+	>
+		<van-progress
+		 style="width:300rpx;margin:16rpx 10rpx 28rpx 0rpx;"
+		 inactive="{{currentSemesterWeek>0&&currentSemesterWeek<21?false:true}}"
+		 show-pivot="{{false}}"
+		 stroke-width="8"
+		 color="#4d84fa"
+		 percentage="{{percent}}"
+		/>
+		<text wx:if="{{percent==100}}" class="body-text" style="margin:16rpx 0rpx 28rpx 0rpx;">本学期已结束，假期快乐！</text>
+		<text wx:else class="body-text" style="margin:16rpx 0rpx 28rpx 0rpx;">本学期已到达第{{ currentSemesterWeek }}周</text>
+	</view>
+	<view class="btn-s" bind:tap="loginOut">注销</view>
+</view>
+<view
+ wx:else
+ class="new-card"
+ style="width:648rpx;height:144rpx;padding:28rpx 0rpx;margin:28rpx 0rpx;"
+>
+	<text class="headeline-text" style="margin:20rpx 0rpx;padding:0rpx 50rpx">你目前尚未登录</text>
+	<view class="btn-s" bind:tap="login">登录</view>
+</view>
+

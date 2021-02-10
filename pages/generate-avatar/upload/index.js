@@ -1,5 +1,5 @@
 // pages/upload/index.js
-import WeCropper from '../../cropper/we-cropper.js'
+import WeCropper from '../../../cropper/we-cropper.js'
 const device = wx.getSystemInfoSync() // 获取设备信息
 const width = device.windowWidth // 示例为一个与屏幕等宽的正方形裁剪框
 const height = device.windowHeight
@@ -77,7 +77,7 @@ Page({
           url: '/pages/makepic/index?model=' + model,
         });
       } else {
-        console.log('获取图片地址失败，请稍后重试')
+        
       }
     })
   },
@@ -85,7 +85,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.src);
+    
     this.setData({
       'img.bg': options.src
     })
@@ -94,7 +94,7 @@ Page({
     } = this.data
     this.cropper = new WeCropper(cropperOpt)
       .on('ready', (ctx) => {
-        console.log(`wecropper is ready for work!`)
+        
       })
       .on('beforeImageLoad', (ctx) => {
         wx.showToast({

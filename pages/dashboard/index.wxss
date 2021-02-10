@@ -1,0 +1,6 @@
+/* pages/dashboard/index.wxss */
+.warpper{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}

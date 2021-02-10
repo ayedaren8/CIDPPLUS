@@ -1,30 +1,41 @@
-<view class="index_body"  >
-    <view class="header" style="margin:28rpx 0rpx">
-        <image class="head-pic" src="/pages/images/exam.png" mode="aspectFit"></image>
-        <text class="sub-text" style="margin-left:5rpx;" selectable="false" space="false" decode="false">检验一学期学习成果的时刻</text>
-    </view>
-    <view class="row" style="margin:28rpx 0rpx 0rpx 0rpx;align-items: center;">
-        <view class="s-block"></view><text class="headline-text" >{{note_1}}</text>
-    </view>
-     <view  class="row" style="margin:0rpx 0rpx 28rpx 0rpx;align-items: center;" >
-        <view class="s-block"></view><text class="headline-text" >{{note_2}}</text>
-    </view>
-        <view class="col">
-              <view wx:for="{{exam}}" class="nor_bor" style="width:648rpx;height:144rpx;margin:14rpx 0rpx">
-                  <view class="term-card row">
-                        <view class="col"style="justify-content: space-between;" >
-                        <text class="headline-text" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;line-height: 58rpx;" >考试科目：{{item.CourseName}}  {{ item.PhaseName}}</text>
-                         <text class="body-text" >考试时间:{{item.periodTime}}</text>
-                        <view class="row"style="width:550rpx;justify-content: space-between;">
-                            <text class="body-text" >地点:{{item.learningSpace}}</text>
-                            <text class="body-text" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis" >考试方式:{{item.EvaluationMethod}}</text>
-                        </view>
-                        </view>
-                    </view> 
-        </view>
-    </view>
+<view class="index_body">
+	<view class="header" style="margin:28rpx 0rpx">
+		<image
+		 class="head-pic"
+		 src="/pages/images/exam.png"
+		 mode="aspectFit"
+		></image>
+		<text class="sub-text" style="margin-left:5rpx;" selectable="false" space="false" decode="false">检验一学期学习成果的时刻</text>
+	</view>
+	<view class="row" style="margin:28rpx 0rpx 0rpx 0rpx;align-items: center;">
+		<view class="s-block"></view>
+		<text class="headline-text" >{{note_1}}</text>
+	</view>
+	<view class="row" style="margin:0rpx 0rpx 28rpx 0rpx;align-items: center;">
+		<view class="s-block"></view>
+		<text class="headline-text" >{{note_2}}</text>
+	</view>
+	<view class="col">
+		<view
+		 wx:for="{{exam.b}}"
+		 class="nor_bor"
+		 style="width:648rpxs;height:144rpx;margin:14rpx 0rpx"
+		>
+			<view wx:if="{{!item.IsPass}}" class="term-card row">
+				<view class="col" style="justify-content: space-between;">
+					<text class="headline-text" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;line-height: 58rpx;" >考试科目：{{item.CourseName}}  {{ item.PhaseName}}</text>
+					<text class="body-text" >考试时间:{{item.periodTime}}</text>
+					<view class="row" style="width:550rpx;justify-content: space-between;">
+						<text class="body-text" >地点:{{item.learningSpace}}</text>
+						<text class="body-text" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis" >考试方式:{{item.EvaluationMethod}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
 </view>
 <view class="FORBAR"></view>
 <van-notify id="van-notify" />
 <van-toast id="van-toast" />
-<van-dialog id="van-dialog"/>
+<van-dialog id="van-dialog" />
+

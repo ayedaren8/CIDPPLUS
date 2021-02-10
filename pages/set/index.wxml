@@ -1,60 +1,123 @@
 <!-- pages/set/index.wxml -->
-<view class="index_body" style="margin:28rpx 0rpx 28rpx 42rpx;width:708rpx" hover-class="none" hover-stop-propagation="false">
-   
-    <view class="header" hover-class="none" hover-stop-propagation="false">
-        <image class="head-pic" src="/pages/images/set.png" mode="aspectFit"></image>
-        <text class="sub-text" style="margin-left:5rpx;" selectable="false" space="false" decode="false">我希望一切都在你的掌控之中</text>
-    </view>
-   
-     <view wx:if="{{LOGIN_FLAG===true}}" class="new-card" style="width:648rpx;height:auto;margin:28rpx 0rpx 28rpx 0rpx;">
-                 <text class="sub-text" style="margin:28rpx 0rpx 15rpx 0rpx; color:rgba(0,0,0,0.87)">姓名：{{USERNAME}}  </text>
-                 <text class="sub-text" style=" color:rgba(0,0,0,0.87);margin:0rpx 0rpx 28rpx 0rpx; ">NO.{{studentID}}</text>
-           
-        <view class="btn-s" bind:tap="loginOut">注销</view>
-        </view>
-        <view wx:else class="new-card" style="width:648rpx;height:144rpx;padding:28rpx 0rpx;margin:28rpx 0rpx;">
-            <text class="headeline-text" style="margin:20rpx 0rpx;padding:0rpx 50rpx">你目前尚未登录</text>
-            <view class="btn-s"  bind:tap="login">登录</view>
-        </view>
-   
-    <view style="width:700rpx;height:auto">
-        <van-cell-group style="color:#ff6600" title="设置">
-            <van-cell title="记住密码">
-                <view slot="">
-                    <van-switch checked="{{notePWD}}" bind:change="onChange_notePWD" size="{{btnSize}}px" />
-                </view>
-            </van-cell>
-            <van-cell title="退出时清除缓存">
-                <view slot="">
-                    <van-switch checked="{{exitRE}}" bind:change="onChange_exitRE" size="{{btnSize}}px" />
-                </view>
-            </van-cell>
-            <van-cell title="清除课表缓存" data-title="course" bind:tap="delREC" />
-            <van-cell title="清除考表缓存" data-title="exam"   bind:tap="delREC"/>
-            <van-cell title="清除成绩缓存" data-title="grade"  bind:tap="delREC"/> 
- </van-cell-group >
-            <van-cell-group style="color:#ff6600" title="联系">
-            <van-cell >
-                <view slot="title">
-                <button open-type="feedback" class="item">意见反馈与建议</button>
-                </view>
-            </van-cell>
-              <van-cell >
-                <view slot="title">
-                <button open-type="contact" class="item">联系客服</button>
-                </view>
-            </van-cell>
-             </van-cell-group >
-             <van-cell-group style="color:#ff6600" title="关于">
-             <van-cell title="关于作者" is-link data-title="关于作者" bind:tap="toPage" />
-            <van-cell title="使用说明" is-link data-title="使用说明" bind:tap="toPage" />
-            <van-cell title="版本说明" is-link data-title="版本说明" bind:tap="toPage" />
-            <van-cell title="隐私政策"  is-link data-title="隐私政策" bind:tap="toPage" />
-            </van-cell-group > 
-              </view>
+<view
+ class="index_body"
+ style="margin:28rpx 0rpx 28rpx 42rpx;width:708rpx"
+ hover-class="none"
+ hover-stop-propagation="false"
+>
 
-<official-account></official-account>
-<view class="FORBAR" style="width:708rpx" >   
-</view>
+	<view
+	 class="header"
+	 hover-class="none"
+	 hover-stop-propagation="false"
+	>
+		<image
+		 class="head-pic"
+		 src="/pages/images/set.png"
+		 mode="aspectFit"
+		></image>
+		<text class="sub-text" style="margin-left:5rpx;" selectable="false" space="false" decode="false">我希望一切都在你的掌控之中</text>
+	</view>
+
+	<view
+	 wx:if="{{loginStatus===true}}"
+	 class="new-card"
+	 style="width:648rpx;height:auto;margin:28rpx 0rpx 28rpx 0rpx;"
+	>
+		<text class="sub-text" style="margin:28rpx 0rpx 15rpx 0rpx; color:rgba(0,0,0,0.87)">姓名：{{studentName}}  </text>
+		<text class="sub-text" style=" color:rgba(0,0,0,0.87);margin:0rpx 0rpx 28rpx 0rpx; ">NO.{{studentID}}</text>
+
+		<view class="btn-s" bind:tap="loginOut">注销</view>
+	</view>
+	<view
+	 wx:else
+	 class="new-card"
+	 style="width:648rpx;height:144rpx;padding:28rpx 0rpx;margin:28rpx 0rpx;"
+	>
+		<text class="headeline-text" style="margin:20rpx 0rpx;padding:0rpx 50rpx">你目前尚未登录</text>
+		<view class="btn-s" bind:tap="login">登录</view>
+	</view>
+
+	<view style="width:700rpx;height:auto">
+		<van-cell-group style="color:#ff6600" title="设置">
+			<van-cell title="记住密码">
+				<view slot="">
+					<van-switch
+					 checked="{{keepPassword}}"
+					 bind:change="onChange_keepPassword"
+					 size="{{btnSize}}px"
+					/>
+				</view>
+			</van-cell>
+			<van-cell title="退出时清除缓存">
+				<view slot="">
+					<van-switch
+					 checked="{{onExitClearCache}}"
+					 bind:change="onChange_onExitClearCache"
+					 size="{{btnSize}}px"
+					/>
+				</view>
+			</van-cell>
+			<van-cell
+			 title="清除课表缓存"
+			 data-title="course"
+			 bind:tap="clearCaches"
+			/>
+			<van-cell
+			 title="清除考表缓存"
+			 data-title="exam"
+			 bind:tap="clearCaches"
+			/>
+			<van-cell
+			 title="清除成绩缓存"
+			 data-title="grade"
+			 bind:tap="clearCaches"
+			/>
+		</van-cell-group>
+		<van-cell-group style="color:#ff6600" title="联系">
+			<van-cell>
+				<view slot="title">
+					<button open-type="feedback" class="item">意见反馈与建议</button>
+				</view>
+			</van-cell>
+			<van-cell>
+				<view slot="title">
+					<button open-type="contact" class="item">联系客服</button>
+				</view>
+			</van-cell>
+		</van-cell-group>
+		<van-cell-group style="color:#ff6600" title="关于">
+			<van-cell
+			 title="关于作者"
+			 is-link
+			 data-title="关于作者"
+			 bind:tap="toPage"
+			/>
+			<van-cell
+			 title="使用说明"
+			 is-link
+			 data-title="使用说明"
+			 bind:tap="toPage"
+			/>
+			<van-cell
+			 title="版本说明"
+			 is-link
+			 data-title="版本说明"
+			 bind:tap="toPage"
+			/>
+			<van-cell
+			 title="隐私政策"
+			 is-link
+			 data-title="隐私政策"
+			 bind:tap="toPage"
+			/>
+		</van-cell-group>
+	</view>
+
+	<official-account></official-account>
+	<view class="FORBAR" style="width:708rpx">
+	</view>
+	<ad unit-id="adunit-d981d01be915e8df"></ad>
 </view>
 <van-dialog id="van-dialog" />
+

@@ -1,0 +1,14 @@
+<!--pages/dashboard/index.wxml-->
+<view class='warpper'>
+  <login-bar
+		 loginStatus="{{loginStatus}}"
+		 currentSemesterWeek="{{currentSemesterWeek}}"
+		 semesterWeekTotal="{{semesterWeekTotal}}"
+		 username="{{username}}"
+		 studentID="{{studentID}}"
+		 bind:handleLogin="login"
+		 bind:handleLoginOut="loginOut"
+		></login-bar>
+<calendar>
+</calendar></view>
+

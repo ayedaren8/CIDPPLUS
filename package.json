@@ -1,0 +1,25 @@
+{
+  "name": "CIDPPLUS",
+  "version": "1.0.0",
+  "description": "防灾科技学院移动教务助手",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayedaren8/CIDPPLUS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayedaren8/CIDPPLUS/issues"
+  },
+  "homepage": "https://github.com/ayedaren8/CIDPPLUS#readme",
+  "dependencies": {
+    "miniprogram-computed": "^4.0.1",
+    "mobx-miniprogram": "^4.13.2",
+    "mobx-miniprogram-bindings": "^2.0.0"
+  }
+}
